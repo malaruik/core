@@ -56,21 +56,22 @@ static int Dialogue(int sd, const char *s);
 
 /******************************************************************************/
 
-# if defined(__MINGW32__)
 
-static void *ThreadUniqueName(void)
-{
-    return pthread_self().p;
-}
-
-# else /* __MINGW32__ */
+//# if defined(__MINGW32__)
+//
+//static void *ThreadUniqueName(void)
+//{
+//    return pthread_self().p;
+//}
+//
+//# else /* __MINGW32__ */
 
 static void *ThreadUniqueName(void)
 {
     return (void *)pthread_self();
 }
 
-# endif /* __MINGW32__ */
+//# endif /* __MINGW32__ */
 
 static const char *TwinFilename(void)
 {

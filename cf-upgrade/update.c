@@ -40,7 +40,8 @@
 extern char **environ;
 
 
-#ifndef __MINGW32__
+//#ifndef __MINGW32__
+#if 0
 /* Unix implementation */
 int private_copy_to_temporary_location(const char *source, const char *destination)
 {

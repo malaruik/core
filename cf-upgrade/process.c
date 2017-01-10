@@ -49,7 +49,7 @@
  * If this is not defined, then we will have problems in Windows 2003.
  * Yes, this is the right value there is no WIN2003 flag.
  */
-#define _WIN32_WINNT _WIN32_WINNT_WINXP
+//#define _WIN32_WINNT _WIN32_WINNT_WINXP
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>

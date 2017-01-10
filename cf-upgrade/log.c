@@ -81,7 +81,7 @@ static void private_log_init()
     int log_fd = -1;
 
     strftime(path, sizeof(path), "cf-upgrade-%Y%m%d-%H%M%S.log", now_tm);
-#ifndef __MINGW32__
+#if 1
     log_fd = open(path, O_WRONLY|O_CREAT, S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
 #else
     log_fd = open(path, O_WRONLY|O_CREAT, S_IRUSR|S_IWUSR);
@@ -92,7 +92,7 @@ static void private_log_init()
         return;
     }
 
-#ifndef __MINGW32__
+#if 0
     /*
      * cf-upgrade spawns itself, therefore to avoid log confusion we need to
      * make sure that the log is closed when we call exeve.
