@@ -65,6 +65,7 @@
 #include <conn_cache.h>
 #include <stat_cache.h>                      /* remote_stat,StatCacheLookup */
 #include <known_dirs.h>
+#include <platform.h>
 
 #include <cf-windows-functions.h>
 

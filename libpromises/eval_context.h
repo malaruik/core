@@ -38,6 +38,12 @@
 #include <rb-tree.h>
 #include <ring_buffer.h>
 
+// MAla stubs
+#define EvalContextSetupMissionPortalLogHook EvalContextSetupMissionPortalLogHook__stub
+#define Nova_ClassHistoryAddContextName Nova_ClassHistoryAddContextName__stub
+#define TrackTotalCompliance TrackTotalCompliance__stub
+#define Nova_ClassHistoryEnable Nova_ClassHistoryEnable__stub
+
 typedef enum
 {
     STACK_FRAME_TYPE_BUNDLE,
