@@ -35,3 +35,10 @@ int rpl_mkdir(const char *pathname, mode_t mode)
 {
   //MAla
 }
+
+void LogToSystemLog(const char *msg, LogLevel level)
+{
+  //char logmsg[4096];
+  //snprintf(logmsg, sizeof(logmsg), "CFEngine(%s) %s %s\n", AgentType, VPREFIX, msg);
+  //syslog(LogLevelToSyslogPriority(level), "%s", logmsg);
+}

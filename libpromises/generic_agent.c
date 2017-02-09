@@ -416,7 +416,7 @@ void GenericAgentDiscoverContext(EvalContext *ctx, GenericAgentConfig *config)
     Log(LOG_LEVEL_VERBOSE, " %s", NameVersion());
     Banner("Initialization preamble");
 
-    GenericAgentSetDefaultDigest(&CF_DEFAULT_DIGEST, &CF_DEFAULT_DIGEST_LEN);
+    GenericAgentSetDefaultDigest__stub(&CF_DEFAULT_DIGEST, &CF_DEFAULT_DIGEST_LEN);
     GenericAgentInitialize(ctx, config);
 
     time_t t = SetReferenceTime();
@@ -890,7 +890,7 @@ void GenericAgentInitialize(EvalContext *ctx, GenericAgentConfig *config)
 
     EvalContextClassPutHard(ctx, "any", "source=agent");
 
-    GenericAgentAddEditionClasses(ctx);
+    GenericAgentAddEditionClasses__stub(ctx);
 
 /* Define trusted directories */
 

@@ -207,6 +207,7 @@ void LogToSystemLog(const char *msg, LogLevel level)
     snprintf(logmsg, sizeof(logmsg), "CFEngine(%s) %s %s\n", AgentType, VPREFIX, msg);
     syslog(LogLevelToSyslogPriority(level), "%s", logmsg);
 }
+
 #endif
 
 const char *GetErrorStrFromCode(int error_code)
