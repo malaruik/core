@@ -141,3 +141,7 @@ int ExclusiveUnlockFile(int fd)
 {
   return true;
 }
+bool BootstrapAllowed(void)
+{
+  //MAla
+}
