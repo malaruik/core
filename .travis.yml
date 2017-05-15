@@ -4,7 +4,7 @@ before_install:
 
 os: linux
 
-compiler: x86_64-w64-mingw-gcc
+compiler: x86_64-w64-mingw32-gcc
 
 addons:
         apt:
