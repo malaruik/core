@@ -1,28 +1,34 @@
-language: c 
-
-before_install: 
-   
-os: 
-   - linux 
- 
-compiler: 
-    - clang 
-    - gcc 
+language: c
 
 
-      
+
+before_install:
+
+
+os:
+ linux
+
+
+compiler: gcc
+
+
 env: 
-    - CONFIG_OPTS="" DESTDIR="_install" TESTS="-test_fuzz" 
+  - CONFIG_OPTS="" DESTDIR="_install" TESTS="-test_fuzz"
 
-       
-matrix: 
-    include: 
-        - os: linux 
-         addons: 
-             apt: 
-                packages: 
-                      - binutils-mingw-w64 
-                    - gcc-mingw-w64 
-           compiler: i686-w64-mingw32-gcc 
-            env: CONFIG_OPTS="no-stdio" BUILDONLY="yes" 
+
+matrix:
+  include:
+    - os: linux
+    addons:
+             apt:
+ 
+                packages:
+                   - binutils-mingw-w64
+ 
+                  - gcc-mingw-w64
+ 
+           compiler: i686-w64-mingw32-gcc
+ 
+            env: CONFIG_OPTS=""
+
 
