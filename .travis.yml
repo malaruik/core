@@ -2,8 +2,15 @@ language: c
 
 before_install:
 
-os:
- linux
+os: linux
+
+addons:
+        apt:
+          packages:
+            - gcc-mingw-w64-base
+            - binutils-mingw-w64-x86-64
+            - gcc-mingw-w64-x86-64
+            - gcc-mingw-w64
 
 script: ./autogen.sh --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd CFLAGS="-i/usr/x86_64-w64-mingw32/sys-root/mingw/include/ -D__USE_MINGW_ANSI_STDIO=1"
 
