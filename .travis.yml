@@ -9,10 +9,9 @@ addons:
           packages:
             - binutils-mingw-w64-x86-64
             - gcc-mingw-w64-x86-64
+          compiler: x86_64-w64-mingw32-gcc
 
 script: ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32  --target=x86_64-w64-mingw32 CFLAGS="-i/usr/x86_64-w64-mingw32/sys-root/mingw/include/ -D__USE_MINGW_ANSI_STDIO=1"
-
-compiler: x86_64-w64-mingw32-gcc
 
 env:
 
