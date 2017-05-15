@@ -5,6 +5,8 @@ before_install:
 os:
  linux
 
+script: autogen
+
 compiler: gcc
 
 env:
