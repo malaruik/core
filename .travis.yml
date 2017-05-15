@@ -2,7 +2,7 @@ language: c
 
 before_install:
 
-os: linux
+os: ubuntu
 
 addons:
         apt:
@@ -16,7 +16,7 @@ addons:
 
 script: ./autogen.sh --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 CFLAGS="-i/usr/x86_64-w64-mingw32/sys-root/mingw/include/ -D__USE_MINGW_ANSI_STDIO=1"
 
-compiler: x86_64-w64-mingw32-gcc
+compiler: x86_64-w64-mingw32
 
 env:
 
