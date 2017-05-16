@@ -10,7 +10,7 @@ install:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      - ./configure
-     - make > output_make.log
+     - make &> output_make.log
      - make install
      - ls -l ./libraries/liblmdb
      - cd ..
