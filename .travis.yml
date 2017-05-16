@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get install ldap-utils libldap-2.4-2 libldap2-dev
 
 install:
-     - wget https://github.com/openldap/openldap.git
+     - git clone https://github.com/openldap/openldap.git
      - ./configure
 
 addons:
