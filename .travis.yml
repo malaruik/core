@@ -1,10 +1,14 @@
-language: c++
+language: cpp
 
-before_install: sudo apt-get install binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq wine swig curl
+  - sudo apt-get install -qq mingw32
 
 os: linux
 
-compiler: x86_64-w64-mingw32-gcc
+compiler: clang
 
 script: ./autogen.sh mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32  --target=x86_64-w64-mingw32 CFLAGS="-i/usr/x86_64-w64-mingw32/sys-root/mingw/include/ -D__USE_MINGW_ANSI_STDIO=1"
 
