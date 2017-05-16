@@ -22,7 +22,7 @@ os: linux
 
 compiler: clang
 
-script: ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd CFLAGS="-I/../../../../libraries/liblmdb" 
+script: ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd CFLAGS="-I/../../../libraries/liblmdb" 
 
 env:
 
