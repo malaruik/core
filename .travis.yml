@@ -5,7 +5,6 @@ before_install:
   - sudo apt-get install -qq wine swig curl
   - sudo apt-get install -qq mingw32
   - sudo apt-get install ldap-utils libldap-2.4-2 libldap2-dev
-  - sudo apt-get install liblmdb-dev
 
 install:
      - wget https://github.com/openldap/openldap.git
