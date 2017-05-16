@@ -12,7 +12,9 @@ install:
      - ./configure
      - make &> output_make.log
      - ls -l ./libraries
+     - cd liblmdb
      - make install
+     - cd ..
      - ls -l ./libraries/liblmdb
      - cd ..
 
