@@ -8,6 +8,7 @@ before_install:
 
 install:
      - git clone https://github.com/openldap/openldap.git
+     - cd openldap
      - ./configure
 
 addons:
