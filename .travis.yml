@@ -14,8 +14,8 @@ install:
      - ls -l ./libraries
      - cd ./libraries/liblmdb
      - sudo make install
+     - ls -l
      - cd ..
-     - ls -l ./libraries/liblmdb
      - cd ..
 
 addons:
