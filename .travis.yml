@@ -11,6 +11,7 @@ install:
      - cd openldap
      - ./configure
      - make &> output_make.log
+     - ls -l ./libraries
      - make install
      - ls -l ./libraries/liblmdb
      - cd ..
