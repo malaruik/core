@@ -13,7 +13,7 @@ install:
      - make &> output_make.log
      - ls -l ./libraries
      - cd ./libraries/liblmdb
-     - make install
+     - sudo make install
      - cd ..
      - ls -l ./libraries/liblmdb
      - cd ..
