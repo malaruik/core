@@ -31,8 +31,8 @@ compiler: x86_64-w64-mingw32-gcc
 script:
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
-     - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb CFLAGS="-Wimplicit-function-declaration -g -Wall -Wno-pointer-sign -i/bin/usr/x86_64-w64-mingw32/ -I/openldap/libraries/liblmdb"
-     - grep error config.log
+     - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb CFLAGS="-Wimplicit-function-declaration -g -Wall -Wno-pointer-sign -I/openldap/libraries/liblmdb"
+     - grep -C 2 error config.log
      - echo $CC
      - make
 
