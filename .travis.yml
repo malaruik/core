@@ -29,7 +29,7 @@ os: linux
 compiler: clang
 
 script: 
-     - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb --disable-slapd CFLAGS="-Wimplicit-function-declaration -I/openldap/libraries/liblmdb"
+     - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb --disable-slapd -Wimplicit-function-declaration -g -Wall -Wno-pointer-sign CFLAGS="-Wimplicit-function-declaration -I/openldap/libraries/liblmdb"
      - make
 
 env:
