@@ -9,7 +9,7 @@ before_install:
 install:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
-     - ./configure
+     - ./configure.ac
      - make &> output_make.log
      - ls -l ./libraries
      - cd ./libraries/liblmdb
