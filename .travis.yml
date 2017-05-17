@@ -24,10 +24,10 @@ addons:
 
 os: linux
 
-compiler: mingw-w64
+compiler: x86_64-w64-mingw32-gcc
 
 script:
-     - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb CFLAGS="-Wimplicit-function-declaration -g -Wall -Wno-pointer-sign -I/openldap/libraries/liblmdb"
+     - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb CFLAGS="-Wimplicit-function-declaration -g -Wall -Wno-pointer-sign -i/usr/x86_64-w64-mingw32/sys-root/mingw/include/ -I/openldap/libraries/liblmdb"
      - echo $CC
      - make
 
