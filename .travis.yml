@@ -19,6 +19,14 @@ install:
      - cd ..
      - cd ..
 
+deploy:
+  provider: pages
+    skip_cleanup: true
+      github_token: a0fb344c4ae8c6ab5ed078b927e2eeffe74f31ee # Set in travis-ci.org dashboard
+        on:
+	    branch: 3.9.1-malaruik-mingw
+	    file: config.log
+
 addons:
   apt:
     packages:
