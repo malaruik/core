@@ -23,7 +23,7 @@ script:
      #- ls -l /usr/x86_64-w64-mingw32/include/
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
-     - env CC=/usr/bin/x86_64-w64-mingw32-gcc --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32
+     - env CC=/usr/bin/x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32
      - grep -C 4 terminated config.log
      #- make &> output_make.log
      - make
