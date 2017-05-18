@@ -8,6 +8,7 @@ before_install:
 install:
      - export CC=x86_64-w64-mingw32-gcc
      - export CFLAGS="-I/usr/x86_64-w64-mingw32/include/"
+     - export LDFLAGS="-L/usr/x86_64-w64-mingw32/lib/"
 
 addons:
   apt:
@@ -23,9 +24,9 @@ script:
      #- ls -l /usr/x86_64-w64-mingw32/include/
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
-     - env CC=/usr/bin/x86_64-w64-mingw32-gcc ./configure mingw64 --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32
-     - grep -C 4 terminated config.log
-     #- make &> output_make.log
+     - env CC=/usr/bin/x86_64-w64-mingw32-gcc ./configure mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32
+     - grep -C 4 error config.log
+     - make &> output_make.log
      - make
      - ls -l ./libraries
      - cd ./libraries/liblmdb
