@@ -8,7 +8,7 @@ before_install:
 install:
      - export CC=x86_64-w64-mingw32-gcc
      - export CFLAGS="-I/usr/x86_64-w64-mingw32/include/ -I/include/ -I/include/ac"
-     - export LDFLAGS="-L/usr/x86_64-w64-mingw32/lib/" -lpthread
+     - export LDFLAGS="-L/usr/x86_64-w64-mingw32/lib/ -lpthread"
 
 addons:
   apt:
