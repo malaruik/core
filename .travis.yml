@@ -24,7 +24,7 @@ script:
      - export CC=x86_64-w64-mingw32-gcc
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
-     - ./configure mingw64 --host=x86_64-w64-mingw32
+     - ./configure --host=x86_64-w64-mingw32
      - grep -C 3 error config.log
      - make &> output_make.log
      - ls -l ./libraries
