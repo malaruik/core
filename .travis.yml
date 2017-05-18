@@ -23,7 +23,7 @@ script:
      - pwd
      - git clone https://github.com/GerHobbelt/pthread-win32.git
      - cd ./pthread-win32
-     - make CROSS=i386-mingw32msvc- clean GC
+     - make CROSS=x86_64-w64-mingw32-gcc clean GC
      - cd ..
      #- ls -l /usr/x86_64-w64-mingw32/include/
      #- git clone https://github.com/openldap/openldap.git
