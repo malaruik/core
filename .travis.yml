@@ -22,7 +22,9 @@ compiler: x86_64-w64-mingw32
 script:
      - pwd
      - git clone https://github.com/GerHobbelt/pthread-win32.git
-     - ls -l ./pthread-win32
+     - cd ./pthread-win32
+     - make CROSS=i386-mingw32msvc- clean GC
+     - cd ..
      #- ls -l /usr/x86_64-w64-mingw32/include/
      #- git clone https://github.com/openldap/openldap.git
      #- cd openldap
