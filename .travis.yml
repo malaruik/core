@@ -8,7 +8,7 @@ before_install:
 install:
      - export CC=x86_64-w64-mingw32-gcc
      - export CFLAGS="-I/usr/x86_64-w64-mingw32/include/ -I/include/ -I/include/ac"
-     - export LDFLAGS="-L/usr/x86_64-w64-mingw32/lib/ -lpthread"
+     - export LDFLAGS="-L/usr/x86_64-w64-mingw32/lib/"
 
 addons:
   apt:
@@ -37,7 +37,7 @@ script:
      #- cd ..
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
-     - env CC=/usr/bin/x86_64-w64-mingw32-gcc ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb
+     - env CC=/usr/bin/x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb
      - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb
      - grep -C 2 error config.log
      - echo $CCLD
