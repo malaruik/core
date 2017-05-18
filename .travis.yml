@@ -7,7 +7,7 @@ before_install:
 
 install:
      - export CC=x86_64-w64-mingw32-gcc
-     - export CFLAGS="I/usr/x86_64-w64-mingw32/sys-root/mingw/include/"
+     - export CFLAGS="-I/usr/x86_64-w64-mingw32/include/"
 
 addons:
   apt:
