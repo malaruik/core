@@ -6,7 +6,7 @@ before_install:
    - sudo apt-get install ldap-utils libldap-2.4-2 libldap2-dev
 
 install:
-     - EXPORT CC = x86_64-w64-mingw32-gcc
+     - export CC = x86_64-w64-mingw32-gcc
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      - ./configure
