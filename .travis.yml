@@ -8,7 +8,7 @@ before_install:
 install:
      - export CC=x86_64-w64-mingw32-gcc
      - export CFLAGS="-g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I./pthread-win32/ -I./openldap/include/ -I./openldap/include/ac"
-     - export LDFLAGS="-L/pthread-win32/ -L/usr/x86_64-w64-mingw32/lib/"
+     - export LDFLAGS="-lpthreadGC2.dll -L/usr/x86_64-w64-mingw32/lib/"
 
 addons:
   apt:
