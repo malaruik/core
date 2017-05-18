@@ -19,11 +19,12 @@ compiler: x86_64-w64-mingw32-gcc
 
 script:
      - pwd
-     - ls -l /usr/bin/x86_64-w64-mingw32-gcc
+     - ls -l /usr/bin
+     - ls -l /usr/bin/x86_64-w64-mingw32-gcc/
      - export CC=x86_64-w64-mingw32-gcc
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
-     - ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 CFLAGS="-i/usr/bin/x86_64-w64-mingw32/sys-root/mingw/include/"
+     - ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 CFLAGS="-i/usr/bin/x86_64-w64-mingw32/"
      - grep -C 3 error config.log
      - make &> output_make.log
      - ls -l ./libraries
