@@ -37,7 +37,8 @@ script:
      #- cd ..
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
-     - configure mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --disable-pthreads --with-lmdb=/openldap/libraries/liblmdb
+     - autoreconf
+     - ./configure mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --disable-pthreads --with-lmdb=/openldap/libraries/liblmdb
      - grep -C 2 error config.log
      - echo $CCLD
      - make
