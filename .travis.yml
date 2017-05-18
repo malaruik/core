@@ -3,7 +3,7 @@ language: bash
 
 before_install:
    - sudo apt-get install -y binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
-   - sudo apt-get install ldap-utils libldap-2.4-2 libldap2-dev
+   - sudo apt-get install autotools-dev
 
 install:
      - export CC=x86_64-w64-mingw32-gcc
@@ -37,7 +37,7 @@ script:
      #- cd ..
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
-     - autoreconf
+     - autoreconf -vif
      - ./configure mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --disable-pthreads --with-lmdb=/openldap/libraries/liblmdb
      - grep -C 2 error config.log
      - echo $CCLD
