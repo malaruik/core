@@ -23,18 +23,18 @@ script:
      - pwd
      #- ls -l /usr/x86_64-w64-mingw32/include/
      - git clone https://github.com/openldap/openldap.git
-     #- cd openldap
-     #- env CC=/usr/bin/x86_64-w64-mingw32-gcc ./configure mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32
-     #- grep -C 4 error config.log
-     #- make &> output_make.log
-     #- make
-     #- ls -l ./libraries
-     #- cd ./libraries/liblmdb
-     #- sudo make install
-     #- ls -l
-     #- cd ..
-     #- cd ..
-     #- cd ..
+     - cd openldap
+     - env CC=/usr/bin/x86_64-w64-mingw32-gcc ./configure mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32
+     - grep -C 4 error config.log
+     - make &> output_make.log
+     - make
+     - ls -l ./libraries
+     - cd ./libraries/liblmdb
+     - sudo make install
+     - ls -l
+     - cd ..
+     - cd ..
+     - cd ..
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
      - autoreconf -vif
