@@ -8,7 +8,7 @@ before_install:
 install:
      - export CC=x86_64-w64-mingw32-gcc
      - export CFLAGS="-lpthread -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I./openldap/include/ -I./openldap/include/ac"
-     - export LDFLAGS="-lpthread -L/usr/x86_64-w64-mingw32/lib/"
+     - export LDFLAGS="-L/usr/x86_64-w64-mingw32/lib/"
 
 addons:
   apt:
@@ -22,7 +22,7 @@ compiler: x86_64-w64-mingw32
 script:
      - pwd
      - git clone https://github.com/GerHobbelt/pthread-win32.git
-     - ls -l
+     - ls -l ./pthread-win32
      #- ls -l /usr/x86_64-w64-mingw32/include/
      #- git clone https://github.com/openldap/openldap.git
      #- cd openldap
