@@ -21,6 +21,8 @@ compiler: x86_64-w64-mingw32
 
 script:
      - pwd
+     - git clone https://github.com/GerHobbelt/pthread-win32.git
+     - ls -l
      #- ls -l /usr/x86_64-w64-mingw32/include/
      #- git clone https://github.com/openldap/openldap.git
      #- cd openldap
