@@ -24,8 +24,9 @@ script:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      - ./configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32
-     - grep -C 3 error config.log
-     - make &> output_make.log
+     - grep -C 4 terminated config.log
+     #- make &> output_make.log
+     - make
      - ls -l ./libraries
      - cd ./libraries/liblmdb
      - sudo make install
