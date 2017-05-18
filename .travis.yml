@@ -6,7 +6,7 @@ before_install:
    - sudo apt-get install ldap-utils libldap-2.4-2 libldap2-dev
 
 install:
-     - export CC=x86_64-w64-mingw32-gcc
+     - export CC=x86_64-w64-mingw32
      - export CFLAGS="-i/usr/x86_64-w64-mingw32/include/"
 
 addons:
@@ -16,12 +16,12 @@ addons:
 
 os: linux
 
-compiler: x86_64-w64-mingw32-gcc
+compiler: x86_64-w64-mingw32
 
 script:
      - pwd
      - ls -l /usr/x86_64-w64-mingw32/
-     - export CC=x86_64-w64-mingw32-gcc
+     - export CC=x86_64-w64-mingw32
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      - ./configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32
@@ -34,8 +34,8 @@ script:
      - cd ..
      - cd ..
      - cd ..
-     - which x86_64-w64-mingw32-gcc
-     - x86_64-w64-mingw32-gcc --version
+     - which x86_64-w64-mingw32
+     - x86_64-w64-mingw32 --version
      - ./autogen.sh --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb CFLAGS="-Wimplicit-function-declaration -g -Wall -Wno-pointer-sign -I/openldap/libraries/liblmdb" LDFLAGS="-I/openldap/libraries/liblmdb -lliblmdb"
      - grep -C 2 error config.log
      - echo $CCLD
