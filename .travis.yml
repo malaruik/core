@@ -25,7 +25,7 @@ script:
      - git clone https://github.com/GerHobbelt/pthread-win32.git
      - cd ./pthread-win32
      #- make CROSS=x86_64-w64-mingw32- clean GC
-     - make realclean GC ARCH="-m64" EXTRAVERSION="-w64"
+     - make
      - ls -l pthread*.
      - cd ..
      #- ls -l /usr/x86_64-w64-mingw32/include/
