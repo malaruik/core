@@ -125,12 +125,12 @@ AC_ARG_WITH([pthreads],
                     [Specify path to pthreads, if not the part of operating system])])
 
 if test "x$with_pthreads" != x && test "x$with_pthreads" != "xyes" && test "x$with_pthreads" != "xno"; then
-   LIBS="$LIBS -L$with_pthreads/lib"
-   CPPFLAGS="-I$with_pthreads/include $CPPFLAGS"
+   LIBS="$LIBS -L$with_pthreads/"
+   CPPFLAGS="-I$with_pthreads/ $CPPFLAGS"
 fi
 
-ACX_PTHREAD([],
-            [AC_MSG_ERROR(pthread-compatible library is required to build CFEngine)])
+dnl CX_PTHREAD([],
+dnl            [AC_MSG_ERROR(pthread-compatible library is required to build CFEngine)])
 
 CC="$PTHREAD_CC"
 CFLAGS="$PTHREAD_CFLAGS $CFLAGS"
