@@ -45,7 +45,7 @@ script:
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
      - autoreconf -vif
-     - ./configure mingw64 --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 CFLAGS="-O2 -I/pthread-win32/" LDFLAGS="-L/pthread-win32/ -llibpthreadGC2"
+     - ./configure mingw64 --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 CFLAGS="-llibpthreadGC2.a -O2 -I/pthread-win32/" LDFLAGS="-L/pthread-win32/ -llibpthreadGC2.a"
      - grep -C 2 error config.log
      - echo $CCLD
      - make
