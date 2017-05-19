@@ -26,6 +26,7 @@ script:
      - cd ./pthread-win32
      - make CROSS=x86_64-w64-mingw32- clean GC-static
      - ls -l *.a
+     - cp libpthreadGC2.a ..
      - cd ..
      #- ls -l /usr/x86_64-w64-mingw32/include/
      #- git clone https://github.com/openldap/openldap.git
