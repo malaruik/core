@@ -49,7 +49,7 @@ script:
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
      #- autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc ./autogen.sh mingw64 --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --with-lmdb=/home/travis/build/malaruik/core/openldap/libraries/liblmdb --with-pthreads=/pthread-win32 CFLAGS="-g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I/openldap/libraries/liblmdb -I/pthread-win32 -I/openldap/include -I/openldap/include/ac -I/pthread-win32" LDFLAGS="-L/pthread-win32 -L/openldap/libraries/liblmdb"
+     - env CC=x86_64-w64-mingw32-gcc ./autogen.sh mingw64 --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --with-lmdb=/home/travis/build/malaruik/core/openldap/libraries/liblmdb --with-pthreads=/pthread-win32 CFLAGS="-g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I/openldap/libraries/liblmdb -I/pthread-win32 -I/openldap/include -I/openldap/include/ac -I/pthread-win32" LDFLAGS="-llmdb -L/pthread-win32 -L/openldap/libraries/liblmdb"
      - grep -C 2 error config.log
      - make
 
