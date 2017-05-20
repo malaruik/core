@@ -37,10 +37,6 @@ script:
      - env CC=x86_64-w64-mingw32-gcc ./configure mingw64 shared --build=x86_64-w64-mingw32 --host=x86_64 --target=x86_64-w64-mingw32 --disable-slapd --with-yielding_select=no LDFLAGS="-L/usr/x86_64-w64-mingw32/lib"
      #- grep -C 4 error config.log
      - make &> output_make.log
-     - ls -l ./libraries
-     - cd ./libraries/liblmdb
-     - sudo make install
-     #- cp liblmdb.a lmdb.a
      - ls -l
      - pwd
      - cd ..
