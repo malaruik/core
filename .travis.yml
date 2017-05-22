@@ -35,9 +35,10 @@ script:
      # PCRE
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
-     - autoreconf -vif
+     #- autoreconf -vif
      - ls -l
-     - ./configure
+     - chmod 777 autogen.sh
+     - ./autogen.sh
      - make
      - cd ..
      #-------------------------
