@@ -33,7 +33,7 @@ script:
      - cd ..
      # -------------------
      # PCRE
-     - sudo apt-get install libpcre3
+     - git clone https://github.com/coapp-packages/pcre.git
      - ls -l
      - cd pcre
      - ls -l
@@ -41,7 +41,7 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - ls -l
-     - make
+     - cmake
      - cd ..
      #-------------------------
      #- ls -l /usr/x86_64-w64-mingw32/include/
