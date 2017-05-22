@@ -37,6 +37,7 @@ script:
      - ls -l
      - cd pcre
      - ls -l
+     - ./autogen.sh
      - autoreconf -vif
      - ./configure
      - ls -l
