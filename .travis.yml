@@ -24,13 +24,15 @@ compiler: x86_64-w64-mingw32
 
 script:
      - pwd
-     #- ls -l /usr/x86_64-w64-mingw32/include
-     #- git clone https://github.com/GerHobbelt/pthread-win32.git
-     #- cd ./pthread-win32
-     #- make CROSS=x86_64-w64-mingw32- clean GC-static
-     #- ls -l *.a
-     #- cp libpthreadGC2.a ..
-     #- cd ..
+     - ls -l /usr/x86_64-w64-mingw32/include
+     # ----------------------
+     - git clone https://github.com/GerHobbelt/pthread-win32.git
+     - cd ./pthread-win32
+     - make CROSS=x86_64-w64-mingw32- clean GC-static
+     - ls -l *.a
+     - ls regex.h
+     - cp libpthreadGC2.a ..
+     - cd ..
      # -------------------
      # PCRE
      - git clone https://github.com/coapp-packages/pcre.git
