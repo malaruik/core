@@ -37,9 +37,8 @@ script:
      - ls -l
      - cd pcre
      - ls -l
-     #- autoreconf -vif
-     - chmod 777 autogen.sh
-     - ./autogen.sh
+     - autoreconf -vif
+     - ./configure
      - ls -l
      - cmake
      - cd ..
