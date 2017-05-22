@@ -42,7 +42,7 @@ script:
      - autoreconf -vif
      - ./configure
      - ls -l
-     - cmake
+     - make
      - cd ..
      #-------------------------
      #- ls -l /usr/x86_64-w64-mingw32/include/
