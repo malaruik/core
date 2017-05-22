@@ -50,20 +50,20 @@ script:
      - cd openldap
      #- ls -l ./include/ac
      - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd --with-yielding_select=no CFLAGS="-Wall -I./../libutils -I/usr/x86_64-w64-mingw32/include/ -I/include -I/include/ac -I./../pcre" LDFLAGS="-lws2_32 -L/usr/x86_64-w64-mingw32/lib"
+     - grep -C 4 reqfree config.log
+     #- make &> output_make.log
      #- grep -C 4 error config.log
-     - make &> output_make.log
-     - grep -C 4 error config.log
-     - ls -l
-     - pwd
-     - cd ..
-     - cd ..
-     - cd ..
-     - which x86_64-w64-mingw32-gcc
-     - x86_64-w64-mingw32-gcc --version
+     #- ls -l
+     #- pwd
+     #- cd ..
+     #- cd ..
+     #- cd ..
+     #- which x86_64-w64-mingw32-gcc
+     #- x86_64-w64-mingw32-gcc --version
      #- autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb --with-pthreads=/pthread-win32 CFLAGS="-g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I/openldap/libraries/liblmdb" LDFLAGS=""
-     - grep -C 2 error config.log
-     - make
+     #- env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb --with-pthreads=/pthread-win32 CFLAGS="-g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I/openldap/libraries/liblmdb" LDFLAGS=""
+     #- grep -C 2 error config.log
+     #- make
 
 env:
 
