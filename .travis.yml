@@ -31,6 +31,14 @@ script:
      - ls -l *.a
      - cp libpthreadGC2.a ..
      - cd ..
+     # -------------------
+     # PCRE
+     - git clone ttps://github.com/coapp-packages/pcre.git
+     - cd pcre
+     - ./configure
+     - make
+     - cd ..
+     #-------------------------
      #- ls -l /usr/x86_64-w64-mingw32/include/
      - git clone https://github.com/openldap/openldap.git --branch OPENLDAP_REL_ENG_2_5
      - cd openldap
