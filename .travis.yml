@@ -35,8 +35,9 @@ script:
      # PCRE
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
+     - autoreconf -vif
      - ls -l
-     - ./autogen.sh
+     - ./configure
      - make
      - cd ..
      #-------------------------
