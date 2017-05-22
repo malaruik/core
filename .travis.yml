@@ -48,7 +48,7 @@ script:
      - git clone https://github.com/openldap/openldap.git --branch OPENLDAP_REL_ENG_2_5
      - cd openldap
      #- ls -l ./include/
-     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd --with-yielding_select=no CFLAGS="-Wall -I../libutils -I/usr/x86_64-w64-mingw32/include/ -I/include -I/include/ac" LDFLAGS="-lpcre -lws2_32 -L/usr/x86_64-w64-mingw32/lib"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd --with-yielding_select=no CFLAGS="-Wall -I../libutils -I/usr/x86_64-w64-mingw32/include/ -I/include -I/include/ac" LDFLAGS="-llibpcre3 -lws2_32 -L/usr/x86_64-w64-mingw32/lib"
      #- grep -C 4 error config.log
      - make &> output_make.log
      - grep -C 4 error config.log
