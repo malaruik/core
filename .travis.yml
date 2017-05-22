@@ -33,7 +33,7 @@ script:
      - cd ..
      # -------------------
      # PCRE
-     - git clone ttps://github.com/coapp-packages/pcre.git
+     - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
      - ./configure
      - make
