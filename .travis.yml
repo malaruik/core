@@ -39,6 +39,7 @@ script:
      - ls -l
      - chmod 777 autogen.sh
      - ./autogen.sh
+     - ls -l
      - make
      - cd ..
      #-------------------------
