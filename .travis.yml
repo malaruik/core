@@ -35,6 +35,7 @@ script:
      # PCRE
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
+     - ls -l
      - ./configure
      - make
      - cd ..
