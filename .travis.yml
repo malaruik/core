@@ -36,7 +36,6 @@ script:
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
      #- autoreconf -vif
-     - ls -l
      - chmod 777 autogen.sh
      - ./autogen.sh
      - ls -l
