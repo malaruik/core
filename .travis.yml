@@ -25,6 +25,7 @@ compiler: x86_64-w64-mingw32
 script:
      - pwd
      - cd ..
+     - ls -l /usr/include
      #- ls -l /usr/x86_64-w64-mingw32/include
      # ----------------------
      - git clone https://github.com/GerHobbelt/pthread-win32.git
