@@ -51,8 +51,8 @@ script:
      - ls -l .libs
      - cd ..
      #-------------------------
-     #- ls -l /usr/x86_64-w64-mingw32/include/
-     - ls -l ./core/libutils
+     - ls -l /usr/x86_64-w64-mingw32/include/
+     #- ls -l ./core/libutils
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      #-ls -l ./include/ac
