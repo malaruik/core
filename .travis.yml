@@ -29,6 +29,7 @@ script:
      # ----------------------
      - git clone https://github.com/GerHobbelt/pthread-win32.git
      - cd ./pthread-win32
+     - ls -l
      - make CROSS=x86_64-w64-mingw32- clean GC-static
      - ls -l *.a
      - cp libpthreadGC2.a ..
@@ -49,7 +50,7 @@ script:
      - git clone https://github.com/openldap/openldap.git --branch OPENLDAP_REL_ENG_2_5
      - cd openldap
      #-ls -l ./include/ac
-     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd --with-yielding_select=no CFLAGS="-Wall -I/home/travis/build/malaruik/core/libutils -I/openldap/include -I/home/travis/build/malaruik/pcre/" LDFLAGS="-L/home/travis/build/malaruik/openldap/include/ac -L/home/travis/build/malaruik/core/libutils -L/home/travis/build/malaruik/pcre/.libs -lpcre -lws2_32 -L/usr/x86_64-w64-mingw32/lib"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd --with-yielding_select=no CFLAGS="-Wall -I/home/travis/build/malaruik/core/libutils -I/openldap/include -I/home/travis/build/malaruik/pthread-win32 -I/home/travis/build/malaruik/pcre/" LDFLAGS="-L/home/travis/build/malaruik/pthread-win32 -L/home/travis/build/malaruik/openldap/include/ac -L/home/travis/build/malaruik/core/libutils -L/home/travis/build/malaruik/pcre/.libs -lpcre -lws2_32 -L/usr/x86_64-w64-mingw32/lib"
      - grep -C 4 error config.log
      #- make &> output_make.log
      #- grep -C 4 error config.log
