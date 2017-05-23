@@ -29,7 +29,6 @@ script:
      # ----------------------
      - git clone https://github.com/GerHobbelt/pthread-win32.git
      - cd ./pthread-win32
-     - ls -l
      - make CROSS=x86_64-w64-mingw32- clean GC-static
      - ls -l *.a
      - cp libpthreadGC2.a ..
@@ -47,6 +46,7 @@ script:
      - cd ..
      #-------------------------
      #- ls -l /usr/x86_64-w64-mingw32/include/
+     - ls -l ./libutils
      - git clone https://github.com/openldap/openldap.git --branch OPENLDAP_REL_ENG_2_5
      - cd openldap
      #-ls -l ./include/ac
