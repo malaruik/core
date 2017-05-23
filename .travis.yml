@@ -40,7 +40,7 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
-     - ./configure
+     - env CC=x86_64-w64-mingw32-gcc ./configure mingw64
      - make
      - cd ..
      #-------------------------
