@@ -54,7 +54,7 @@ script:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      #-ls -l ./include/ac
-     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd -disable-threads --with-yielding_select=no CFLAGS="-I/usr/x86_64-w64-mingw32/include/ -I/include/ac -I/home/travis/build/malaruik/pthread-win32 -I/home/travis/build/malaruik/pcre/" LDFLAGS="-L/home/travis/build/malaruik/pthread-win32 -L/home/travis/build/malaruik/pcre/.libs -llibpcreposix -lws2_32 -L/usr/x86_64-w64-mingw32/lib"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd --disable-threads --with-yielding_select=no CFLAGS="-I/usr/x86_64-w64-mingw32/include/ -I/include/ac -I/home/travis/build/malaruik/pthread-win32 -I/home/travis/build/malaruik/pcre/" LDFLAGS="-L/home/travis/build/malaruik/pthread-win32 -L/home/travis/build/malaruik/pcre/.libs -llibpcreposix -lws2_32 -L/usr/x86_64-w64-mingw32/lib"
      - grep -C 4 error config.log
      #- make &> output_make.log
      #- grep -C 4 error config.log
