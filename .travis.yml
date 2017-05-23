@@ -35,6 +35,7 @@ script:
      - cd ..
      # -------------------
      - cd core
+     - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb --with-pthreads=/pthread-win32 CFLAGS="-g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I/openldap/libraries/liblmdb" LDFLAGS=""
      - cd ..
    # PCRE
