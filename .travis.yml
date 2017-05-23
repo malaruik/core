@@ -31,7 +31,6 @@ script:
      - cd ./pthread-win32
      - make CROSS=x86_64-w64-mingw32- clean GC-static
      - ls -l *.a
-     - ls regex.h
      - cp libpthreadGC2.a ..
      - cd ..
      # -------------------
@@ -43,7 +42,6 @@ script:
      - autoreconf -vif
      - ./configure
      - make
-     - ls -l
      - cd ..
      #-------------------------
      #- ls -l /usr/x86_64-w64-mingw32/include/
