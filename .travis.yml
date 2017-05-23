@@ -42,7 +42,7 @@ script:
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre
      - make
-     - ls -l
+     - ls -l .libs
      - cd ..
      #-------------------------
      #- ls -l /usr/x86_64-w64-mingw32/include/
