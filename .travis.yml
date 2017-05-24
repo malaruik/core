@@ -56,7 +56,7 @@ script:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      #-ls -l ./include/ac
-     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/openldap CFLAGS="-i/usr/include"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/openldap CFLAGS="-I/usr/include"
      # - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd CFLAGS="-I/usr/include -I/usr/include/sys -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/pcre/.libs -lws2a_32"
      - grep -C 4 error config.log
      #- make &> output_make.log
