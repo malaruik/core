@@ -2,11 +2,12 @@ language: bash
 
 
 before_install:
+   - sudo apt-get update
    - sudo apt-get install -y binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
    - sudo apt-get install autotools-dev
    - sudo apt-get install -qq wine swig curl
    - sudo apt-get install ldap-utils libldap-2.4-2 libldap2-dev
-   - sudo apt-get install gcc-multilib
+   - sudo apt-get install util-linux
 
 install:
      #- export CC=x86_64-w64-mingw32-gcc
@@ -56,7 +57,8 @@ script:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap
      #-ls -l ./include/ac
-     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/openldap CFLAGS="-static-libgcc"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/openldap
+     #
      # - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd CFLAGS="-I/usr/include -I/usr/include/sys -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/pcre/.libs -lws2a_32"
      - grep -C 4 error config.log
      #- make &> output_make.log
