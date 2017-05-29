@@ -56,8 +56,9 @@ script:
      #- env CC=x86_64-w64-mingw32-gcc make
      - grep -C 2 pthread Makefile
      - sed "s/-pthread/ /g" Makefile >Makefile2
+     - sed "s/-O2 -g/-O2 -DSSIZE_MAX=0/g" Makefile2 >Makefile3
      - ls -l
-     - cp Makefile2 Makefile
+     - cp Makefile3 Makefile
      - make CC=x86_64-w64-mingw32-gcc 
      #- grep -C 4 error config.log
      #- ls -l
