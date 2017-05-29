@@ -56,14 +56,14 @@ script:
      - cd .. 
      - cd ..
      - cd ..
-     - cd core
+     #- cd core
      #
      # CFENGINE building starts here:
      #
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
      - autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/home/travis/build/malaruik/core/openldap/libraries/liblmdb/ CFLAGS="-I/home/travis/build/malaruik/core/openldap/libraries/liblmdb/  -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/" LDFLAGS="-L/home/travis/build/malaruik/core/openldap/libraries/liblmdb/ -llmdb.a"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/home/travis/build/malaruik/core/openldap/libraries/liblmdb CFLAGS="-I/home/travis/build/malaruik/core/openldap/libraries/liblmdb -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/" LDFLAGS="-L/home/travis/build/malaruik/core/openldap/libraries/liblmdb"
      #- grep -C 2 error config.log
      #- make
 
