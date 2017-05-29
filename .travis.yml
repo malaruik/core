@@ -48,19 +48,13 @@ script:
      # OpenLDAP -llmdb compilin only
      #
      - git clone https://github.com/openldap/openldap.git
-     - cd openldap
-     - cd libraries
-     - ls -l
+     - cd openldap/libraries
      #
      #- env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd CFLAGS="-I/usr/include -I/usr/include/sys -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/pcre/.libs -lws2a_32"
      - cd liblmdb
      #- make &> output_make.log
      #- env CC=x86_64-w64-mingw32-gcc make
-     - ls -l
-     - unset LDFLAGS
-     - unset LD
-     - unset LD_LIBRARY_PATH
-     - grep -C 2 -pthread Makefile
+     - grep -C 2 pthread Makefile
      - make --debug CC=x86_64-w64-mingw32-gcc LD_LIBRARY_PATH="" LD="" CFLAGS="-O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized -DSSIZE_MAX=0"
      #- grep -C 4 error config.log
      #- ls -l
