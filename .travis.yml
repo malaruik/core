@@ -66,7 +66,7 @@ script:
      - cd liblmdb
      #- make &> output_make.log
      #- env CC=x86_64-w64-mingw32-gcc make
-     - make CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized -DSSIZE_MAC=0"
+     - make CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized -DSSIZE_MAX=0"
      #- grep -C 4 error config.log
      #- ls -l
      #- pwd
