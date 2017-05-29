@@ -56,10 +56,10 @@ script:
      #- env CC=x86_64-w64-mingw32-gcc make
      - grep C 2 pthread Makefile
      - sed "s/-pthread/ /g" Makefile >Makefile2
-     - sed "s/-O2 -g/-O2 -DSSIZE_MAX=0/g" Makefile2 >Makefile3
+     - sed "s/-O2 -g/-O2 -g -DSSIZE_MAX=0/g" Makefile2 >Makefile3
      - cp Makefile3 Makefile
-     - cat Makefile
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
+     - ls -l
      #- grep -C 4 error config.log
      #- ls -l
      #- pwd
