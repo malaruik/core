@@ -1,4 +1,4 @@
-language: bash
+language: c
 
 
 before_install:
@@ -28,16 +28,6 @@ compiler: x86_64-w64-mingw32
 script:
      - pwd
      - cd ..
-     - ls -l
-     #- ls -l /usr/x86_64-w64-mingw32/include
-     # ----------------------
-     #- git clone https://github.com/GerHobbelt/pthread-win32.git
-     #- cd ./pthread-win32
-     #- make CROSS=x86_64-w64-mingw32- clean GC-static
-     #- ls -l *.a
-     #- cp libpthreadGC2.a ..
-     #- cd ..
-     # -------------------
      - cd core
      #- autoreconf -vif
      #- env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb --with-pthreads=/pthread-win32 CFLAGS="-g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/ -I/openldap/libraries/liblmdb" LDFLAGS=""
@@ -67,7 +57,7 @@ script:
      #- make &> output_make.log
      #- env CC=x86_64-w64-mingw32-gcc make
      - unset LDFLAGS
-     - make --debug=b CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized -DSSIZE_MAX=0"
+     - make --debug CC=x86_64-w64-mingw32-gcc LD_LIBRARY_PATH="" LD="" CFLAGS="-O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized -DSSIZE_MAX=0"
      #- grep -C 4 error config.log
      #- ls -l
      #- pwd
