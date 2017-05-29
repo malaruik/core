@@ -65,7 +65,7 @@ script:
      #- env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --disable-slapd CFLAGS="-I/usr/include -I/usr/include/sys -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/pcre/.libs -lws2a_32"
      - cd liblmdb
      #- make &> output_make.log
-     - make
+     - env CC=x86_64-w64-mingw32-gcc make
      #- grep -C 4 error config.log
      #- ls -l
      #- pwd
