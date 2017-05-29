@@ -56,9 +56,11 @@ script:
      - cd liblmdb
      #- make &> output_make.log
      #- env CC=x86_64-w64-mingw32-gcc make
+     - ls -l
      - unset LDFLAGS
      - unset LD
      - unset LD_LIBRARY_PATH
+     - grep -C 2 -pthread Makefile
      - make --debug CC=x86_64-w64-mingw32-gcc LD_LIBRARY_PATH="" LD="" CFLAGS="-O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized -DSSIZE_MAX=0"
      #- grep -C 4 error config.log
      #- ls -l
