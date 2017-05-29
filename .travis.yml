@@ -23,8 +23,7 @@ addons:
 
 os: linux
 
-#compiler: x86_64-w64-mingw32
-compiler: mingw
+compiler: x86_64-w64-mingw32
 
 script:
      - pwd
@@ -39,7 +38,7 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
-     - env CC=mingw CFLAGS="-O2 -Wall" ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre
+     - env CC=x86_64-w64-mingw-gcc CFLAGS="-O2 -Wall" ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre
      - make
      - ls -l .libs
      - cd ..
@@ -59,6 +58,7 @@ script:
      #- env CC=x86_64-w64-mingw32-gcc make
      - unset LDFLAGS
      - unset LD
+     - unset LD_LIBRARY_PATH
      - make --debug CC=x86_64-w64-mingw32-gcc LD_LIBRARY_PATH="" LD="" CFLAGS="-O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized -DSSIZE_MAX=0"
      #- grep -C 4 error config.log
      #- ls -l
