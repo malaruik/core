@@ -24,13 +24,13 @@ script:
      - pwd
      # PCRE building
      # -------------------------------------------------------------------------
-     - ls -l /usr/x86_64-w64-mingw32/
+     - ls -l /usr/x86_64-w64-mingw32/include/
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/core/malaruik/pcre
+     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/core/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      - grep -C 3 error config.log
      - make
      - ls -l .libs
