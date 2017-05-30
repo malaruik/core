@@ -58,6 +58,7 @@ script:
      - cd .. 
      - cd ..
      - cd ..
+     - chmod 777 core
      - cd core
      #
      # CFENGINE building starts here:
