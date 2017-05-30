@@ -30,6 +30,7 @@ script:
      - ./autogen.sh
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/core/malaruik/pcre
+     - grep -C 3 error config.log
      - make
      - ls -l .libs
      - cd ..
@@ -42,13 +43,13 @@ script:
      - chmod 777 liblmdb
      - cd liblmdb
      #- make &> output_make.log
-     - grep -C 2 pthread Makefile
+     #- grep -C 2 pthread Makefile
      #- sed "s/-pthread/ /g" Makefile >Makefile2
      #- sed "s/-O2 -g/-O2 -g -DSSIZE_MAX=0/g" Makefile2 >Makefile3
      #- cp Makefile3 Makefile
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
      #- cp liblmdb.a lmdb.a
-     - chmod 777 liblmdb.a
+     #- chmod 777 liblmdb.a
      #- chmod 777 lmdb.a
      - pwd
      - ls -l
@@ -63,7 +64,7 @@ script:
      - x86_64-w64-mingw32-gcc --version
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc ./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-lmdb=/openldap/libraries/liblmdb CFLAGS="-I/openldap/libraries/liblmdb -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/" LDFLAGS="-L/openldap/libraries/liblmdb"
-     #- grep -C 2 error config.log
+     - grep -C 2 error config.log
      #- make
 
 env:
