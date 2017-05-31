@@ -31,9 +31,10 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
+     - cat Makefile
      - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
-     - make -d
+     - make
      - ls -l .libs
      - cd ..
      #--------------------------------------------------------------------------------
@@ -51,7 +52,6 @@ script:
      #- make install
      - pwd
      - ls -l
-     - ls -l .libs
      - cd .. 
      - cd ..
      - cd ..
