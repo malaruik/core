@@ -45,6 +45,7 @@ script:
      - chmod 777 liblmdb
      - cd liblmdb
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
+     - make install
      - pwd
      - ls -l
      - cd .. 
