@@ -33,7 +33,7 @@ script:
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
-     - make
+     - make -d
      - ls -l .libs
      - cd ..
      #--------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ script:
      - chmod 777 liblmdb
      - cd liblmdb
      #- sed 's/-shared/ /g' Makefile >Makefile2
-     - sed 's/so/a/g' Makefile >Makefile3
+     #- sed 's/so/a/g' Makefile >Makefile3
      - cp Makefile3 Makefile
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
      #- make install
