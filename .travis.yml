@@ -43,12 +43,11 @@ script:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap/libraries
      - cd liblmdb
-     #- sed 's/"liblmdb.so"/"liblmdb.dll"/g' Makefile >Makefile2
+     - sed 's/"liblmdb.so"/"liblmdb.dll"/g' Makefile >Makefile2
      #- sed 's/so/a/g' Makefile >Makefile3
      #- cp Makefile2 Makefile
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
      #- make install
-     - rm -fR liblmdb.a
      - pwd
      - ls -l
      - cd .. 
@@ -62,7 +61,7 @@ script:
      - x86_64-w64-mingw32-gcc --version
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/libraries -I/home/travis/build/malaruik/openldap/libraries/liblmdb -static-libgcc -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/" LDFLAGS="-L/home/travis/build/malaruik/pcre/.libs -L/home/travis/build/malaruik/openldap/libraries/liblmdb -llmdb -lpcre"
-     - grep -C 6 error config.log
+     - grep -C 8 error config.log
      #- make
      #-----------------------------------------------------------------------
      #
