@@ -44,7 +44,7 @@ script:
      - git clone https://github.com/openldap/openldap.git
      - cd openldap/libraries
      - cd liblmdb
-     - sed 's/"liblmdb.so"/"liblmdb.dll"/g' Makefile >Makefile2
+     - sed 's/"-shared -o"/"-shared -Wl -Bsymbolic -o"/g' Makefile >Makefile2
      #- sed 's/so/a/g' Makefile >Makefile3
      #- cp Makefile2 Makefile
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
