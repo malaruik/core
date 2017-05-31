@@ -44,7 +44,7 @@ script:
      - cd openldap/libraries
      - chmod 777 liblmdb
      - cd liblmdb
-     - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
+     - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar --prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - make install
      - pwd
      - ls -l
