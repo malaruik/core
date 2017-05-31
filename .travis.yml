@@ -45,10 +45,10 @@ script:
      - chmod 777 liblmdb
      - cd liblmdb
      - sed 's/-shared/ /g' Makefile >Makefile2
-     - sed 's/liblmdb.so/liblmdb.a/g' Makefile2 >Makefile3
+     - sed 's/so/a/g' Makefile2 >Makefile3
      - cp Makefile3 Makefile
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
-     - make install
+     #- make install
      - pwd
      - ls -l
      - ls -l .libs
