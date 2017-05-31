@@ -46,7 +46,7 @@ script:
      #- sed 's/-shared/ /g' Makefile >Makefile2
      #- sed 's/so/a/g' Makefile >Makefile3
      #- cp Makefile3 Makefile
-     - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar CFLAGS="-pthread -shared -O2 -g -W -Wall -Wno-unused-parameter -Wbad-function-cast -Wuninitialized"
+     - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar LDFLAGS="-shared"
      #- make install
      - pwd
      - ls -l
