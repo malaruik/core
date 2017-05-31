@@ -36,23 +36,15 @@ script:
      - make
      - ls -l .libs
      - cd ..
-     #- ls -l /usr/x86_64-w64-mingw32/include/sys
+     #--------------------------------------------------------------------------------
      #
-     # OpenLDAP -llmdb compilin only
+     # OpenLDAP -llmdb compiling only
      # -------------------------------------------------------------------------------
      - git clone https://github.com/openldap/openldap.git
      - cd openldap/libraries
      - chmod 777 liblmdb
      - cd liblmdb
-     #- make &> output_make.log
-     #- grep -C 2 pthread Makefile
-     #- sed "s/-pthread/ /g" Makefile >Makefile2
-     #- sed "s/-O2 -g/-O2 -g -DSSIZE_MAX=0/g" Makefile2 >Makefile3
-     #- cp Makefile3 Makefile
      - make CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar
-     - cp liblmdb.a lmdb.a
-     #- chmod 777 liblmdb.a
-     #- chmod 777 lmdb.a
      - pwd
      - ls -l
      - cd .. 
@@ -60,15 +52,18 @@ script:
      - cd ..
      - chmod 777 core
      - cd core
-     #
+     #-----------------------------------------------------------------------
      # CFENGINE building starts here:
-     #
+     #-----------------------------------------------------------------------
      - which x86_64-w64-mingw32-gcc
      - x86_64-w64-mingw32-gcc --version
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/libraries -I/home/travis/build/malaruik/openldap/libraries/liblmdb -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1 -I/usr/x86_64-w64-mingw32/include/" LDFLAGS="-L/home/travis/build/malaruik/pcre/.libs -L/home/travis/build/malaruik/openldap/libraries/liblmdb -llmdb -lpcre"
      - grep -C 6 error config.log
      #- make
+     #-----------------------------------------------------------------------
+     #
+     #-----------------------------------------------------------------------
 
 env:
 
