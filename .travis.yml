@@ -42,7 +42,7 @@ script:
      #------------------------------------------
      # OpenSSL
      #
-     - git clone https://github.com/openssl/openssl.git --branch master
+     - git clone https://github.com/openssl/openssl.git --branch OpenSSL-fips-2_0-stable
      - cd openssl
      - ls -l
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
