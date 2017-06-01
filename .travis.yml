@@ -45,7 +45,7 @@ script:
      - git clone https://github.com/openssl/openssl.git
      - cd openssl
      - ls -l
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --host=x86_64 --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
      - make 2>&1 > build.log
      - make install
      - grep -C 3 error build.log     
