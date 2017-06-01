@@ -49,8 +49,9 @@ script:
      - make 2>&1 > build.log
      - make install
      - grep -C 3 error build.log     
-     - ls -l /include
-     - ls -l /ssl
+     - pwd
+     - ls -l ./include
+     - ls -l ./ssl
      - cd ..
      #
      #--------------------------------------------------------------------------------
