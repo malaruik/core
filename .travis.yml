@@ -10,7 +10,7 @@ before_install:
 
 install:
      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then bash .travis/scripts/install.ubuntu.sh ; fi
-     - EXPORT CFLAGS="-I/usr/include/mysql -I/usr/include/mysql/mysql"
+     - export CFLAGS="-I/usr/include/mysql -I/usr/include/mysql/mysql"
 
 addons:
   apt:
