@@ -37,7 +37,6 @@ script:
      - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
      - make
-     -# grep -C 3 error build.log
      - ls -l .libs
      - cd ..
      #------------------------------------------
@@ -47,7 +46,7 @@ script:
      - cd openssl
      - ls -l
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl
-     - make 2>&1 | tee ~/outputfile.txt
+     - make 2>&1 | tee build.log
      - make install
      - grep -C 3 error build.log     
      - ls -l
