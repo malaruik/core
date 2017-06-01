@@ -42,7 +42,7 @@ script:
      #------------------------------------------
      # OpenSSL
      #
-     - git clone https://github.com/openssl/openssl.git
+     - git clone https://github.com/openssl/openssl.git --branch OpenSSL_1_1_0-stable
      - cd openssl
      - ls -l
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
