@@ -45,7 +45,7 @@ script:
      - git clone https://github.com/openssl/openssl.git
      - cd openssl
      - ls -l
-     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/openssl CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./Configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/openssl CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      - cd ..
      #
      #--------------------------------------------------------------------------------
