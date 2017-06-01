@@ -46,6 +46,8 @@ script:
      - cd openssl
      - ls -l
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl
+     - make
+     - make install
      - cd ..
      #
      #--------------------------------------------------------------------------------
