@@ -39,6 +39,10 @@ script:
      - make
      - ls -l .libs
      - cd ..
+     #------------------------------------------
+     - git clone https://github.com/openssl/openssl.git
+     - ls -l
+     #
      #--------------------------------------------------------------------------------
      #
      # OpenLDAP -llmdb compiling only
