@@ -34,23 +34,10 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --disable-static shared --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
      - make
      - ls -l .libs
-     - cd ..
-     #------------------------------------------
-     # OpenSSL
-     #
-     - git clone https://github.com/openssl/openssl.git --branch master
-     - cd openssl
-     - ls -l
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-unit-test --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
-     - make 2>&1 > build.log
-     - ls -l
-     - grep -C 3 error build.log     
-     - pwd
-     - ls -l ./include
      - cd ..
      #
      #--------------------------------------------------------------------------------
