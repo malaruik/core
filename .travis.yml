@@ -7,7 +7,7 @@ before_install:
    #- sudo apt-get install -y binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
    #- sudo apt-get install autotools-dev
    #- sudo apt-get install -qq wine swig curl
-   - sudo apt-get install binutils-mingw-w64-x86-64
+   - sudo apt-get install mingw-w64
    - sudo apt-get install libmysqlclient-dev
 
 install:
