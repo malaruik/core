@@ -7,12 +7,13 @@ before_install:
    #- sudo apt-get install -y binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
    #- sudo apt-get install autotools-dev
    #- sudo apt-get install -qq wine swig curl
-   - sudo apt-get install mingw32-binutils
+   #- sudo apt-get install mingw32-binutils
    - sudo apt-get install libmysqlclient-dev
 
 install:
      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then bash .travis/scripts/install.ubuntu.sh ; fi
      - export CFLAGS="-I/usr/include/mysql -I/usr/include/mysql/mysql"
+     - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
 
 addons:
   apt:
