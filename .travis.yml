@@ -46,8 +46,9 @@ script:
      - cd openssl
      - ls -l
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared -no-unit-test --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
-     - cmake 2>&1 > build.log
-     - cmake install
+     #- cmake 2>&1 > build.log
+     - cmake
+     - ls -l
      - grep -C 3 error build.log     
      - pwd
      - ls -l ./include
