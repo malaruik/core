@@ -29,7 +29,7 @@ script:
      - pwd
      # PCRE building
      # -------------------------------------------------------------------------
-     - ls -l /usr/x86_64-w64-mingw32/include/
+     #- ls -l /usr/x86_64-w64-mingw32/include/
      #- ls -l /usr/include/mysql
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
@@ -46,7 +46,7 @@ script:
      - git clone https://github.com/openssl/openssl.git --branch master
      - cd openssl
      - ls -l ./include
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared no-unit-test --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - env CC=x86_64-w64-mingw32-gcc ./Configure shared no-unit-test --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      - make 2>&1 > build.log
      - ls -l
      - grep -C 3 error build.log
