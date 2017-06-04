@@ -27,8 +27,8 @@ script:
      - pwd
      # PCRE building
      # -------------------------------------------------------------------------
-     #- ls -l /usr/x86_64-w64-mingw32/include/
-     - ls -l /usr/include/mysql
+     - ls -l /usr/x86_64-w64-mingw32/include/
+     #- ls -l /usr/include/mysql
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
      - chmod 777 autogen.sh
