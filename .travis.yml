@@ -47,7 +47,8 @@ script:
      - cd openssl
      - ls -l ./include
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared no-unit-test --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
-     - make 2>&1 > build.log
+     #- make 2>&1 > build.log
+     - make
      - ls -l
      - grep -C 3 error build.log
      - pwd
