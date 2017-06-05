@@ -46,7 +46,7 @@ script:
      - git clone https://github.com/openssl/openssl.git --branch master
      - cd openssl
      - ls -l ./include
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared no-unit-test --host=x86_64 --build=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared no-unit-test --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
      - make 2>&1 > build.log
      - ls -l
      - grep -C 3 error build.log
