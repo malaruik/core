@@ -49,7 +49,8 @@ script:
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
      - make depend
      - make 2>&1 > build.log
-     - ls -l
+     - ls -l .ssl
+     - ls -l .crypto
      - grep -C 3 error build.log
      - pwd
      - ls -l ./include
