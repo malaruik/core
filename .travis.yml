@@ -57,7 +57,7 @@ script:
      - sudo chmod 777 include/openssl
      - sudo chmod 777 include/openssl/.
      - ls -l ./include/openssl
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl/ --openssldir=/home/travis/build/malaruik/openssl/ -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl -i/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make depend
      - make 2>&1 > build.log
      #- grep -C 3 error build.log
