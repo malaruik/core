@@ -8,7 +8,7 @@ before_install:
    #- sudo apt-get install autotools-dev
    #- sudo apt-get install -qq wine swig curl
    #- sudo apt-get install mingw32-binutils
-   - sudo apt-get install openssl openssl-devel
+   - sudo apt-get install openssl
 
 
 install:
