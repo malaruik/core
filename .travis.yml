@@ -35,7 +35,8 @@ script:
      #  PCRE building
      # -------------------------------------------------------------------------
      - ls -l /usr/x86_64-w64-mingw32/include/winver.h
-     #- ls -l /usr/include/mysql
+     - cp /usr/x86_64-w64-mingw32/include/winver.h /home/build/travis/malaruik/openssl/include/winver.h 
+    #- ls -l /usr/include/mysql
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
      - chmod 777 autogen.sh
