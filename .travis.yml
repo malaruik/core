@@ -57,7 +57,7 @@ script:
      - sudo chmod 777 include/openssl
      - sudo chmod 777 include/openssl/.
      - ls -l ./include/openssl
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 enable-shared --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared --prefix=/home/travis/build/malaruik/openssl/ --openssldir=/home/travis/build/malaruik/openssl/ -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make depend
      - make 2>&1 > build.log
      #- grep -C 3 error build.log
@@ -95,7 +95,7 @@ script:
      - sed 's/WITH_LMDB = 1/WITH_LMDB = 0/g' configure.ac >configure.ac2
      - cp configure.ac2 configure.ac
      - autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/openssl  --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/x86_64-w64-mingw32/include -I/usr/include/mysql -I/usr/inlcude/mysql/mysql -I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/libraries/liblmdb -I/home/travis/build/malaruik/openssl -I/home/travis/build/malaruik/openssl/include -I./home/travis/build/malaruik/openssl/include/openssl -static-libgcc -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/openssl -L/home/travis/build/malaruik/openssl/include -L/home/travis/build/malaruik/openssl/include/openssl -L/home/travis/build/malaruik/pcre/.libs -L/home/travis/build/malaruik/openldap/libraries/liblmdb -lssl -lcrypto -llmdb -lpcre"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/openssl  --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-i/usr/x86_64-w64-mingw32/include -I/usr/include/mysql -I/usr/inlcude/mysql/mysql -I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/libraries/liblmdb -i/home/travis/build/malaruik/openssl -I/home/travis/build/malaruik/openssl/include -I./home/travis/build/malaruik/openssl/include/openssl -static-libgcc -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/openssl -L/home/travis/build/malaruik/openssl/include -L/home/travis/build/malaruik/openssl/include/openssl -L/home/travis/build/malaruik/pcre/.libs -L/home/travis/build/malaruik/openldap/libraries/liblmdb -lssl -lcrypto -llmdb -lpcre"
      - tail -40 config.log
      #- make
      #-----------------------------------------------------------------------
