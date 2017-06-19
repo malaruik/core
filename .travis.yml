@@ -26,8 +26,8 @@ os: linux
 compiler: x86_64-w64-mingw32
 
 script:
-     - cd ..
      - ls -l
+     - cd ..
      - pwd
      # PCRE building
      # -------------------------------------------------------------------------
