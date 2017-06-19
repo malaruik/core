@@ -45,15 +45,14 @@ script:
      - cd ..
      #
      #
-     #- git clone https://github.com/openssl/openssl.git --branch master
+     - git clone https://github.com/openssl/openssl.git --branch OpenSSL_1_1_0-stable
      - cd openssl
      - ls -l ./include
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
      - make depend
      - make 2>&1 > build.log
-     - ls -l .ssl
-     - ls -l .crypto
-     - grep -C 3 error build.log
+     #- grep -C 3 error build.log
+     - tail -40 build.log
      - pwd
      - ls -l ./include
      - cd ..
