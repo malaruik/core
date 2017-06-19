@@ -34,7 +34,7 @@ script:
      # -------------------------------------------------------------------------
      #  PCRE building
      # -------------------------------------------------------------------------
-     #- ls -l /usr/x86_64-w64-mingw32/include/
+     - ls -l /usr/x86_64-w64-mingw32/include/winver.h
      #- ls -l /usr/include/mysql
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
@@ -60,8 +60,7 @@ script:
      - ls -l ./include/openssl
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 shared -L../../share/mingw-w64/include --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl -I../../share/mingw-w64/include
      - make depend
-     - make
-     #- make 2>&1 > build.log
+     - make 2>&1 > build.log
      #- grep -C 3 error build.log
      - ls -l
      - make install
