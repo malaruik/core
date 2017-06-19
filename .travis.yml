@@ -52,8 +52,9 @@ script:
      #  OpenSSL building
      # --------------------------------------------------------------------------
      - git clone https://github.com/openssl/openssl.git --branch master
-     - sudo cp /usr/x86_64-w64-mingw32/include/winver.h /home/build/travis/malaruik/openssl/include/winver.h 
      - sudo chmod 777 openssl
+     - sudo cp /usr/x86_64-w64-mingw32/include/winver.h /home/build/travis/malaruik/openssl/include/winver.h 
+     #- sudo chmod 777 openssl
      - cd openssl
      - pwd
      - sudo chmod 777 include
