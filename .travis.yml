@@ -50,7 +50,11 @@ script:
      #  OpenSSL building
      # --------------------------------------------------------------------------
      - git clone https://github.com/openssl/openssl.git --branch master
+     - sudo chmod 777 openssl
      - cd openssl
+     - pwd
+     - sudo chmod 777 include
+     - sudo chmod 777 include/openssl
      - ls -l ./include/openssl
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 enable-shared --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make depend
