@@ -8,7 +8,8 @@ before_install:
    #- sudo apt-get install autotools-dev
    #- sudo apt-get install -qq wine swig curl
    #- sudo apt-get install mingw32-binutils
-   - sudo apt-get install libmysqlclient-dev
+   - sudo apt-get install openssl openssl-dev
+
 
 install:
      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then bash .travis/scripts/install.ubuntu.sh ; fi
@@ -26,6 +27,7 @@ compiler: x86_64-w64-mingw32
 
 script:
      - cd ..
+     - ls -l
      - pwd
      # PCRE building
      # -------------------------------------------------------------------------
@@ -43,7 +45,7 @@ script:
      - cd ..
      #
      #
-     - git clone https://github.com/openssl/openssl.git --branch master
+     #- git clone https://github.com/openssl/openssl.git --branch master
      - cd openssl
      - ls -l ./include
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 --prefix=/home/travis/build/malaruik/openssl --openssldir=/home/travis/build/malaruik/openssl
