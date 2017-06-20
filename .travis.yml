@@ -63,7 +63,9 @@ script:
      - make depend
      - make 2>&1 > build.log
      #- grep -C 3 error build.log
-     - make install
+     - ls -l
+     - make install 2>&1 > install.log
+     - ls -l .lib2/
      - cd ..
      #
      # -----------------------------------------------------------------------------
