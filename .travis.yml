@@ -52,14 +52,14 @@ script:
      # --------------------------------------------------------------------------
      #  OpenSSL building
      # --------------------------------------------------------------------------
-     - git clone https://github.com/openssl/openssl.git --branch master
+     - git clone https://github.com/openssl/openssl.git --branch OpenSSL_1_1_0-stable
      - sudo chmod 777 openssl
      #- sudo cp /usr/x86_64-w64-mingw32/include/winver.h /home/build/travis/malaruik/openssl/include/winver.h 
      #- sudo chmod 777 openssl
      - cd openssl
      - pwd
      #- ls -l ./include/openssl
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/libs --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/libs --openssldir=/home/travis/build/malaruik/openssl/libs -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make depend
      - make 2>&1 > build.log
      #- grep -C 3 error build.log
