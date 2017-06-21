@@ -47,7 +47,7 @@ script:
      #- grep -C 3 error config.log
      - make
      - ls -l .libs
-     - cd ./libs
+     - cd .libs
      - which ./libpcre.a
      - where libpcre.a
      - what libpcre.a
