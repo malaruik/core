@@ -78,8 +78,8 @@ script:
      - cd liblmdb
      - ls -l
      - sed 's/-shared/-shared -Wl,-Bsymbolic/g' Makefile >Makefile2
-     - sed 's/gcc/x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
-     - sed 's/ar/x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
+     - sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
+     - sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
      #    - sed 's/.so/.dll/g' Makefile2 >Makefile3
      - cp Makefile4 Makefile
      - cat Makefile
