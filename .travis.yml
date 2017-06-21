@@ -81,6 +81,7 @@ script:
      - sed 's/gcc/x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
      #    - sed 's/.so/.dll/g' Makefile2 >Makefile3
      - cp Makefile3 Makefile
+     - cat Makefile
      - env CC=x86_64-w64-mingw32-gcc make
      - make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - ls -l ./lib
