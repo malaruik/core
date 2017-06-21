@@ -46,6 +46,7 @@ script:
      - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
      - make
+     - cat Makefile
      - ls -l .libs
      - cd ..
      #
@@ -77,11 +78,12 @@ script:
      - cd libraries
      - cd liblmdb
      - ls -l
-     - sed 's/-shared/ -Wl,-Bsymbolic/g' Makefile >Makefile2
+     - sed 's/-shared/-shared -Wl,-Bsymbolic/g' Makefile >Makefile2
      - sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
      - sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
+     - sed 's/usr\/local/fsddf/g' Makefile4 >Makefile5
      #    - sed 's/.so/.dll/g' Makefile2 >Makefile3
-     - cp Makefile4 Makefile
+     - cp Makefile5 Makefile
      - cat Makefile
      - env CC=x86_64-w64-mingw32-gcc make
      - make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
