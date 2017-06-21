@@ -47,6 +47,9 @@ script:
      #- grep -C 3 error config.log
      - make
      - ls -l .libs
+     - cd ./libs
+     - which libpcre.a
+     - cd ..
      - cd ..
      #
      # --------------------------------------------------------------------------
@@ -87,6 +90,7 @@ script:
      - make
      #- make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - ls -l
+     - which liblmdb.a
      #- ls -l ./include
      - cd .. 
      - cd ..
