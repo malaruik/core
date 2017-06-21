@@ -48,7 +48,9 @@ script:
      - make
      - ls -l .libs
      - cd ./libs
-     - which libpcre.a
+     - which ./libpcre.a
+     - where libpcre.a
+     - what libpcre.a
      - cd ..
      - cd ..
      #
@@ -90,7 +92,7 @@ script:
      - make
      #- make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - ls -l
-     - which liblmdb.a
+     - where liblmdb.a
      #- ls -l ./include
      - cd .. 
      - cd ..
