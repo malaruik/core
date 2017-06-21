@@ -84,7 +84,7 @@ script:
      - sed 's/.so/.dll/g' Makefile5 >Makefile6
      - cp Makefile6 Makefile
      - cat Makefile
-     - env CC=x86_64-w64-mingw32-gcc make
+     - make
      #- make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - ls -l
      #- ls -l ./include
@@ -102,6 +102,8 @@ script:
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/openssl/out --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/x86_64-w64-mingw32/include -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/libraries/liblmdb -I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openssl/out/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/openldap/libraries/liblmdb -L/home/travis/build/malaruik/openssl/out/lib -L/home/travis/build/malaruik/pcre/.libs -llmdb -lpcre"
      - grep -C 3 error config.log
+     - which liblmdb.a
+     #
      #- tail -60 config.log
      #- make
      #-----------------------------------------------------------------------
