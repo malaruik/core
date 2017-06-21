@@ -85,6 +85,8 @@ script:
      - env make CC=x86_64-w64-mingw32-gcc
      - chmod 777 liblmdb.a
      - sudo make install
+     - ls -l /usr/local/lib
+     - ls -l /usr/local/include
      - pwd
      #- ls -l
      - cd .. 
