@@ -82,8 +82,8 @@ script:
      - cp Makefile2 Makefile
      - env CC=x86_64-w64-mingw32-gcc make
      - make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
-     - ls -l /lib
-     - ls -l /include
+     - ls -l ./lib
+     - ls -l ./include
      - cd .. 
      - cd ..
      - cd ..
