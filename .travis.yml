@@ -82,8 +82,8 @@ script:
      - sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
      - sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
      - sed 's/usr\/local/fsddf/g' Makefile4 >Makefile5
-     #    - sed 's/.so/.dll/g' Makefile2 >Makefile3
-     - cp Makefile5 Makefile
+     - sed 's/.so/.dll/g' Makefile5 >Makefile6
+     - cp Makefile6 Makefile
      - cat Makefile
      - env CC=x86_64-w64-mingw32-gcc make
      - make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
