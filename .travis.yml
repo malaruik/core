@@ -80,12 +80,12 @@ script:
      - sed 's/-shared/-shared -Wl,-Bsymbolic/g' Makefile >Makefile2
      - sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
      - sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
-     #- sed 's/usr\/local/fsddf/g' Makefile4 >Makefile5
-     #- sed 's/.so/.dll/g' Makefile5 >Makefile6
-     - cp Makefile4 Makefile
+     - sed 's/usr\/local/fsddf/g' Makefile4 >Makefile5
+     - sed 's/.so/.dll/g' Makefile5 >Makefile6
+     - cp Makefile6 Makefile
      - cat Makefile
      - env CC=x86_64-w64-mingw32-gcc make
-     - make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
+     #- make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - ls -l ./lib
      - ls -l ./include
      - cd .. 
@@ -100,7 +100,7 @@ script:
      #- sed 's/WITH_LMDB = 1/WITH_LMDB = 0/g' configure.ac >configure.ac2
      #- cp configure.ac2 configure.ac
      - autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/openssl/out --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/x86_64-w64-mingw32/include -I/usr/include/mysql -I/usr/inlcude/mysql/mysql -I/home/travis/build/malaruik/openldap/libraries/liblmdb/include -I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/liblmdb/include -I/home/travis/build/malaruik/openssl/out/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/openldap/libraries/liblmdb/lib -L/home/travis/build/malaruik/openssl/out/lib -L/home/travis/build/malaruik/pcre/.libs -llmdb -lpcre"
+     - env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/openssl/out --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/x86_64-w64-mingw32/include -I/usr/include/mysql -I/usr/inlcude/mysql/mysql -I/home/travis/build/malaruik/openldap/libraries/liblmdb/include -I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/include -I/home/travis/build/malaruik/openssl/out/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/openldap/libraries/liblmdb -L/home/travis/build/malaruik/openssl/out/lib -L/home/travis/build/malaruik/pcre/.libs -llmdb -lpcre"
      - grep -C 3 error config.log
      #- tail -60 config.log
      #- make
