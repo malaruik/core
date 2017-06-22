@@ -93,7 +93,7 @@ script:
      - ls -l liblmdb.a
      - which ./liblmdb.a
      - objdump
-     - objdump -a liblmdb.a
+     - objdump -a liblmdb.a | grep "format"
      #- ls -l ./include
      - cd .. 
      - cd ..
