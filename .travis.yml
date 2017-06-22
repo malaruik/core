@@ -9,6 +9,7 @@ before_install:
    #- sudo apt-get install -qq wine swig curl
    #- sudo apt-get install mingw32-binutils
    - sudo apt-get install pkg-config
+   - sudp apt-get install grep
 
 
 install:
@@ -95,7 +96,7 @@ script:
      - objdump
      - objdump -D liblmdb.a >a.out 
      - ls -l a.out
-     - grep compiler a.out
+     - grep 'compiler' a.out
      # 
      #- ls -l ./include
      - cd .. 
