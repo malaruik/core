@@ -48,7 +48,7 @@ script:
      - make
      - ls -l .libs
      - cd .libs
-     - objdump -a ibpcre.a
+     - objdump -a libpcre.a
      - cd ..
      - cd ..
      #
