@@ -63,11 +63,11 @@ script:
      - pwd
      #- ls -l ./include/openssl
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
-     - make depend
-     - make 2>&1 > build.log
-     - grep -C 3 error build.log
-     - ls -l
-     - make install 2>&1 > install.log
+     #- make depend
+     #- make 2>&1 > build.log
+     #- grep -C 3 error build.log
+     #- ls -l
+     #- make install 2>&1 > install.log
      - ls -l ./out/include/openssl
      - ls -l ./out/lib
      - cd ..
@@ -91,8 +91,9 @@ script:
      #- make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - chmod 777 liblmdb.a
      - ls -l liblmdb.a
-     - which liblmdb.a
-     - objdump -f liblmdb.a | grep compiler
+     - which ./liblmdb
+     - objdump
+     - objdump -f ./liblmdb.a | grep compiler
      #- ls -l ./include
      - cd .. 
      - cd ..
