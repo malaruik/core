@@ -93,7 +93,8 @@ script:
      - ls -l liblmdb.a
      - which ./liblmdb.a
      - objdump
-     - objdump -s liblmdb.a | grep 'comment\|compiler\|architecture'
+     - objdump -s liblmdb.a | grep "comment\|compiler\|architecture"
+     - objdump -s liblmdb.a | grep "compiler"
      #- ls -l ./include
      - cd .. 
      - cd ..
