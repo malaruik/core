@@ -89,7 +89,9 @@ script:
      - cat Makefile
      - make
      #- make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
-     - ls -l
+     - chmod 777 liblmdb.a
+     - ls -l liblmdb.a
+     - which liblmdb.a
      - objdump -f liblmdb.a | grep compiler
      #- ls -l ./include
      - cd .. 
