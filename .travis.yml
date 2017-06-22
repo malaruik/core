@@ -48,7 +48,7 @@ script:
      - make
      - ls -l .libs
      - cd .libs
-     - objdump -x ibpcre.a
+     - objdump -a ibpcre.a
      - cd ..
      - cd ..
      #
@@ -93,7 +93,7 @@ script:
      - ls -l liblmdb.a
      - which ./liblmdb.a
      - objdump
-     - objdump -x liblmdb.a
+     - objdump -a liblmdb.a
      #- ls -l ./include
      - cd .. 
      - cd ..
