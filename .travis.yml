@@ -94,10 +94,11 @@ script:
      - ls -l liblmdb.a
      - which ./liblmdb.a
      #- 
-     - objdump -D liblmdb.a >a.out 
-     - ls -l a.out
-     - chmod 777 a.out
-     - grep "architecture" .out
+     - objdump -D liblmdb.a | grep "architecture"
+     - objdump -D liblmdb.a > ab.out 
+     - ls -l ab.out
+     - chmod 777 ab.out
+     - grep "architecture" ab.out
      # 
      #- ls -l ./include
      - cd .. 
