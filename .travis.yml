@@ -9,7 +9,7 @@ before_install:
    #- sudo apt-get install -qq wine swig curl
    #- sudo apt-get install mingw32-binutils
    - sudo apt-get install pkg-config
-   - sudp apt-get install grep
+   - sudo apt-get install grep
 
 
 install:
