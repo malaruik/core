@@ -96,7 +96,7 @@ script:
      - objdump
      - objdump -D liblmdb.a >a.out 
      - ls -l a.out
-     - grep --help
+     - grep -w 'architecture' a.out
      # 
      #- ls -l ./include
      - cd .. 
