@@ -94,8 +94,8 @@ script:
      - which ./liblmdb.a
      - objdump
      - objdump -D liblmdb.a >a.out 
-     - grep 'compiler' a.out
-     - nm -A liblmdb.a
+     - ls -l a.out
+     - grep compiler a.out
      # 
      #- ls -l ./include
      - cd .. 
