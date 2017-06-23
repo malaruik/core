@@ -92,6 +92,8 @@ script:
      #- make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
      - chmod 777 liblmdb.a
      - ls -l liblmdb.a
+     - cp liblmdb.a ..
+     - cp liblmdb.a ../../
      - which ./liblmdb.a
      #- 
      - objdump -D liblmdb.a | grep "architecture"
