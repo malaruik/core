@@ -74,7 +74,7 @@ script:
      #- grep -C 3 error build.log
      #- ls -l
      - make prefix=/openssl install &> install.log
-     - ls - l 
+     - ls -l 
      #- ls -l ./out/include/openssl
      #- ls -l ./out/lib
      - cd ..
