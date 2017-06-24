@@ -1,5 +1,8 @@
 language: c
 
+env:
+   SH: bash
+
 sudo: required
 
 before_install:
@@ -11,6 +14,8 @@ before_install:
    - sudo apt-get install pkg-config
    - sudo apt-get install grep
 
+before_script:
+  - export PATH=$PATH:/home/build/travis/malaruik;/home/build/travis/malaruik/openldap/libraries/liblmdb
 
 install:
      - bash .travis/scripts/install.ubuntu.sh
@@ -48,9 +53,9 @@ script:
      #- grep -C 3 error config.log
      - make
      #- ls -l .libs
-     - cd .libs
-     - objdump -a libpcre.a
-     - cd ..
+     #- cd .libs
+     #- objdump -a libpcre.a
+     #- cd ..
      - cd ..
      #
      # --------------------------------------------------------------------------
@@ -114,14 +119,11 @@ script:
      #- cp configure.ac2 configure.ac
      - autoreconf -vif
      - env LD_LIBRARY_PATH=/home/travis/build/malaruik/openldap/libraries/liblmdb CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/openssl/out --with-pcre=/home/travis/build/malaruik/pcre --with-lmdb=/home/travis/build/malaruik/openldap/libraries/liblmdb/ --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/x86_64-w64-mingw32/include -I/home/travis/build/malaruik/openldap -I/home/travis/build/malaruik/openldap/libraries/liblmdb -I/home/travis/build/malaruik/pcre -I/home/travis/build/malaruik/pcre/.libs -I/home/travis/build/malaruik/openssl/out/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/openldap/libraries/liblmdb -L/home/travis/build/malaruik/openssl/out/lib -L/home/travis/build/malaruik/pcre/.libs -lpcre -llmdb -lssl -lcrypto"
-     #- grep -C 3 error config.log
+     - grep -C 3 error config.log
      #
      #
-     - tail -60 config.log
+     #- tail -60 config.log
      #- make
      #-----------------------------------------------------------------------
      #
      #-----------------------------------------------------------------------
-
-env:
-
