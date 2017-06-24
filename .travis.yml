@@ -115,7 +115,7 @@ script:
      #- sed 's/WITH_LMDB = 1/WITH_LMDB = 0/g' configure.ac >configure.ac2
      #- cp configure.ac2 configure.ac
      - autoreconf -vif
-     - sudo env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/x86_64-w64-mingw32/include -I./openldap -I./openldap/libraries/liblmdb -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./openldap/libraries/liblmdb/lib -L./openssl/lib -L./pcre/.libs -lpcre -llmdb -lssl -lcrypto"
+     - sudo env CC=x86_64-w64-mingw32-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl/lib --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/x86_64-w64-mingw32/include -I./openldap -I./openldap/libraries/liblmdb -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./openldap/libraries/liblmdb/lib -L./openssl/lib -L./pcre/.libs -lpcre -llmdb -lssl -lcrypto"
      - grep -C 3 error config.log
      #
      #
