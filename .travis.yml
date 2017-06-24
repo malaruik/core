@@ -108,6 +108,7 @@ script:
      #- ls -l ./include
      - cd .. 
      - cd ..
+     - cd ..
      - pwd
      # -----------------------------------------------------------------------
      # CFENGINE building starts here:
