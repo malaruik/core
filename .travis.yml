@@ -73,7 +73,8 @@ script:
      - make &> build.log
      #- grep -C 3 error build.log
      #- ls -l
-     - make install &> install.log
+     - make prefix=/openssl install &> install.log
+     - ls - l 
      #- ls -l ./out/include/openssl
      #- ls -l ./out/lib
      - cd ..
