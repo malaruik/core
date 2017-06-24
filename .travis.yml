@@ -15,7 +15,7 @@ before_install:
    - sudo apt-get install grep
 
 before_script:
-  - export PATH=$PATH:/home/build/travis/malaruik;/home/build/travis/malaruik/openldap/libraries/liblmdb
+  - export PATH=$PATH:/home/build/travis/malaruik
 
 install:
      - bash .travis/scripts/install.ubuntu.sh
