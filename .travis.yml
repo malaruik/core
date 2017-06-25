@@ -41,7 +41,7 @@ script:
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
      - ls -l
-     - ./configure
+     - ./configure --host=x86_64-w64-mingw32 -target=x86_64-w64-mingw32 CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      - env CC=x86_64-w64-mingw32  make
      - cd ..
      # -------------------------------------------------------------------------
