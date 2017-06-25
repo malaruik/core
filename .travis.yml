@@ -40,6 +40,9 @@ script:
      #
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - ls -l
+     - cd dlfcn-win32
+     - env CC=x86_64-w64-mingw32  make
+     - cd ..
      # -------------------------------------------------------------------------
      #  PCRE building
      # -------------------------------------------------------------------------
