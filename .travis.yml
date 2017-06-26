@@ -19,6 +19,7 @@ before_script:
   - export CC=x86_64-w64-mingw32-gcc
 
 install:
+     - sudo sed -i 's/precise/trusty/g' /etc/apt/sources.list;
      #- bash .travis/scripts/install.ubuntu.sh
      #- export CFLAGS="-I/usr/include/mysql -I/usr/include/mysql/mysql"
      #- export LDFLAGS="-Ifaas"
