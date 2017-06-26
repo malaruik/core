@@ -107,8 +107,7 @@ script:
      #- objdump -D liblmdb.a > ab.out 
      #- ls -l ab.out
      #- chmod 777 ab.out
-     #- grep "architecture" ab.out
-     # 
+     #- grep "architecture" ab.out 
      #- ls -l ./include
      - cd .. 
      - cd ..
