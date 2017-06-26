@@ -94,10 +94,7 @@ script:
      # OpenLDAP -llmdb compiling only
      # -----------------------------------------------------------------------------
      - git clone https://github.com/openldap/openldap.git --branch master
-     - cd openldap
-     - cd libraries
-     - cd liblmdb
-     - ls -l
+     - cd openldap/libraries/liblmdb
      - sed 's/-shared/-shared -Wl,-Bsymbolic/g' Makefile >Makefile2
      - sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
      - sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
@@ -129,10 +126,8 @@ script:
      #- sed -n '13296,13330p;13330q' configure >oo.txt
      #- cat oo.txt
      - ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32  -I/usr/x86_64-w64-mingw32/include -I./openldap -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
-     - grep -C 3 "conftest.exe" config.log
-     - grep "-o conftest.exe" *
-     #
-     - grep -C 3 "conftest.exe" configure
+     #- grep -C 3 "conftest.exe" config.log
+     - grep "o conftest.exe" .
      #
      #- tail -60 config.log
      #- make
