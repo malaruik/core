@@ -16,7 +16,6 @@ before_install:
 
 before_script:
   - export PATH=$PATH:/home/build/travis/malaruik
-  - export LTCC=x86_64-w64-mingw32-gcc
 
 install:
      - sudo sed -i 's/precise/trusty/g' /etc/apt/sources.list;
@@ -38,7 +37,7 @@ os: linux
 compiler: x86_64-w64-mingw32-gcc
 
 script:
-     - export CC=UU
+     - export CC=x86_64-w64-mingw32-gcc
      #- ls -l
      #- cd ..
      - pwd
