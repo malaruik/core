@@ -3,16 +3,9 @@ language: c
 env:
    SH: bash
 
-sudo: required
+#sudo: required
 
 before_install:
-   #- sudo apt-get update
-   #- sudo apt-get install -y binutils-mingw-w64-i686 binutils-mingw-w64-x86-64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
-   #- sudo apt-get install autotools-dev
-   #- sudo apt-get install -qq wine swig curl
-   #- sudo apt-get install mingw32-binutils
-   #- sudo apt-get install pkg-config
-   #- sudo apt-get install grep
 
 before_script:
   - export PATH=$PATH:/home/build/travis/malaruik
@@ -34,7 +27,7 @@ addons:
 
 os: linux
 
-compiler: x86_64-w64-mingw32-gcc
+compiler:
 
 script:
      - export CC=x86_64-w64-mingw32-gcc
@@ -44,7 +37,7 @@ script:
      #
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
-     - ls -l
+     - ls -l2
      - ./configure --cc=x86_64-w64-mingw32-gcc --enable-static
      - env CC=x86_64-w64-mingw32 make
      - ls -l
@@ -125,7 +118,7 @@ script:
      #- cp configure2 configure
      #- sed -n '13296,13330p;13330q' configure >oo.txt
      #- cat oo.txt
-     - ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32  -I/usr/x86_64-w64-mingw32/include -I./openldap -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
+     - env CC=x86_64-w64-mingw-gcc ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32  -I/usr/x86_64-w64-mingw32/include -I./openldap -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
      - grep -C 3 "conftest.exe" config.log
      - grep "o conftest" configure
      #
