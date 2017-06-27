@@ -3,8 +3,8 @@ language: c
 env:
    SH: bash
    global:
-      - export CC=x86_64-w64-mingw32-gcc
-      - export CXX=x86_64-w64-mingw32-gcc
+      - CC=x86_64-w64-mingw32-gcc
+      - CXX=x86_64-w64-mingw32-gcc
 
 #sudo: required
 
