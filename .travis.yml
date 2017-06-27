@@ -30,20 +30,16 @@ addons:
 
 os: linux
 
-compiler: mingw
-
+compiler: x86_64-w64-mingw32-gcc
 
 script:
-     - export CC=x86_64-w64-mingw32-gcc
-     #- ls -l
-     #- cd ..
      - pwd
      #
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
      - ls -l2
      - ./configure --cc=x86_64-w64-mingw32-gcc --enable-static
-     - env CC=x86_64-w64-mingw32 make
+     - make
      - ls -l
      - cd ..
      # -------------------------------------------------------------------------
@@ -57,7 +53,7 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
-     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
      - make
      #- ls -l .libs
@@ -76,7 +72,7 @@ script:
      - cd openssl
      - pwd
      #- ls -l ./include/openssl
-     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make depend
      - make &> build.log
      #- grep -C 3 error build.log
