@@ -11,7 +11,7 @@ sudo: required
 before_install:
 
 before_script:
-  - export PATH=$PATH:/home/build/travis/malaruik
+  - export PATH=$PATH:/usr/bin/x86_64-w64-mingw32
 
 install:
      #- sudo sed -i 's/precise/trusty/g' /etc/apt/sources.list;
@@ -53,7 +53,7 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
-     - ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - env CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
      - make
      #- ls -l .libs
