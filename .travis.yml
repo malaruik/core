@@ -3,7 +3,7 @@ language: c
 env:
    SH: bash
    global:
-      - PATH=$PATH:/usr/bin
+      - PATH=$PATH;/usr/bin
       - CC=x86_64-w64-mingw32-gcc
       - CXX=x86_64-w64-mingw32-gcc
 
@@ -35,7 +35,7 @@ compiler: x86_64-w64-mingw32-gcc
 
 script:
      - pwd
-     - ls -l /usr/bin
+     - ls -l /usr/x86_64-w64-mingw32
      #
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
