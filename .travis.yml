@@ -3,6 +3,7 @@ language: c
 env:
    SH: bash
    global:
+      - PATH=$PATH:/usr/bin/x86_64-w64-mingw32
       - CC=x86_64-w64-mingw32-gcc
       - CXX=x86_64-w64-mingw32-gcc
 
@@ -11,7 +12,7 @@ sudo: required
 before_install:
 
 before_script:
-  - export PATH=$PATH:/usr/bin/x86_64-w64-mingw32
+    #- export PATH=$PATH:/usr/bin/x86_64-w64-mingw32
 
 install:
      #- sudo sed -i 's/precise/trusty/g' /etc/apt/sources.list;
@@ -30,10 +31,10 @@ addons:
 
 os: linux
 
-compiler: x86_64-w64-mingw32-gcc
-
+#compiler: x86_64-w64-mingw32-gcc
 script:
      - pwd
+     - ls -l /usr/bin/x86_64-w64-mingw32
      #
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
