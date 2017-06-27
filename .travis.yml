@@ -4,6 +4,7 @@ env:
    SH: bash
    global:
       - export CC=x86_64-w64-mingw32-gcc
+      - export CXX=x86_64-w64-mingw32-gcc
 
 #sudo: required
 
@@ -29,9 +30,8 @@ addons:
 
 os: linux
 
-compiler:
-    - CC=mingw; export CC; true
-    - CXX=mingw; export CXX; true 
+compiler: mingw
+
 
 script:
      - export CC=x86_64-w64-mingw32-gcc
