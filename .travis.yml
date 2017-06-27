@@ -4,13 +4,13 @@ env:
    SH: bash
    global:
       #- PATH=$PATH:/usr/bin;/usr/x86_64-w64-mingw32
-      - CC=/usr/bin/x86_64-w64-mingw32-gcc
+      #- CC=/usr/bin/x86_64-w64-mingw32-gcc
       #- CXX=x86_64-w64-mingw32-gcc
 
 sudo: required
 
 before_install:
-     - export PATH=H/usr/bin:$PATHa
+     - export PATH=H/usr/bin:$PATH
 
 before_script:
     #- export PATH=$PATH:/usr/bin/x86_64-w64-mingw32
@@ -32,7 +32,8 @@ addons:
 
 os: linux
 
-compiler: x86_64-w64-mingw32-gcc
+#compiler: x86_64-w64-mingw32-gcc
+compiler: mingw
 
 script:
      - pwd
