@@ -3,13 +3,14 @@ language: c
 env:
    SH: bash
    global:
-      - PATH=$PATH:/usr/bin;/usr/x86_64-w64-mingw32
+      #- PATH=$PATH:/usr/bin;/usr/x86_64-w64-mingw32
       - CC=x86_64-w64-mingw32-gcc
       #- CXX=x86_64-w64-mingw32-gcc
 
 sudo: required
 
 before_install:
+     - PATH=/usr/bin:$PATH
 
 before_script:
     #- export PATH=$PATH:/usr/bin/x86_64-w64-mingw32
@@ -35,7 +36,7 @@ compiler: x86_64-w64-mingw32-gcc
 
 script:
      - pwd
-     - ls -l /usr/x86_64-w64-mingw32
+     - ls -l /usr/x86_64-w64-mingw32/lib
      #
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
