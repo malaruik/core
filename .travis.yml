@@ -32,14 +32,16 @@ addons:
 
 os: linux
 
-#compiler: x86_64-w64-mingw32-gcc
-compiler: mingw
+compiler: x86_64-w64-mingw32-gcc
+#compiler: mingw
 
 script:
      - pwd
      #
      #
      #
+     - x86_64-w64-mingw32-gcc --version
+     - echo $CC
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
      - ls -l
