@@ -3,7 +3,7 @@ language: c
 env:
    SH: bash
    global:
-      - PATH=$PATH:/usr/bin/x86_64-w64-mingw32
+      - PATH=$PATH:/usr/bin
       - CC=x86_64-w64-mingw32-gcc
       - CXX=x86_64-w64-mingw32-gcc
 
@@ -55,7 +55,7 @@ script:
      - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
-     - env CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
      #- grep -C 3 error config.log
      - make
      #- ls -l .libs
