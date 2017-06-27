@@ -3,9 +3,9 @@ language: c
 env:
    SH: bash
    global:
-      - PATH=$PATH;/usr/bin
+      - PATH=$PATH:/usr/bin;/usr/x86_64-w64-mingw32
       - CC=x86_64-w64-mingw32-gcc
-      - CXX=x86_64-w64-mingw32-gcc
+      #- CXX=x86_64-w64-mingw32-gcc
 
 sudo: required
 
