@@ -31,10 +31,11 @@ addons:
 
 os: linux
 
-#compiler: x86_64-w64-mingw32-gcc
+compiler: x86_64-w64-mingw32-gcc
+
 script:
      - pwd
-     - ls -l /usr/bin/x86_64-w64-mingw32
+     - ls -l /usr/bin
      #
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
