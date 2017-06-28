@@ -5,7 +5,7 @@ env:
    global:
       #- PATH=$PATH:/usr/bin;/usr/x86_64-w64-mingw32
       #- CC=/usr/bin/x86_64-w64-mingw32-gcc
-      - CXX=x86_64-w64-mingw32-g++
+      - export CXX=mingw
 
 sudo: required
 
@@ -32,7 +32,7 @@ addons:
 
 os: linux
 
-compiler: x86_64-w64-mingw32-g++
+compiler: x86_64-w64-mingw32-gcc
 
 script:
      - pwd
@@ -41,6 +41,7 @@ script:
      # -----------------------------------------------------------------------------------------------------
      - x86_64-w64-mingw32-gcc --version
      - x86_64-w64-mingw32-g++ --version
+     - libtool --version
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
      - ./configure --cc=x86_64-w64-mingw32-gcc --enable-static
