@@ -1,4 +1,4 @@
-language: cpp
+language: clang
 
 env:
    SH: bash
