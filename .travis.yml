@@ -103,7 +103,7 @@ script:
      - cp Makefile6 Makefile
      - ls -l
      - make
-     - make install prefix=/home/travis/build/malaruik/openldap/libraries/liblmdb
+     - make install prefix=/home/travis/build/malaruik/core/openldap/libraries/liblmdb
      - ls -l ./include
      #- objdump -D liblmdb.a | grep "architecture"
      #- objdump -D liblmdb.a > ab.out 
