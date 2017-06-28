@@ -40,7 +40,7 @@ script:
      # Win dll loader? needed?
      # -----------------------------------------------------------------------------------------------------
      - x86_64-w64-mingw32-gcc --version
-     - echo $CC
+     - x86_64-w64-mingw32-g++ --version
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
      - ./configure --cc=x86_64-w64-mingw32-gcc --enable-static
@@ -106,7 +106,7 @@ script:
      #
      - echo $CC
      - echo $CXX
-     - cd libpromises
+     - cd cf-agent
      - make
      - cd ..
      #
