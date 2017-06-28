@@ -104,8 +104,10 @@ script:
      #- grep "o conftest" configure
      #
      #
-     - cat ./libcompat/Makefile
-     - make -d
+     - echo $CXX
+     - cd libpromises
+     - make
+     - cd ..
      #
      #-----------------------------------------------------------------------
      #
