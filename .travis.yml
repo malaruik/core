@@ -123,8 +123,8 @@ script:
      #- sed 's/WITH_LMDB = 1/WITH_LMDB = 0/g' configure.ac >configure.ac2
      #- cp configure.ac2 configure.ac
      - autoreconf -vif
-     - sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
-     - cp configura configure
+     #- sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
+     #- cp configura configure
      #- sed -n '13296,13330p;13330q' configure >oo.txt
      #- cat oo.txt
      - pwd
