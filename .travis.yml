@@ -114,7 +114,8 @@ script:
      #- cd cf-upgrade
      - sudo make
      - cd libcompat
-     - grep -C 2 CXX Makefile
+     - ls -l
+     - grep "CXX" Makefile
      - cd ..
      #
      #-----------------------------------------------------------------------
