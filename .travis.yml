@@ -112,10 +112,10 @@ script:
      - echo $CC
      - echo $CXX
      #- cd cf-upgrade
-     - sudo make
+     - cmake
      - cd libcompat
      - ls -l
-     - grep "CXX" ./Makefile
+     - sudo grep "CXX" ./Makefile
      - cd ..
      #
      #-----------------------------------------------------------------------
