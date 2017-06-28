@@ -22,7 +22,7 @@ install:
      #- export CFLAGS="-I/usr/include/mysql -I/usr/include/mysql/mysql"
      #- export LDFLAGS="-Ifaas"
      #- export LD_LIBRARY_PATH="usr/x86_64-w64-mingw32/include/"
-     - sudo apt-get install build-essentials
+     - sudo apt-get install build-essential
      - sudo apt-get install libtool
      # sudo apt-get update -qq
      #- sudo apt-get install -qqy binutils-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
@@ -100,9 +100,9 @@ script:
      # -----------------------------------------------------------------------
      #- which x86_64-w64-mingw32-gcc
      #- x86_64-w64-mingw32-gcc --version
-     - autoreconf -vif
-     - sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
-     - cp configura configure
+     #- autoreconf -vif
+     #- sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
+     #- cp configura configure
      #
      - ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32  -I/usr/x86_64-w64-mingw32/include -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
      #- grep -C 7 "conftest.exe" config.log
