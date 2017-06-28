@@ -107,7 +107,7 @@ script:
      #
      - echo $CC
      - echo $CXX
-     - cd cf-agent
+     - cd cf-upgrade
      - make
      - cd ..
      #
