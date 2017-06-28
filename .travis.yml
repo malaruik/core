@@ -104,7 +104,8 @@ script:
      #- grep "o conftest" configure
      #
      #
-     - make
+     - cat ./libcompat/Makefile
+     - make -d
      #
      #-----------------------------------------------------------------------
      #
