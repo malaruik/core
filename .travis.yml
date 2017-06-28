@@ -113,6 +113,8 @@ script:
      - echo $CXX
      #- cd cf-upgrade
      - sudo make
+     - cd libcompat
+     - grep -C 2 CXX Makefile
      - cd ..
      #
      #-----------------------------------------------------------------------
