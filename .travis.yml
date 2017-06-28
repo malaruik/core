@@ -5,7 +5,7 @@ env:
    global:
       #- PATH=$PATH:/usr/bin;/usr/x86_64-w64-mingw32
       #- CC=/usr/bin/x86_64-w64-mingw32-gcc
-      #- CXX=x86_64-w64-mingw32-gcc
+      - CXX=x86_64-w64-mingw32-g++
 
 sudo: required
 
@@ -95,7 +95,7 @@ script:
      # -----------------------------------------------------------------------
      #- which x86_64-w64-mingw32-gcc
      #- x86_64-w64-mingw32-gcc --version
-     #- autoreconf -vif
+     - autoreconf -vif
      - sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
      - cp configura configure
      #
