@@ -71,8 +71,8 @@ script:
      - pwd
      - ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make depend
-     #- make &> build.log
-     - make
+     - make &> build.log
+     #- make
      #- make prefix=/openssl install &> install.log
      - cd ..
      #
@@ -109,7 +109,7 @@ script:
      #
      - echo $CC
      - echo $CXX
-     - cd cf-upgrade
+     #- cd cf-upgrade
      - make
      - cd ..
      #
