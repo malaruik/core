@@ -82,12 +82,7 @@ script:
      - ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make depend
      - make &> build.log
-     #- grep -C 3 error build.log
-     #- ls -l
      #- make prefix=/openssl install &> install.log
-     - ls -l 
-     #- ls -l ./out/include/openssl
-     #- ls -l ./out/lib
      - cd ..
      #
      # -----------------------------------------------------------------------------
@@ -101,16 +96,8 @@ script:
      - sed 's/usr\/local/.\/openldap\/libraries\/liblmdb/g' Makefile4 >Makefile5
      - sed 's/.so/.dll/g' Makefile5 >Makefile6
      - cp Makefile6 Makefile
-     - ls -l
      - make
      - make install prefix=/home/travis/build/malaruik/core/openldap/libraries/liblmdb
-     - ls -l ./include
-     #- objdump -D liblmdb.a | grep "architecture"
-     #- objdump -D liblmdb.a > ab.out 
-     #- ls -l ab.out
-     #- chmod 777 ab.out
-     #- grep "architecture" ab.out 
-     #- ls -l ./include
      - cd .. 
      - cd ..
      - cd ..
@@ -120,15 +107,10 @@ script:
      # -----------------------------------------------------------------------
      #- which x86_64-w64-mingw32-gcc
      #- x86_64-w64-mingw32-gcc --version
-     #- sed 's/WITH_LMDB = 1/WITH_LMDB = 0/g' configure.ac >configure.ac2
-     #- cp configure.ac2 configure.ac
      - autoreconf -vif
-     #- sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
-     #- cp configura configure
-     #- sed -n '13296,13330p;13330q' configure >oo.txt
-     #- cat oo.txt
-     - pwd
-     - ls -l
+     - sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
+     - cp configura configure
+     #
      - ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32  -I/usr/x86_64-w64-mingw32/include -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
      - grep -C 7 "conftest.exe" config.log
      - grep "o conftest" configure
