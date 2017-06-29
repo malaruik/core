@@ -116,7 +116,9 @@ script:
      - make
      - cd libcompat
      - ls -l
-     - grep CXX Makefile.
+     - cp Makefile Makefile.txt
+     - grep CXX Makefile.txt
+     - grep CC Makefile.txt
      - cd ..
      #
      #-----------------------------------------------------------------------
