@@ -113,8 +113,8 @@ script:
      #- which x86_64-w64-mingw32-gcc
      #- x86_64-w64-mingw32-gcc --version
      - autoreconf -vi
-     - sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
-     - cp configura configure
+     #- sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
+     #- cp configura configure
      #
      - ./configure CC=x86_64-w64-mingw32-gcc --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32  -I/usr/x86_64-w64-mingw32/include -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
      #
