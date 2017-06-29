@@ -61,7 +61,7 @@ script:
      #- ls -l /usr/include/mysql
      - git clone https://github.com/coapp-packages/pcre.git
      - cd pcre
-     - chmod -x autogen.sh
+     - chmod 777 autogen.sh
      - ./autogen.sh
      - autoreconf -vif
      - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
