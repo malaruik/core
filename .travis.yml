@@ -1,8 +1,9 @@
 
-language: c++
+language: generic
 compiler: gcc
 env:
   - TARGET="linux"
+  - CC=x86_64-w64-mingw32
 
 install: true
 
