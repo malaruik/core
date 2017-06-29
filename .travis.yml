@@ -1,9 +1,9 @@
 language: c
-matrix:
-  include:
-    - os: linux
-      compiler: x86_64-w64-mingw32-gcc
-      env: CC=x86_64-w64-mingw32-gcc
+#matrix:
+#  include:
+#    - os: linux
+#      compiler: x86_64-w64-mingw32-gcc
+#      env: CC=x86_64-w64-mingw32-gcc
 
 #language: cpp
 
@@ -32,8 +32,8 @@ install:
      # sudo apt-get update -qq
      #- sudo apt-get install -qqy binutils-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
      - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
-     - export CC=$CC
-     - export CXX=x86_64-w64-mingw32-g++
+ #    - export CC=$CC
+  #   - export CXX=x86_64-w64-mingw32-g++
 
 addons:
   apt:
