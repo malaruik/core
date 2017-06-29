@@ -116,7 +116,6 @@ script:
      - cd libcompat
      - sed 's/-DHAVE_CONFIG_H/ /g' Makefile >Makefile2
      - cp Makefile2 Makefile
-     - cd ..
      - cp Makefile Makefile.txt
      - grep DHAVE_CONFIG Makefile.txt
      - grep CC Makefile.txt
