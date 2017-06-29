@@ -3,8 +3,8 @@ language: clang
 env:
    SH: bash
    global:
-      - export CXX=x86_64-w64-mingw32-g++
-      - export CC=x86_64-w64-mingw32-gcc
+      #- export CXX=x86_64-w64-mingw32-g++
+      #- export CC=x86_64-w64-mingw32-gcc
 
 sudo: required
 
@@ -34,7 +34,7 @@ addons:
 os: linux
 
 compiler:
-     #- x86_64-w64-mingw32-gcc
+     - x86_64-w64-mingw32-gcc
      #- x86_64-w64-mingw32-g++
 
 script:
