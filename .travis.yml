@@ -1,4 +1,4 @@
-language: clang
+language: cpp
 
 env:
    SH: bash
@@ -38,6 +38,7 @@ os: linux
 compiler:
      #- x86_64-w64-mingw32-gcc
      #- x86_64-w64-mingw32-g++
+     - clang
 
 script:
      - pwd
