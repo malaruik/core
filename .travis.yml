@@ -100,7 +100,7 @@ script:
      # -----------------------------------------------------------------------
      #- which x86_64-w64-mingw32-gcc
      #- x86_64-w64-mingw32-gcc --version
-     - autoreconf
+     - autoconf
      #- sed -r 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
      #- cp configura configure
      #
