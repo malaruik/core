@@ -1,13 +1,11 @@
+language: c
+matrix:
+  include:
+    - os: linux
+      compiler: x86_64-w64-mingw32-gcc
+      env: CC=x86_64-w64-mingw32-gcc
 
-language: generic
-compiler: gcc
-env:
-  - TARGET="linux"
-  - CC=x86_64-w64-mingw32
 
-install: true
-
-script: true
 
 #language: cpp
 
