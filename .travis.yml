@@ -117,7 +117,7 @@ script:
      - cd libcompat
      - ls -l
      - cp Makefile Makefile.txt
-     - grep CXX Makefile.txt
+     - grep DHAVE_CONFIG Makefile.txt
      - grep CC Makefile.txt
      - cd ..
      #
