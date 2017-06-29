@@ -116,8 +116,8 @@ script:
      - echo $CXX
      #- cd cf-upgrade
      - cd libcompat
-     #- sed 's/-DHAVE_CONFIG_H/ /g' Makefile >Makefile2
-     #- cp Makefile2 Makefile
+     - sed 's/CC =/CC = x86_64-w64-mingw32-gcc/g' Makefile >Makefile2
+     - cp Makefile2 Makefile
      #- cp Makefile Makefile.txt
      #- grep DHAVE_CONFIG Makefile.txt
      #- grep CC Makefile.txt
