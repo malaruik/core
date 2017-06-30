@@ -60,6 +60,7 @@ autoreconf -Wno-portability --force --install -I m4 || exit 1
 cd $ORIGDIR || exit $?
 
 if [ -z "$NO_CONFIGURE" ]; then
-  echo $@
+  echo "paskaa.."
+  echo "$@"
   env CC=x86_64-w64-mingw32-gcc $srcdir/configure --enable-maintainer-mode "$@"
 fi
