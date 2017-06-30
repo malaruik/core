@@ -118,8 +118,8 @@ script:
      #
      #- grep "conftest.exe" config.log
      #- grep -C 7 "o conftest" configure
-     - grep -C 4 "CC=""" configure
-     #- cat configure
+     #- grep -C 4 "CC=""" configure
+     - cat config.log
      #
      - echo $CC
      - echo $CXX
