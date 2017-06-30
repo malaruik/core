@@ -118,6 +118,7 @@ script:
      #
      - grep "conftest.exe" config.log
      #- grep -C 7 "o conftest" configure
+     - grep CC configure
      #
      #
      - echo $CC
