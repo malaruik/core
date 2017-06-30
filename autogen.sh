@@ -62,5 +62,5 @@ cd $ORIGDIR || exit $?
 if [ -z "$NO_CONFIGURE" ]; then
   echo "paskaa.."
   echo "$@"
-  env CC=x86_64-w64-mingw32-gcc $srcdir/configure --enable-maintainer-mode "$@"
+  $srcdir/configure --enable-maintainer-mode CC=x86_64-w64-mingw32-gcc "$@"
 fi
