@@ -53,7 +53,7 @@ script:
      - ls -l /usr/x86_64-w64-mingw32/include
      - gettext --version
      - sudo updatedb
-     #- locate libfl.a
+     - locate lex.yy.c
      - git clone https://github.com/westes/flex.git --branch master
      - cd flex
      - ls -l
