@@ -50,10 +50,11 @@ compiler:
 
 script:
      - pwd
-     - cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
+     #- cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
      - gettext --version
      - git clone https://github.com/westes/flex.git --branch master
      - cd flex
+     - cp /usr/lib/x86_64-linux-gnu/libfl.a libfl.a 
      - ls -l
      #- cat configure.ac
      - ./autogen.sh --prefix=/home/travis/build/malaruik/flex
