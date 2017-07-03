@@ -34,7 +34,7 @@ install:
      - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
      - export CC="x86_64-w64-mingw32-gcc"
   #   - export CXX=x86_64-w64-mingw32-g++
-     - sudo apt-get install flex
+     #- sudo apt-get install flex
 
 addons:
   apt:
@@ -50,7 +50,11 @@ compiler:
 
 script:
      - pwd
-     - ls -l /usr/bin/flex
+     - git clone https://github.com/westes/flex.git
+     - cd flex
+     - ./configure
+     - make
+     - cd ..
      #
      # -----------------------------------------------------------------------------------------------------
      # Win dll loader? needed?
