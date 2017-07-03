@@ -50,7 +50,9 @@ compiler:
 
 script:
      - pwd
-     - ls -l /usr/x86_64-w64-mingw
+     - ls -l /usr
+     - cd /usr/lib
+     - ls -l
      - gettext --version
      - git clone https://github.com/westes/flex.git
      - cd flex
