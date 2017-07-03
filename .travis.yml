@@ -50,7 +50,7 @@ compiler:
 
 script:
      - pwd
-     - ls -l /usr/x86_64-w64-mingw32/lib
+     - ls -l /usr/x86_64-w64-mingw32/include
      - gettext --version
      - sudo updatedb
      #- locate libfl.a
