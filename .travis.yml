@@ -50,10 +50,8 @@ compiler:
 
 script:
      - pwd
-     - ls -l /usr/x86_64-w64-mingw32/include
+     #- ls -l /usr/x86_64-w64-mingw32/include
      - gettext --version
-     - sudo updatedb
-     - locate lex.yy.c
      - git clone https://github.com/westes/flex.git --branch master
      - cd flex
      - ls -l
