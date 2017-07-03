@@ -34,7 +34,7 @@ install:
      - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
      - export CC="x86_64-w64-mingw32-gcc"
   #   - export CXX=x86_64-w64-mingw32-g++
-     - sudo apt-get install autopoint gettext
+     - sudo apt-get install autopoint gettext flex bison
 
 addons:
   apt:
@@ -50,12 +50,12 @@ compiler:
 
 script:
      - pwd
-     - which libfl.a
+     -ls -l /usr/bin
      - gettext --version
      - git clone https://github.com/westes/flex.git
      - cd flex
      - ls -l
-     - sudo utoreconf
+     - sudo autoreconf
      #- ./autogen.sh
      - ./configure
      - make
