@@ -50,8 +50,8 @@ compiler:
 
 script:
      - pwd
-     - ls -l /usr/bin
-     - ls -l ../
+     - ls -l /usr/lib
+     - ls -l /usr/local/lib
      #
      # -----------------------------------------------------------------------------------------------------
      # Win dll loader? needed?
