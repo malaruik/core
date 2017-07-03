@@ -55,7 +55,7 @@ script:
      - git clone https://github.com/westes/flex.git
      - cd flex
      - ls -l
-     - sudo autoreconf
+     - autoreconf -f -i
      #- ./autogen.sh
      - ./configure
      - make
