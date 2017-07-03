@@ -33,7 +33,7 @@ install:
      #- sudo apt-get install -qqy binutils-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
      - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
      - export CC="x86_64-w64-mingw32-gcc"
-  #   - export CXX=x86_64-w64-mingw32-g++
+     #- export CXX=x86_64-w64-mingw32-g++
      - sudo apt-get install autopoint gettext
 
 addons:
@@ -50,7 +50,7 @@ compiler:
 
 script:
      - pwd
-     -ls -l
+     - ls -l
      #- cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
      - gettext --version
      - git clone https://github.com/westes/flex.git --branch master
