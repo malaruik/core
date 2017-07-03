@@ -52,8 +52,11 @@ script:
      - pwd
      - git clone https://github.com/westes/flex.git
      - cd flex
+     - ls -l
+     - ./autogen.sh
      - ./configure
      - make
+     - ls -l
      - cd ..
      #
      # -----------------------------------------------------------------------------------------------------
