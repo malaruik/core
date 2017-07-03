@@ -50,7 +50,7 @@ compiler:
 
 script:
      - pwd
-     #- ls -l /usr/bin
+     - ls -l /usr/lib/x86_64-linux-gnu
      - gettext --version
      - sudo updatedb
      - locate libfl.a
@@ -129,7 +129,7 @@ script:
      #- sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
      #- cp configura configure
      #
-     - ./autogen.sh --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/lib/x86_64-linux-gnu -I./dlfcn-win32 -I/usr/x86_64-w64-mingw32/include -I/usr/bin -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -static-libgcc -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/usr/lib/x86_64-linux-gnu -L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lf -lpsapi -lpcre -llmdb -lssl -lcrypto"
+     - ./autogen.sh --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I/usr/lib/x86_64-linux-gnu -I./dlfcn-win32 -I/usr/x86_64-w64-mingw32/include -I/usr/bin -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -static-libgcc -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/usr/lib/x86_64-linux-gnu -L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lfl -lpcre -llmdb -lssl -lcrypto"
      #
      #- grep "conftest.exe" config.log
      #- grep -C 7 "o conftest" configure
