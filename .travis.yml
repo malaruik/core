@@ -54,7 +54,7 @@ script:
      - gettext --version
      - git clone https://github.com/westes/flex.git
      - cd flex
-     - sed 's/0.18/0.18.03/g' configure.ac >congigure.ac2
+     - sed 's/0.18/0.18.03/g' configure.ac >configure.ac2
      - cp configure.ac2 configure.ac
      - ls -l
      - autoreconf -i
