@@ -28,13 +28,13 @@ install:
      #- export LDFLAGS="-Ifaas"
      #- export LD_LIBRARY_PATH="usr/x86_64-w64-mingw32/include/"
      - sudo apt-get install build-essential
-     - sudo apt-get install libtool intltool
+     - sudo apt-get install libtool intltool automake
      # sudo apt-get update -qq
      #- sudo apt-get install -qqy binutils-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
      - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
      - export CC="x86_64-w64-mingw32-gcc"
   #   - export CXX=x86_64-w64-mingw32-g++
-     - sudo apt-get install autopoint gettext-devel
+     - sudo apt-get install autopoint gettext
 
 addons:
   apt:
