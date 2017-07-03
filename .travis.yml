@@ -53,6 +53,7 @@ script:
      - git clone https://github.com/westes/flex.git
      - cd flex
      - ls -l
+     - cat configure.ac
      - ./autogen.sh
      - ./configure
      - make
