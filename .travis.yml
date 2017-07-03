@@ -50,7 +50,7 @@ compiler:
 
 script:
      - pwd
-     - cp /usr/x86_64-linux-gnu/lib/libfl.a ./flex/libfl.a
+     - cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
      - gettext --version
      - git clone https://github.com/westes/flex.git --branch master
      - cd flex
