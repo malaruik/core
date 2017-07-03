@@ -34,7 +34,7 @@ install:
      - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
      - export CC="x86_64-w64-mingw32-gcc"
   #   - export CXX=x86_64-w64-mingw32-g++
-     - sudo apt-get install autopoint gettext libfl-dev
+     - sudo apt-get install autopoint gettext
 
 addons:
   apt:
@@ -50,6 +50,7 @@ compiler:
 
 script:
      - pwd
+     -ls -l
      #- cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
      - gettext --version
      - git clone https://github.com/westes/flex.git --branch master
