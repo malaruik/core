@@ -52,8 +52,8 @@ script:
      - pwd
      #- ls -l /usr/bin
      - gettext --version
-     - updatedb
-     - sudp locate libfl.a
+     - sudo updatedb
+     - locate libfl.a
      - find -L 'libfl.a'
      - git clone https://github.com/westes/flex.git
      - cd flex
