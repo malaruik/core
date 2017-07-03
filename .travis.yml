@@ -52,17 +52,17 @@ script:
      - pwd
      - ls -l
      #- cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
-     - gettext --version
-     - git clone https://github.com/westes/flex.git --branch master
-     - cd flex
-     - cp /usr/lib/x86_64-linux-gnu/libfl.a libfl.a 
-     - ls -l
+     #- gettext --version
+     #- git clone https://github.com/westes/flex.git --branch master
+     #- cd flex
+     #- cp /usr/lib/x86_64-linux-gnu/libfl.a libfl.a 
+     #- ls -l
      #- cat configure.ac
-     - ./autogen.sh --prefix=/home/travis/build/malaruik/flex
-     - ./configure
-     - make
-     - ls -l
-     - cd ..
+     #- ./autogen.sh --prefix=/home/travis/build/malaruik/flex
+     #- ./configure
+     #- make
+     #- ls -l
+     #- cd ..
      #
      # -----------------------------------------------------------------------------------------------------
      # Win dll loader? needed?
@@ -129,7 +129,7 @@ script:
      #- sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
      #- cp configura configure
      #
-     - ./configure --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32 -I/usr/x86_64-w64-mingw32/include -I./flex -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -static-libgcc -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./flex -L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
+     - ./configure --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32 -I/usr/x86_64-w64-mingw32/include -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -static-libgcc -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
      #
      #- grep "conftest.exe" config.log
      #- grep -C 7 "o conftest" configure
