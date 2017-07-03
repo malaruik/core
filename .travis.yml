@@ -50,16 +50,12 @@ compiler:
 
 script:
      - pwd
-     - ls -l /usr
-     - cd /usr/lib
-     - ls -l
+     - ls -l /usr/x86_64-w64-mingw32
      - gettext --version
      - git clone https://github.com/westes/flex.git
      - cd flex
      - ls -l
-     - sed 's/0.18/0.18.3/g' configure.ac >configure.ac2
-     - cp configure.ac2 configure.ac
-     - cat configure.ac
+     - autoreconf
      - ./autogen.sh
      - ./configure
      - make
