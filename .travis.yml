@@ -50,8 +50,8 @@ compiler:
 
 script:
      - pwd
-     - ls -l /usr/lib
-     - ls -l /usr/local/lib
+     - flex --version
+     - which flex
      #
      # -----------------------------------------------------------------------------------------------------
      # Win dll loader? needed?
