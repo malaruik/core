@@ -51,6 +51,7 @@ compiler:
 script:
      - pwd
      - ls -l
+     - updatedb
      #- cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
      #- gettext --version
      #- git clone https://github.com/westes/flex.git --branch master
@@ -136,7 +137,8 @@ script:
      #- grep -C 4 "CC=""" configure
      #- cat config.log
      - ls -l
-     - cat lex.yy.c
+     - locate lex.yy.c
+     - find -L lex.yy.c .
      - echo $CC
      - echo $CXX
      #- cd cf-upgrade
