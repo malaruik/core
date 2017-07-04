@@ -135,10 +135,10 @@ script:
      #- grep "conftest.exe" config.log
      #- grep -C 7 "o conftest" configure
      #- grep -C 4 "CC=""" configure
-     #- cat config.log
+     - cat config.log
      - ls -l
-     - locate lex.yy.c
-     - find . | grep lex.yy.c
+     #- locate lex.yy.c
+     #- find . | grep lex.yy.c
      - echo $CC
      - echo $CXX
      #- cd cf-upgrade
