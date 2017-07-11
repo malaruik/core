@@ -1,0 +1,157 @@
+#language: c
+#matrix:
+#  include:
+#    - os: linux
+#      compiler: x86_64-w64-mingw32-gcc
+#      env: CC=x86_64-w64-mingw32-gcc
+
+#language: cpp
+
+#env:
+ #  SH: bash
+ #  global:
+      #- export CXX=x86_64-w64-mingw32-g++
+      #- export CC=x86_64-w64-mingw32-gcc
+
+sudo: required
+
+before_install:
+     - export PATH=H/usr/bin:$PATH
+
+before_script:
+    #- export PATH=$PATH:/usr/bin/x86_64-w64-mingw32
+
+install:
+     #- sudo sed -i 's/precise/trusty/g' /etc/apt/sources.list;
+     - bash .travis/scripts/install.ubuntu.sh
+     #- export CFLAGS="-I/usr/include/mysql -I/usr/include/mysql/mysql"
+     #- export LDFLAGS="-Ifaas"
+     #- export LD_LIBRARY_PATH="usr/x86_64-w64-mingw32/include/"
+     - sudo apt-get install build-essential
+     - sudo apt-get install libtool intltool automake
+     # sudo apt-get update -qq
+     #- sudo apt-get install -qqy binutils-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
+     - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
+     - export CC="x86_64-w64-mingw32-gcc"
+     #- export CXX=x86_64-w64-mingw32-g++
+     - sudo apt-get install autopoint gettext
+
+addons:
+  apt:
+    packages:
+     #- cmake
+
+os: linux
+
+compiler:
+     #- x86_64-w64-mingw32-gcc
+     #- x86_64-w64-mingw32-g++
+     #- clang
+
+script:
+     - pwd
+     - ls -l
+     - sudo updatedb
+     #- cp /usr/lib/x86_64-linux-gnu/libfl.a ./flex/libfl.a
+     #- gettext --version
+     #- git clone https://github.com/westes/flex.git --branch master
+     #- cd flex
+     #- cp /usr/lib/x86_64-linux-gnu/libfl.a libfl.a 
+     #- ls -l
+     #- cat configure.ac
+     #- ./autogen.sh --prefix=/home/travis/build/malaruik/flex
+     #- ./configure
+     #- make
+     #- ls -l
+     #- cd ..
+     #
+     # -----------------------------------------------------------------------------------------------------
+     # Win dll loader? needed?
+     # -----------------------------------------------------------------------------------------------------
+     - x86_64-w64-mingw32-gcc --version
+     - x86_64-w64-mingw32-g++ --version
+     - libtool --version
+     - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
+     - cd dlfcn-win32
+     - ./configure --cc=x86_64-w64-mingw32-gcc --enable-static
+     - make
+     - cd ..
+     # -----------------------------------------------------------------------------------------------------
+     #  PCRE building
+     # -----------------------------------------------------------------------------------------------------
+     #- ls -l /usr/x86_64-w64-mingw32/include/winver.h
+     # - cp /usr/x86_64-w64-mingw32/include/winver.h /home/build/travis/malaruik/openssl/include/winver.h 
+     #- ls -l /usr/include/mysql
+     - git clone https://github.com/coapp-packages/pcre.git
+     - cd pcre
+     - chmod 777 autogen.sh
+     - ./autogen.sh
+     - autoreconf -vif
+     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - make
+     - cd ..
+     #
+     # --------------------------------------------------------------------------
+     #  OpenSSL building
+     # --------------------------------------------------------------------------
+     - git clone https://github.com/openssl/openssl.git --branch OpenSSL_1_1_0-stable
+     - cd openssl
+     - pwd
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - make depend
+     - make &> build.log
+     #- make
+     #- make prefix=/openssl install &> install.log
+     - cd ..
+     #
+     # -----------------------------------------------------------------------------
+     # OpenLDAP -llmdb compiling only
+     # -----------------------------------------------------------------------------
+     - git clone https://github.com/openldap/openldap.git --branch master
+     - cd openldap/libraries/liblmdb
+     - sed 's/-shared/-shared -Wl,-Bsymbolic/g' Makefile >Makefile2
+     - sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
+     - sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
+     - sed 's/usr\/local/.\/openldap\/libraries\/liblmdb/g' Makefile4 >Makefile5
+     - sed 's/.so/.dll/g' Makefile5 >Makefile6
+     - cp Makefile6 Makefile
+     - make
+     - make install prefix=/home/travis/build/malaruik/core/openldap/libraries/liblmdb
+     - cd .. 
+     - cd ..
+     - cd ..
+     - pwd
+     # -----------------------------------------------------------------------
+     # CFENGINE building starts here:
+     # -----------------------------------------------------------------------
+     #- which x86_64-w64-mingw32-gcc
+     #- x86_64-w64-mingw32-gcc --version
+     - autoreconf -vi
+     #- sed 's/$CC/x86_64-w64-mingw32-gcc/g' configure >configura
+     #- cp configura configure
+     #
+     - ./configure --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32 -I/usr/x86_64-w64-mingw32/include -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -static-libgcc -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
+     #
+     #- grep "conftest.exe" config.log
+     #- grep -C 7 "o conftest" configure
+     #- grep -C 4 "CC=""" configure
+     - cat config.log
+     - ls -l
+     #- locate lex.yy.c
+     #- find . | grep lex.yy.c
+     - echo $CC
+     - echo $CXX
+     #- cd cf-upgrade
+     #- cd libcompat
+     #- sed 's/CC =/CC = x86_64-w64-mingw32-gcc/g' Makefile >Makefile2
+     #- cp Makefile2 Makefile
+     #- cp Makefile Makefile.txt
+     #- grep DHAVE_CONFIG Makefile.txt
+     #- grep CC Makefile.txt
+     #- cat Makefile
+     #- cd ..
+     #- make
+     #
+     #-----------------------------------------------------------------------
+     #
+     #-----------------------------------------------------------------------
