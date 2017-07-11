@@ -55,7 +55,7 @@ script:
      # -----------------------------------------------------------------------------------------------------
      - x86_64-w64-mingw32-gcc --version
      - x86_64-w64-mingw32-g++ --version
-     - ls -l usr/x86_64-w64-mingw32/include
+     - ls -l /usr/x86_64-w64-mingw32/include
      - libtool --version
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
