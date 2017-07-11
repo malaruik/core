@@ -135,8 +135,8 @@ script:
      #- grep "conftest.exe" config.log
      #- grep -C 7 "o conftest" configure
      #- grep -C 4 "CC=""" configure
-     - cat config.log
-     - ls -l
+     #- cat config.log
+     #- ls -l
      #- locate lex.yy.c
      #- find . | grep lex.yy.c
      - echo $CC
@@ -150,7 +150,7 @@ script:
      #- grep CC Makefile.txt
      #- cat Makefile
      #- cd ..
-     #- make
+     - make
      #
      #-----------------------------------------------------------------------
      #
