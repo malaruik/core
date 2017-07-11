@@ -55,7 +55,7 @@ script:
      # -----------------------------------------------------------------------------------------------------
      - x86_64-w64-mingw32-gcc --version
      - x86_64-w64-mingw32-g++ --version
-     - ls -l /usr/x86_64-w64-mingw32/include
+     #- ls -l /usr/x86_64-w64-mingw32/include
      - libtool --version
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
@@ -115,7 +115,7 @@ script:
      - ./configure --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=./openssl --with-pcre=./pcre --with-lmdb=./openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I./dlfcn-win32 -D__MINGW32__ -I/usr/x86_64-w64-mingw32/include -I./openldap/libraries/liblmdb -I./openldap/libraries/liblmdb/include -I./pcre -I./pcre/.libs -I./openssl/include -lmsvcrt -g -Wall -Wno-pointer-sign -Werror=implicit-function-declaration -Wunused-parameter -Wno-format -O2 -DNDEBUG -static-libgcc -DS_IROTH=0 -DS_IRGRP=0 -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L./dlfcn-win32 -L./openldap/libraries/liblmdb -L./openssl -L./pcre/.libs -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto"
      #
      #
-     #- cd cf-upgrade
+     - cd libpromises
      - make
      - make install
      - cd ..
