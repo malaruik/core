@@ -26,7 +26,7 @@ install:
      - bash .travis/scripts/install.ubuntu.sh
      #- export CFLAGS="-I/usr/include/mysql -I/usr/include/mysql/mysql"
      #- export LDFLAGS="-Ifaas"
-     #- export LD_LIBRARY_PATH="usr/x86_64-w64-mingw32/include/"
+     #- ls -l usr/x86_64-w64-mingw32/include
      - sudo apt-get install build-essential
      - sudo apt-get install libtool intltool automake
      # sudo apt-get update -qq
@@ -55,6 +55,7 @@ script:
      # -----------------------------------------------------------------------------------------------------
      - x86_64-w64-mingw32-gcc --version
      - x86_64-w64-mingw32-g++ --version
+     - ls -l usr/x86_64-w64-mingw32/include
      - libtool --version
      - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
      - cd dlfcn-win32
