@@ -150,7 +150,10 @@ script:
      #- grep CC Makefile.txt
      #- cat Makefile
      #- cd ..
+     - cd cf-upgrade
      - make
+     - make install
+     - cd ..
      #
      #-----------------------------------------------------------------------
      #
