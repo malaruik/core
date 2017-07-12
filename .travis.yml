@@ -125,8 +125,8 @@ script:
      - cp platform3.h platform.h
      - cd ..
      #- cd cf-upgrade
-     #- sed 's/gnu99/c99/g' Makefile >Makefile2
-     #- cp Makefile2 Makefile
+     - sed 's/gnu99/c99/g' Makefile >Makefile2
+     - cp Makefile2 Makefile
      - make V=1
      #- cat Makefile
      #- make
