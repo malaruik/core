@@ -120,8 +120,9 @@ script:
      #
      #
      - cd cf-agent
-     - make depend
-     - make
+     - sed 's/gnu99/c99/g' Makefile >Makefile2
+     - cp Makefile2 Makefile
+     - make V=1
      - cat Makefile
      #- make
      #- make install
