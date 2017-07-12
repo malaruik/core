@@ -123,10 +123,11 @@ script:
      - sed 's/!HAVE_DECL_GMTIME_R/HAVE_DECL_GMTIME_R/g' platform.h >platform2.h
      - sed 's/!HAVE_DECL_LOCALTIME_R/HAVE_DECL_LOCALTIME_R/g' platform2.h >platform3.h 
      - cp platform3.h platform.h
-     - cd ..
+     - cd libcompat
      #- cd cf-upgrade
      - sed 's/gnu99/c99/g' Makefile >Makefile2
      - cp Makefile2 Makefile
+     - cd ..
      - make V=1
      #- cat Makefile
      #- make
