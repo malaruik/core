@@ -663,13 +663,13 @@ int EncryptCopyRegularFileNet(const char *source, const char *dest, off_t size, 
         free(buf);
         unlink(dest);
         close(dd);
-        EVP_CIPHER_CTX_cleanup(&crypto_ctx);
+      //  EVP_CIPHER_CTX_cleanup(&crypto_ctx);
         return false;
     }
 
     close(dd);
     free(buf);
-    EVP_CIPHER_CTX_cleanup(&crypto_ctx);
+   // EVP_CIPHER_CTX_cleanup(&crypto_ctx);
     return true;
 }
 
