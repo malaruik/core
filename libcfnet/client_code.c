@@ -615,21 +615,21 @@ int EncryptCopyRegularFileNet(const char *source, const char *dest, off_t size, 
             return false;
         }
 
-        EVP_DecryptInit_ex(&crypto_ctx, CfengineCipher(CfEnterpriseOptions()), NULL, conn->session_key, iv);
+        //EVP_DecryptInit_ex(&crypto_ctx, CfengineCipher(CfEnterpriseOptions()), NULL, conn->session_key, iv);
 
-        if (!EVP_DecryptUpdate(&crypto_ctx, workbuf, &plainlen, buf, cipherlen))
-        {
-            close(dd);
-            free(buf);
-            return false;
-        }
+      //  if (!EVP_DecryptUpdate(&crypto_ctx, workbuf, &plainlen, buf, cipherlen))
+      //  {
+     //       close(dd);
+     //       free(buf);
+     //       return false;
+     //   }
 
-        if (!EVP_DecryptFinal_ex(&crypto_ctx, workbuf + plainlen, &finlen))
-        {
-            close(dd);
-            free(buf);
-            return false;
-        }
+     //   if (!EVP_DecryptFinal_ex(&crypto_ctx, workbuf + plainlen, &finlen))
+     //   {
+     //       close(dd);
+     //       free(buf);
+     //       return false;
+     //   }
 
         towrite = n_read = plainlen + finlen;
 
@@ -646,7 +646,7 @@ int EncryptCopyRegularFileNet(const char *source, const char *dest, off_t size, 
             free(buf);
             unlink(dest);
             close(dd);
-            EVP_CIPHER_CTX_cleanup(&crypto_ctx);
+           // EVP_CIPHER_CTX_cleanup(&crypto_ctx);
             return false;
         }
     }
