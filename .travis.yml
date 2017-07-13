@@ -124,7 +124,8 @@ script:
      - sed 's/!HAVE_DECL_LOCALTIME_R/HAVE_DECL_LOCALTIME_R/g' platform2.h >platform3.h 
      - cp platform3.h platform.h
      - sed 's/#define snprintf rpl_snprintf/ /g' config.h >config2.h
-     - cp config2.h config.h
+     - sed 's/#define vsnprintf rpl_vsnprintf/ /g' config2.h >config3.h 
+     - cp config3.h config.h
      - cd ..
      - cd libcompat
      #- cd cf-upgrade
