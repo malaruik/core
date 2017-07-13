@@ -123,7 +123,7 @@ script:
      - sed 's/!HAVE_DECL_GMTIME_R/HAVE_DECL_GMTIME_R/g' platform.h >platform2.h
      - sed 's/!HAVE_DECL_LOCALTIME_R/HAVE_DECL_LOCALTIME_R/g' platform2.h >platform3.h 
      - cp platform3.h platform.h
-     - sed 's/#define vsnprintf rpl_vsnprintf/\/\/#define vsnprintf rpl_vsnprintf/g' config.h >config2.h
+     - sed 's/#define vsnprintf rpl_vsnprintf/ /g' config.h >config2.h
      - cp config2.h config.h
      - cd ..
      - cd libcompat
