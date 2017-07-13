@@ -1159,7 +1159,8 @@ static bool GeneratePolicyReleaseIDFromTree(char *release_id_out, size_t out_siz
 
     HashPrintSafe(release_id_out, out_size, digest,
                   GENERIC_AGENT_CHECKSUM_METHOD, false);
-    return success;
+    //return success;
+    return false;
 }
 
 static bool GeneratePolicyReleaseID(char *release_id_out, size_t out_size,
