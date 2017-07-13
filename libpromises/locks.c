@@ -625,7 +625,7 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
         }
     }
 
-    EVP_DigestFinal(&context, digest, &md_len);
+   // EVP_DigestFinal(&context, digest, &md_len);
 
 /* Digest length stored in md_len */
 }
