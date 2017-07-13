@@ -510,7 +510,7 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
 {
     static const char PACK_UPIFELAPSED_SALT[] = "packageuplist";
 
-    EVP_MD_CTX context;
+  //  EVP_MD_CTX context;
     int md_len;
     const EVP_MD *md = NULL;
     Rlist *rp;
@@ -521,18 +521,18 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
 
     md = EVP_get_digestbyname(HashNameFromId(type));
 
-    EVP_DigestInit(&context, md);
+   // EVP_DigestInit(&context, md);
 
 // multiple packages (promisers) may share same package_list_update_ifelapsed lock
     if ( (!salt) || strcmp(salt, PACK_UPIFELAPSED_SALT) )
     {
-        EVP_DigestUpdate(&context, pp->promiser, strlen(pp->promiser));
+ //       EVP_DigestUpdate(&context, pp->promiser, strlen(pp->promiser));
     }
 
-    if (pp->comment)
-    {
-        EVP_DigestUpdate(&context, pp->comment, strlen(pp->comment));
-    }
+   // if (pp->comment)
+   // {
+   //     EVP_DigestUpdate(&context, pp->comment, strlen(pp->comment));
+   // }
 
     if (pp->parent_promise_type && pp->parent_promise_type->parent_bundle)
     {
@@ -551,7 +551,7 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
 
     if (salt)
     {
-        EVP_DigestUpdate(&context, salt, strlen(salt));
+     //   EVP_DigestUpdate(&context, salt, strlen(salt));
     }
 
     if (pp->conlist)
@@ -560,7 +560,7 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
         {
             Constraint *cp = SeqAt(pp->conlist, i);
 
-            EVP_DigestUpdate(&context, cp->lval, strlen(cp->lval));
+       //     EVP_DigestUpdate(&context, cp->lval, strlen(cp->lval));
 
             // don't hash rvals that change (e.g. times)
             doHash = true;
@@ -582,13 +582,13 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
             switch (cp->rval.type)
             {
             case RVAL_TYPE_SCALAR:
-                EVP_DigestUpdate(&context, cp->rval.item, strlen(cp->rval.item));
+              //  EVP_DigestUpdate(&context, cp->rval.item, strlen(cp->rval.item));
                 break;
 
             case RVAL_TYPE_LIST:
                 for (rp = cp->rval.item; rp != NULL; rp = rp->next)
                 {
-                    EVP_DigestUpdate(&context, RlistScalarValue(rp), strlen(RlistScalarValue(rp)));
+               //     EVP_DigestUpdate(&context, RlistScalarValue(rp), strlen(RlistScalarValue(rp)));
                 }
                 break;
 
@@ -598,18 +598,18 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
 
                 fp = (FnCall *) cp->rval.item;
 
-                EVP_DigestUpdate(&context, fp->name, strlen(fp->name));
+             //   EVP_DigestUpdate(&context, fp->name, strlen(fp->name));
 
                 for (rp = fp->args; rp != NULL; rp = rp->next)
                 {
                     switch (rp->val.type)
                     {
                     case RVAL_TYPE_SCALAR:
-                        EVP_DigestUpdate(&context, RlistScalarValue(rp), strlen(RlistScalarValue(rp)));
+           //             EVP_DigestUpdate(&context, RlistScalarValue(rp), strlen(RlistScalarValue(rp)));
                         break;
 
                     case RVAL_TYPE_FNCALL:
-                        EVP_DigestUpdate(&context, RlistFnCallValue(rp)->name, strlen(RlistFnCallValue(rp)->name));
+         //               EVP_DigestUpdate(&context, RlistFnCallValue(rp)->name, strlen(RlistFnCallValue(rp)->name));
                         break;
 
                     default:
