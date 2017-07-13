@@ -125,7 +125,11 @@ script:
      - cp platform3.h platform.h
      - sed 's/#define snprintf rpl_snprintf/ /g' config.h >config2.h
      - sed 's/#define vsnprintf rpl_vsnprintf/ /g' config2.h >config3.h 
-     - cp config3.h config.h
+     - sed 's/#define vfprintf rpl_vfprintf/ /g' config3.h >config4.h 
+     - sed 's/#define vprintf rpl_vprintf/ /g' config4.h >config5.h
+     - sed 's/#define fprintf rpl_fprintf/ /g' config5.h >config6.h
+     - sed 's/#define printf rpl_printf/ /g' config6.h >config7.h
+     - cp config7.h config.h
      - cd ..
      - cd libcompat
      #- cd cf-upgrade
