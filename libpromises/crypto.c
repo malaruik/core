@@ -221,7 +221,7 @@ bool LoadSecretKeys(void)
     }
 
     if (NULL != PUBKEY
-        && ((BN_num_bits(PUBKEY->e) < 2) || (!BN_is_odd(PUBKEY->e))))
+       // && ((BN_num_bits(PUBKEY->e) < 2) || (!BN_is_odd(PUBKEY->e))))
     {
         Log(LOG_LEVEL_ERR, "The public key RSA exponent is too small or not odd");
         return false;
@@ -366,13 +366,13 @@ RSA *HavePublicKey(const char *username, const char *ipaddress, const char *dige
 
     fclose(fp);
 
-    if ((BN_num_bits(newkey->e) < 2) || (!BN_is_odd(newkey->e)))
-    {
-        Log(LOG_LEVEL_ERR, "RSA Exponent too small or not odd for key: %s",
-            newname);
-        RSA_free(newkey);
-        return NULL;
-    }
+   // if ((BN_num_bits(newkey->e) < 2) || (!BN_is_odd(newkey->e)))
+   // {
+    //    Log(LOG_LEVEL_ERR, "RSA Exponent too small or not odd for key: %s",
+    //        newname);
+    //    RSA_free(newkey);
+    //    return NULL;
+   // }
 
     return newkey;
 }
@@ -437,28 +437,28 @@ int EncryptString(char type, const char *in, char *out, unsigned char *key, int 
     int cipherlen = 0, tmplen;
     unsigned char iv[32] =
         { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 };
-    EVP_CIPHER_CTX ctx;
+  //  EVP_CIPHER_CTX ctx;
 
     if (key == NULL)
         ProgrammingError("EncryptString: session key == NULL");
 
-    EVP_CIPHER_CTX_init(&ctx);
-    EVP_EncryptInit_ex(&ctx, CfengineCipher(type), NULL, key, iv);
+ //   EVP_CIPHER_CTX_init(&ctx);
+  //  EVP_EncryptInit_ex(&ctx, CfengineCipher(type), NULL, key, iv);
 
-    if (!EVP_EncryptUpdate(&ctx, out, &cipherlen, in, plainlen))
-    {
-        EVP_CIPHER_CTX_cleanup(&ctx);
-        return -1;
-    }
+  //  if (!EVP_EncryptUpdate(&ctx, out, &cipherlen, in, plainlen))
+  //  {
+ //       EVP_CIPHER_CTX_cleanup(&ctx);
+ //       return -1;
+  //  }
 
-    if (!EVP_EncryptFinal_ex(&ctx, out + cipherlen, &tmplen))
-    {
-        EVP_CIPHER_CTX_cleanup(&ctx);
-        return -1;
-    }
+ //   if (!EVP_EncryptFinal_ex(&ctx, out + cipherlen, &tmplen))
+ //   {
+   //     EVP_CIPHER_CTX_cleanup(&ctx);
+     //   return -1;
+  //  }
 
     cipherlen += tmplen;
-    EVP_CIPHER_CTX_cleanup(&ctx);
+  //  EVP_CIPHER_CTX_cleanup(&ctx);
     return cipherlen;
 }
 
