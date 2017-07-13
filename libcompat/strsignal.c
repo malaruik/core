@@ -29,7 +29,7 @@
 #include <sys/types.h>
 
 #if !HAVE_SNPRINTF
-// MAla - int rpl_snprintf(char *, size_t, const char *, ...);
+int rpl_snprintf(char *, size_t, const char *, ...);
 #endif
 
 #if !HAVE_DECL_STRSIGNAL
