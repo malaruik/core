@@ -537,7 +537,7 @@ int EncryptCopyRegularFileNet(const char *source, const char *dest, off_t size, 
     unsigned char iv[32] =
         { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 };
     long n_read_total = 0;
-    EVP_CIPHER_CTX crypto_ctx;
+    //EVP_CIPHER_CTX crypto_ctx;
 
     snprintf(cfchangedstr, 255, "%s%s", CF_CHANGEDSTR1, CF_CHANGEDSTR2);
 
@@ -566,7 +566,7 @@ int EncryptCopyRegularFileNet(const char *source, const char *dest, off_t size, 
     }
 
     workbuf[0] = '\0';
-    EVP_CIPHER_CTX_init(&crypto_ctx);
+    //EVP_CIPHER_CTX_init(&crypto_ctx);
 
     snprintf(in, CF_BUFSIZE - CF_PROTO_OFFSET, "GET dummykey %s", source);
     cipherlen = EncryptString(conn->encryption_type, in, out, conn->session_key, strlen(in) + 1);
@@ -695,7 +695,7 @@ int CopyRegularFileNet(const char *source, const char *dest, off_t size,
     const int buf_size = 2048;
 
     off_t n_read_total = 0;
-    EVP_CIPHER_CTX crypto_ctx;
+    //EVP_CIPHER_CTX crypto_ctx;
 
     /* We encrypt only for CLASSIC protocol. The TLS protocol is always over
      * encrypted layer, so it does not support encrypted (S*) commands. */
@@ -837,7 +837,7 @@ int CopyRegularFileNet(const char *source, const char *dest, off_t size,
             unlink(dest);
             close(dd);
             FlushFileStream(conn->conn_info->sd, size - n_read_total);
-            EVP_CIPHER_CTX_cleanup(&crypto_ctx);
+            //EVP_CIPHER_CTX_cleanup(&crypto_ctx);
             return false;
         }
 
