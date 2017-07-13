@@ -538,12 +538,12 @@ void PromiseRuntimeHash(const Promise *pp, const char *salt, unsigned char diges
     {
         if (pp->parent_promise_type->parent_bundle->ns)
         {
-            EVP_DigestUpdate(&context, pp->parent_promise_type->parent_bundle->ns, strlen(pp->parent_promise_type->parent_bundle->ns));
+          //  EVP_DigestUpdate(&context, pp->parent_promise_type->parent_bundle->ns, strlen(pp->parent_promise_type->parent_bundle->ns));
         }
 
         if (pp->parent_promise_type->parent_bundle->name)
         {
-            EVP_DigestUpdate(&context, pp->parent_promise_type->parent_bundle->name, strlen(pp->parent_promise_type->parent_bundle->name));
+          //  EVP_DigestUpdate(&context, pp->parent_promise_type->parent_bundle->name, strlen(pp->parent_promise_type->parent_bundle->name));
         }
     }
 
