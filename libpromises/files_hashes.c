@@ -40,7 +40,7 @@
 void HashFile(const char *filename, unsigned char digest[EVP_MAX_MD_SIZE + 1], HashMethod type)
 {
     FILE *file;
-    EVP_MD_CTX context;
+    //EVP_MD_CTX context;
     int len, md_len;
     unsigned char buffer[1024];
     const EVP_MD *md = NULL;
@@ -53,14 +53,14 @@ void HashFile(const char *filename, unsigned char digest[EVP_MAX_MD_SIZE + 1], H
     {
         md = EVP_get_digestbyname(HashNameFromId(type));
 
-        EVP_DigestInit(&context, md);
+      //  EVP_DigestInit(&context, md);
 
-        while ((len = fread(buffer, 1, 1024, file)))
-        {
-            EVP_DigestUpdate(&context, buffer, len);
-        }
+      //  while ((len = fread(buffer, 1, 1024, file)))
+      //  {
+      //      EVP_DigestUpdate(&context, buffer, len);
+      //  }
 
-        EVP_DigestFinal(&context, digest, &md_len);
+       // EVP_DigestFinal(&context, digest, &md_len);
 
         /* Digest length stored in md_len */
         fclose(file);
@@ -108,27 +108,27 @@ void HashString(const char *buffer, int len, unsigned char digest[EVP_MAX_MD_SIZ
 
 void HashPubKey(RSA *key, unsigned char digest[EVP_MAX_MD_SIZE + 1], HashMethod type)
 {
-    EVP_MD_CTX context;
+   // EVP_MD_CTX context;
     const EVP_MD *md = NULL;
     int md_len, i, buf_len, actlen;
     unsigned char *buffer;
 
-    if (key->n)
-    {
-        buf_len = (size_t) BN_num_bytes(key->n);
-    }
-    else
-    {
+   // if (key->n)
+  //  {
+ //       buf_len = (size_t) BN_num_bytes(key->n);
+  //  }
+ //   else
+ //   {
         buf_len = 0;
-    }
+ //   }
 
-    if (key->e)
-    {
-        if (buf_len < (i = (size_t) BN_num_bytes(key->e)))
-        {
+   // if (key->e)
+  //  {
+   //     if (buf_len < (i = (size_t) BN_num_bytes(key->e)))
+   //     {
             buf_len = i;
-        }
-    }
+     //   }
+  //  }
 
     buffer = xmalloc(buf_len + 10);
 
@@ -146,13 +146,13 @@ void HashPubKey(RSA *key, unsigned char digest[EVP_MAX_MD_SIZE + 1], HashMethod 
             Log(LOG_LEVEL_INFO, "Digest type %s not supported by OpenSSL library", HashNameFromId(type));
         }
 
-        EVP_DigestInit(&context, md);
+      //  EVP_DigestInit(&context, md);
 
-        actlen = BN_bn2bin(key->n, buffer);
-        EVP_DigestUpdate(&context, buffer, actlen);
-        actlen = BN_bn2bin(key->e, buffer);
-        EVP_DigestUpdate(&context, buffer, actlen);
-        EVP_DigestFinal(&context, digest, &md_len);
+       // actlen = BN_bn2bin(key->n, buffer);
+     //   EVP_DigestUpdate(&context, buffer, actlen);
+      //  actlen = BN_bn2bin(key->e, buffer);
+      //  EVP_DigestUpdate(&context, buffer, actlen);
+      //  EVP_DigestFinal(&context, digest, &md_len);
         break;
     }
 
