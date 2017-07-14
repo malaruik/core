@@ -62,7 +62,6 @@ script:
      - ./configure --cc=x86_64-w64-mingw32-gcc --enable-static
      - make
      - cd ..
-     - ls -l /usr/include/platform.h
      # -----------------------------------------------------------------------------------------------------
      #  PCRE building
      # -----------------------------------------------------------------------------------------------------
@@ -89,7 +88,6 @@ script:
      - ls -l ./include
      - pwd
      - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
-     - make depend
      - make &> build.log
      #- make
      #- make prefix=/openssl install &> install.log
@@ -138,6 +136,7 @@ script:
      - cp Makefile2 Makefile
      - cd ..
      - make V=1
+     #- cat /cf-serverd/Makefile
      #- cat Makefile
      #- make
      #- make install
