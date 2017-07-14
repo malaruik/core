@@ -1146,21 +1146,20 @@ static bool GeneratePolicyReleaseIDFromTree(char *release_id_out, size_t out_siz
     }
 
     // fallback, produce some pseudo sha1 hash
-    //EVP_MD_CTX crypto_ctx;
-    //EVP_DigestInit(&crypto_ctx, EVP_get_digestbyname(HashNameFromId(GENERIC_AGENT_CHECKSUM_METHOD)));
+    EVP_MD_CTX crypto_ctx;
+    EVP_DigestInit(&crypto_ctx, EVP_get_digestbyname(HashNameFromId(GENERIC_AGENT_CHECKSUM_METHOD)));
 
-   // bool success = HashDirectoryTree(policy_dir,
-   //                                  (const char *[]) { ".cf", ".dat", ".txt", ".conf", ".mustache", ".json", ".yaml", NULL},
-   //                                  &crypto_ctx);
+    bool success = HashDirectoryTree(policy_dir,
+                                     (const char *[]) { ".cf", ".dat", ".txt", ".conf", ".mustache", ".json", ".yaml", NULL},
+                                     &crypto_ctx);
 
     int md_len;
     unsigned char digest[EVP_MAX_MD_SIZE + 1] = { 0 };
-  //  EVP_DigestFinal(&crypto_ctx, digest, &md_len);
+    EVP_DigestFinal(&crypto_ctx, digest, &md_len);
 
     HashPrintSafe(release_id_out, out_size, digest,
                   GENERIC_AGENT_CHECKSUM_METHOD, false);
-    //return success;
-    return false;
+    return success;
 }
 
 static bool GeneratePolicyReleaseID(char *release_id_out, size_t out_size,
