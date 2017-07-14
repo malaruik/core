@@ -220,12 +220,12 @@ bool LoadSecretKeys(void)
         fclose(fp);
     }
 
-  //  if (NULL != PUBKEY
-       // && ((BN_num_bits(PUBKEY->e) < 2) || (!BN_is_odd(PUBKEY->e))))
-  //  {
+    if (NULL != PUBKEY
+        && ((BN_num_bits(PUBKEY->e) < 2) || (!BN_is_odd(PUBKEY->e))))
+    {
         Log(LOG_LEVEL_ERR, "The public key RSA exponent is too small or not odd");
         return false;
-  //  }
+    }
 
     return true;
 }
@@ -366,13 +366,13 @@ RSA *HavePublicKey(const char *username, const char *ipaddress, const char *dige
 
     fclose(fp);
 
-   // if ((BN_num_bits(newkey->e) < 2) || (!BN_is_odd(newkey->e)))
-   // {
-    //    Log(LOG_LEVEL_ERR, "RSA Exponent too small or not odd for key: %s",
-    //        newname);
-    //    RSA_free(newkey);
-    //    return NULL;
-   // }
+    if ((BN_num_bits(newkey->e) < 2) || (!BN_is_odd(newkey->e)))
+    {
+        Log(LOG_LEVEL_ERR, "RSA Exponent too small or not odd for key: %s",
+            newname);
+        RSA_free(newkey);
+        return NULL;
+    }
 
     return newkey;
 }
@@ -437,28 +437,28 @@ int EncryptString(char type, const char *in, char *out, unsigned char *key, int 
     int cipherlen = 0, tmplen;
     unsigned char iv[32] =
         { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 };
-  //  EVP_CIPHER_CTX ctx;
+    EVP_CIPHER_CTX ctx;
 
     if (key == NULL)
         ProgrammingError("EncryptString: session key == NULL");
 
- //   EVP_CIPHER_CTX_init(&ctx);
-  //  EVP_EncryptInit_ex(&ctx, CfengineCipher(type), NULL, key, iv);
+    EVP_CIPHER_CTX_init(&ctx);
+    EVP_EncryptInit_ex(&ctx, CfengineCipher(type), NULL, key, iv);
 
-  //  if (!EVP_EncryptUpdate(&ctx, out, &cipherlen, in, plainlen))
-  //  {
- //       EVP_CIPHER_CTX_cleanup(&ctx);
- //       return -1;
-  //  }
+    if (!EVP_EncryptUpdate(&ctx, out, &cipherlen, in, plainlen))
+    {
+        EVP_CIPHER_CTX_cleanup(&ctx);
+        return -1;
+    }
 
- //   if (!EVP_EncryptFinal_ex(&ctx, out + cipherlen, &tmplen))
- //   {
-   //     EVP_CIPHER_CTX_cleanup(&ctx);
-     //   return -1;
-  //  }
+    if (!EVP_EncryptFinal_ex(&ctx, out + cipherlen, &tmplen))
+    {
+        EVP_CIPHER_CTX_cleanup(&ctx);
+        return -1;
+    }
 
     cipherlen += tmplen;
-  //  EVP_CIPHER_CTX_cleanup(&ctx);
+    EVP_CIPHER_CTX_cleanup(&ctx);
     return cipherlen;
 }
 
@@ -469,33 +469,33 @@ int DecryptString(char type, const char *in, char *out, unsigned char *key, int 
     int plainlen = 0, tmplen;
     unsigned char iv[32] =
         { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 };
-   // EVP_CIPHER_CTX ctx;
+    EVP_CIPHER_CTX ctx;
 
     if (key == NULL)
         ProgrammingError("DecryptString: session key == NULL");
 
- //   EVP_CIPHER_CTX_init(&ctx);
- //   EVP_DecryptInit_ex(&ctx, CfengineCipher(type), NULL, key, iv);
+    EVP_CIPHER_CTX_init(&ctx);
+    EVP_DecryptInit_ex(&ctx, CfengineCipher(type), NULL, key, iv);
 
-  //  if (!EVP_DecryptUpdate(&ctx, out, &plainlen, in, cipherlen))
-  //  {
-  //      Log(LOG_LEVEL_ERR, "Failed to decrypt string");
-  //      EVP_CIPHER_CTX_cleanup(&ctx);
-  //      return -1;
-  //  }
+    if (!EVP_DecryptUpdate(&ctx, out, &plainlen, in, cipherlen))
+    {
+        Log(LOG_LEVEL_ERR, "Failed to decrypt string");
+        EVP_CIPHER_CTX_cleanup(&ctx);
+        return -1;
+    }
 
-    //if (!EVP_DecryptFinal_ex(&ctx, out + plainlen, &tmplen))
-  //  {
-  //      unsigned long err = ERR_get_error();
+    if (!EVP_DecryptFinal_ex(&ctx, out + plainlen, &tmplen))
+    {
+        unsigned long err = ERR_get_error();
 
-   //     Log(LOG_LEVEL_ERR, "Failed to decrypt at final of cipher length %d. (EVP_DecryptFinal_ex: %s)", cipherlen, ERR_error_string(err, NULL));
-   //     EVP_CIPHER_CTX_cleanup(&ctx);
-   //     return -1;
-   // }
+        Log(LOG_LEVEL_ERR, "Failed to decrypt at final of cipher length %d. (EVP_DecryptFinal_ex: %s)", cipherlen, ERR_error_string(err, NULL));
+        EVP_CIPHER_CTX_cleanup(&ctx);
+        return -1;
+    }
 
     plainlen += tmplen;
 
-   // EVP_CIPHER_CTX_cleanup(&ctx);
+    EVP_CIPHER_CTX_cleanup(&ctx);
 
     return plainlen;
 }

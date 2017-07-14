@@ -196,7 +196,7 @@ static bool SetSessionKey(AgentConnection *conn)
         return false;
     }
 
-    //conn->session_key = (unsigned char *) bp->d;
+    conn->session_key = (unsigned char *) bp->d;
     return true;
 }
 
@@ -293,14 +293,14 @@ int AuthenticateAgent(AgentConnection *conn, bool trust_key)
 /*Send the public key - we don't know if server has it */
 /* proposition C2 */
 
-    //memset(sendbuffer, 0, CF_EXPANDSIZE);
-    //len = BN_bn2mpi(PUBKEY->n, sendbuffer);
-    //SendTransaction(conn->conn_info, sendbuffer, len, CF_DONE);        /* No need to encrypt the public key ... */
+    memset(sendbuffer, 0, CF_EXPANDSIZE);
+    len = BN_bn2mpi(PUBKEY->n, sendbuffer);
+    SendTransaction(conn->conn_info, sendbuffer, len, CF_DONE);        /* No need to encrypt the public key ... */
 
 /* proposition C3 */
-    //memset(sendbuffer, 0, CF_EXPANDSIZE);
-   // len = BN_bn2mpi(PUBKEY->e, sendbuffer);
-   // SendTransaction(conn->conn_info, sendbuffer, len, CF_DONE);
+    memset(sendbuffer, 0, CF_EXPANDSIZE);
+    len = BN_bn2mpi(PUBKEY->e, sendbuffer);
+    SendTransaction(conn->conn_info, sendbuffer, len, CF_DONE);
 
 /* check reply about public key - server can break conn_info here */
 
@@ -432,14 +432,14 @@ int AuthenticateAgent(AgentConnection *conn, bool trust_key)
             return false;
         }
 
-     //   if ((newkey->n = BN_mpi2bn(in, len, NULL)) == NULL)
-     //   {
-     //       Log(LOG_LEVEL_ERR,
-     //           "Private key decrypt failed. (BN_mpi2bn: %s)",
-     //           CryptoLastErrorString());
-     //       RSA_free(newkey);
-     //       return false;
-     //   }
+        if ((newkey->n = BN_mpi2bn(in, len, NULL)) == NULL)
+        {
+            Log(LOG_LEVEL_ERR,
+                "Private key decrypt failed. (BN_mpi2bn: %s)",
+                CryptoLastErrorString());
+            RSA_free(newkey);
+            return false;
+        }
 
         /* proposition S5 - conditional */
 
@@ -451,14 +451,14 @@ int AuthenticateAgent(AgentConnection *conn, bool trust_key)
             return false;
         }
 
-     //   if ((newkey->e = BN_mpi2bn(in, len, NULL)) == NULL)
-      //  {
-      //      Log(LOG_LEVEL_ERR,
-      //          "Public key decrypt failed. (BN_mpi2bn: %s)",
-     //           CryptoLastErrorString());
-     //       RSA_free(newkey);
-     //       return false;
-     //   }
+        if ((newkey->e = BN_mpi2bn(in, len, NULL)) == NULL)
+        {
+            Log(LOG_LEVEL_ERR,
+                "Public key decrypt failed. (BN_mpi2bn: %s)",
+                CryptoLastErrorString());
+            RSA_free(newkey);
+            return false;
+        }
 
         server_pubkey = RSAPublicKey_dup(newkey);
         RSA_free(newkey);
