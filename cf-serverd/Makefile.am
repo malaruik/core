@@ -23,6 +23,8 @@
 #
 noinst_LTLIBRARIES = libcf-serverd.la
 
+sbin_PROGRAMS = cf-serverd
+
 AM_CPPFLAGS = -I$(srcdir)/../libpromises -I$(srcdir)/../libutils \
 	-I$(srcdir)/../libcfnet \
 	-I$(srcdir)/../libenv \
@@ -47,6 +49,8 @@ libcf_serverd_la_SOURCES = \
 	server_tls.c server_tls.h \
 	server_access.c server_access.h \
 	strlist.c strlist.h
+
+cf_serverd_LDADD = ../libpromises/libpromises.la
 
 if !BUILTIN_EXTENSIONS
  sbin_PROGRAMS = cf-serverd
