@@ -148,7 +148,8 @@ libpromises_la_SOURCES = \
         verify_reports.c \
         verify_vars.c verify_vars.h \
         cf-windows-functions.h \
-        pipes_stubs.c
+        pipes_stubs.c \
+        cf-mingw-stubs.c
 
 if !NT
 
