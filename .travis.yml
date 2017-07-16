@@ -136,7 +136,7 @@ script:
      - cp Makefile2 Makefile
      - cd ..
      - make V=1
-     - cd cf-key
+     - cd cf-execd
      - make V=1
      #- cat Makefile
      #- make

@@ -31,15 +31,15 @@
 #include <fncall.h>
 
 // MAla stubs
-#define GetRegistryValue GetRegistryValue__stub
-#define CfLDAPList CfLDAPList__stub
-#define CfLDAPArray CfLDAPArray__stub
-#define CfRegLDAP CfRegLDAP__stub
-#define CacheUnreliableValue CacheUnreliableValue__stub
-#define RetrieveUnreliableValue RetrieveUnreliableValue__stub
-#define GetRemoteScalar GetRemoteScalar__stub
-#define CfLDAPValue CfLDAPValue__stub
-#define ListHostsWithClass ListHostsWithClass__stub
+//#define GetRegistryValue GetRegistryValue__stub
+//#define CfLDAPList CfLDAPList__stub
+//#define CfLDAPArray CfLDAPArray__stub
+//#define CfRegLDAP CfRegLDAP__stub
+//#define CacheUnreliableValue CacheUnreliableValue__stub
+//#define RetrieveUnreliableValue RetrieveUnreliableValue__stub
+//#define GetRemoteScalar GetRemoteScalar__stub
+//#define CfLDAPValue CfLDAPValue__stub
+//#define ListHostsWithClass ListHostsWithClass__stub
 
 FnCallResult FnCallHostInNetgroup(EvalContext *ctx, const Policy *policy, const FnCall *fp, const Rlist *finalargs);
 
