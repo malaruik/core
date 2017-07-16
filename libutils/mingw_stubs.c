@@ -1,6 +1,7 @@
 #include <logging.h>
 #include <dir.h>
 
+
 Dir *DirOpen(const char *dirname)
 {
   //MAla
