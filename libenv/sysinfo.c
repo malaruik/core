@@ -708,7 +708,7 @@ static void GetNameInfo3(EvalContext *ctx)
 # endif
 #endif /* !__MINGW32__ */
 
-    EnterpriseContext(__stubctx);
+    EnterpriseContext__stub(ctx);
 
     snprintf(workbuf, sizeof(workbuf), "%u_bit", (unsigned) sizeof(void*) * 8);
     EvalContextClassPutHard(ctx, workbuf, "source=agent");
