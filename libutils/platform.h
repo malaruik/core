@@ -655,8 +655,7 @@ const char *inet_ntop(int af, const void *src, char *dst, socklen_t size);
 #if !HAVE_DECL_INET_PTON
 int inet_pton(int af, const char *src, void *dst);
 #endif
-//MAla
-//#if !HAVE_DECL_GETADDRINFO
+#if !HAVE_DECL_GETADDRINFO
 int getaddrinfo(const char *node, const char *service,
                 const struct addrinfo *hints, struct addrinfo **res);
 void freeaddrinfo(struct addrinfo *res);
@@ -664,7 +663,7 @@ int getnameinfo(const struct sockaddr *sa, socklen_t salen,
                 char *node, socklen_t nodelen,
                 char *service, socklen_t servicelen, int flags);
 const char *gai_strerror(int errcode);
-//#endif
+#endif
 #if !HAVE_STRUCT_SOCKADDR_STORAGE
     #ifdef AF_INET6
         #define sockaddr_storage sockaddr_in6
