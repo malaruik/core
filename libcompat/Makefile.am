@@ -29,7 +29,8 @@ libcompat_la_LIBADD = $(LTLIBOBJS)
 
 libcompat_la_SOURCES = \
 	generic_at.c generic_at.h \
-	getopt.c \
+	getaddrinfo.c \
+        getopt.c \
 	getopt1.c
 
 EXTRA_DIST = \
