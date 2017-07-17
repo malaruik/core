@@ -27,7 +27,8 @@ libenv_la_SOURCES = \
 	constants.c constants.h \
         sysinfo.c sysinfo.h sysinfo_priv.h \
         time_classes.c time_classes.h \
-        zones.c zones.h
+        zones.c zones.h \
+        libenv_stubs.c
 
 if !NT
 libenv_la_SOURCES += \
