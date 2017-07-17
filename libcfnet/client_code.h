@@ -31,6 +31,10 @@
 
 #include <communication.h>
 
+// MAla
+#define CfEnterpriseOptions CfEnterpriseOptions__stub
+#define CfengineCipher CfengineCipher__stub
+#define CfSessionKeySize CfSessionKeySize__stub
 
 bool cfnet_init(const char *tls_min_version, const char *ciphers);
 void cfnet_shut(void);
