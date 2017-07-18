@@ -80,14 +80,14 @@ script:
      # --------------------------------------------------------------------------
      #  OpenSSL building
      # --------------------------------------------------------------------------
-     - git clone https://github.com/openssl/openssl.git --branch OpenSSL_0_9_8-stable
-     #- git clone https://github.com/openssl/openssl.git --branch master
+     #- git clone https://github.com/openssl/openssl.git --branch OpenSSL_0_9_8-stable
+     - git clone https://github.com/openssl/openssl.git --branch master
      - cd openssl
      - pwd
      - ls -l ./ssl
      - ls -l ./include
      - pwd
-     - env CC=x86_64-w64-mingw32-gcc ./Configure VC-WIN64A no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make &> build.log
      #- make
      #- make prefix=/openssl install &> install.log
