@@ -2,6 +2,10 @@
 #include <dir.h>
 
 
+#define ioctlsocket(a,b,c)      ioctl(a,b,c)
+#define closesocket(s)          close(s)
+
+
 Dir *DirOpen(const char *dirname)
 {
   //MAla
