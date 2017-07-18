@@ -655,7 +655,7 @@ const char *inet_ntop(int af, const void *src, char *dst, socklen_t size);
 #if !HAVE_DECL_INET_PTON
 int inet_pton(int af, const char *src, void *dst);
 #endif
-#if !HAVE_DECL_GETADDRINFO
+#if HAVE_DECL_GETADDRINFO
 int getaddrinfo(const char *node, const char *service,
                 const struct addrinfo *hints, struct addrinfo **res);
 void freeaddrinfo(struct addrinfo *res);

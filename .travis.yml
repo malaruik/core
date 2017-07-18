@@ -87,7 +87,7 @@ script:
      - ls -l ./ssl
      - ls -l ./include
      - pwd
-     - env CFLAGS="-DWINDOWS" CC=x86_64-w64-mingw32-gcc ./Configure -DWINDOWS mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - env CFLAGS="-DWINDOWS" CC=x86_64-w64-mingw32-gcc ./Configure -DSOLE_AUTHENTICATION_SERVICE -DWINDOWS mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
      - make &> build.log
      #- make
      #- make prefix=/openssl install &> install.log
