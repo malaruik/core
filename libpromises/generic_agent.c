@@ -1526,11 +1526,11 @@ static void CheckWorkingDirectories(EvalContext *ctx)
         snprintf(vbuff, CF_BUFSIZE, "%s%cmodules%c.", workdir, FILE_SEPARATOR, FILE_SEPARATOR);
         MakeParentDirectory(vbuff, false);
 
-        if (chown(vbuff, getuid(), getgid()) == -1)
-        {
-            Log(LOG_LEVEL_ERR, "Unable to set owner on '%s' to '%ju.%ju'. (chown: %s)", vbuff,
-                (uintmax_t)getuid(), (uintmax_t)getgid(), GetErrorStr());
-        }
+        //if (chown(vbuff, getuid(), getgid()) == -1)
+        //{
+        //    Log(LOG_LEVEL_ERR, "Unable to set owner on '%s' to '%ju.%ju'. (chown: %s)", vbuff,
+        //        (uintmax_t)getuid(), (uintmax_t)getgid(), GetErrorStr());
+        //}
 
         chmod(vbuff, (mode_t) 0700);
     }
