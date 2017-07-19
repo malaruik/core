@@ -456,8 +456,9 @@ static FilePerms GetPermissionConstraints(const EvalContext *ctx, const Promise 
         PromiseRef(LOG_LEVEL_ERR, pp);
     }
 
-    p.owners = Rlist2UidList((Rlist *) PromiseGetConstraintAsRval(pp, "owners", RVAL_TYPE_LIST), pp);
-    p.groups = Rlist2GidList((Rlist *) PromiseGetConstraintAsRval(pp, "groups", RVAL_TYPE_LIST), pp);
+    // MAla: unix only?
+    //p.owners = Rlist2UidList((Rlist *) PromiseGetConstraintAsRval(pp, "owners", RVAL_TYPE_LIST), pp);
+    //p.groups = Rlist2GidList((Rlist *) PromiseGetConstraintAsRval(pp, "groups", RVAL_TYPE_LIST), pp);
 
     p.findertype = PromiseGetConstraintAsRval(pp, "findertype", RVAL_TYPE_SCALAR);
     p.rxdirs = PromiseGetConstraintAsBoolean(ctx, "rxdirs", pp);
