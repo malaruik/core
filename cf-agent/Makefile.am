@@ -101,7 +101,8 @@ libcf_agent_la_SOURCES = \
         verify_new_packages.c verify_new_packages.h \
         verify_users.c verify_users.h \
         cf-agent-windows-functions.h \
-        cf-agent-stubs.c
+        cf-agent-stubs.c \ 
+        verify_users_stub.c
 
 if !NT
 libcf_agent_la_SOURCES += nfs.c nfs.h
