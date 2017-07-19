@@ -221,7 +221,7 @@ static PromiseResult VerifyProcessOp(EvalContext *ctx, Attributes a, const Promi
             }
         }
 
-        killed = DoAllSignals(ctx, killlist, a, pp, &result);
+        killed = DoAllSignals__stub(ctx, killlist, a, pp, &result);
     }
 
 /* delegated promise to restart killed or non-existent entries */
