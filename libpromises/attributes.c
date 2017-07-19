@@ -769,7 +769,7 @@ FileChange GetChangeMgtConstraints(const EvalContext *ctx, const Promise *pp)
 
     if (value && (strcmp(value, "best") == 0))
     {
-        c.hash = GetBestFileChangeHashMethod();
+        c.hash = GetBestFileChangeHashMethod__stub();
     }
     else if (value && (strcmp(value, "md5") == 0))
     {
