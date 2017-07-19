@@ -1,5 +1,4 @@
-include <cf3.defs.h>
-
+#include <cf3.defs.h>
 #include <cfnet.h>
 #include <comparray.h>
 #include <generic_agent.h>
