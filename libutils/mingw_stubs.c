@@ -1,6 +1,6 @@
 #include <logging.h>
 #include <dir.h>
-
+#include <file_lib.h>
 
 #define ioctlsocket(a,b,c)      ioctl(a,b,c)
 #define closesocket(s)          close(s)
