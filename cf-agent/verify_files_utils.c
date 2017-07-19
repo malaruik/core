@@ -2120,10 +2120,11 @@ PromiseResult VerifyFileAttributes(EvalContext *ctx, const char *file, struct st
 # endif
 #endif
 
-    if (VerifyOwner(ctx, file, pp, attr, dstat, &result))
-    {
-        /* nop */
-    }
+    // MAla: not mingw stuff
+    //if (VerifyOwner(ctx, file, pp, attr, dstat, &result))
+    //{
+    //    /* nop */
+    //}
 
 #ifdef __MINGW32__
     if (NovaWin_FileExists(file) && !NovaWin_IsDir(file))
@@ -3083,7 +3084,7 @@ static PromiseResult VerifyFileIntegrity(EvalContext *ctx, const char *file, Att
         {
             destination[0] = '\0';
         }
-        LogFileChange(ctx, file, changed, attr, pp, &CopyRegularFile, destination, &DeleteCompressedArray);
+        LogFileChange__stub(ctx, file, changed, attr, pp, &CopyRegularFile, destination, &DeleteCompressedArray);
     }
 
     return result;
