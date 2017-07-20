@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
    */
-    GenericAgentPostLoadInit(ctx);
+    //GenericAgentPostLoadInit(ctx);
     ThisAgentInit();
 
     // MAla: Multiple implementations - needs to be checked
@@ -79,8 +79,8 @@ int main(int argc, char *argv[])
 
     if (threads_left <= 0)
     {
-        PolicyDestroy(policy);
-        GenericAgentFinalize(ctx, config);
+        //PolicyDestroy(policy);
+        //GenericAgentFinalize(ctx, config);
         //CleanReportBookFilterSet();
     }
 

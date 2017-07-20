@@ -136,10 +136,6 @@ script:
      - cp Makefile2 Makefile
      - cd ..
      - make V=1
-     - cd cf-agent
-     - make V=1
-     #- cat Makefile
-     #- make
      #- make install
      #- cd ..
      #
