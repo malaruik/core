@@ -148,7 +148,8 @@ int main(int argc, char *argv[])
 #ifdef __MINGW32__
     if (WINSERVICE)
     {
-        NovaWin_StartExecService();
+        //MAla: c file somewhere?
+        //NovaWin_StartExecService();
     }
     else
 #endif /* __MINGW32__ */
@@ -260,7 +261,7 @@ static GenericAgentConfig *CheckOpts(int argc, char **argv)
         case 'V':
         {
             Writer *w = FileWriter(stdout);
-            GenericAgentWriteVersion(w);
+            GenericAgentWriteVersion__stub(w);
             FileWriterDetach(w);
         }
         exit(EXIT_SUCCESS);
