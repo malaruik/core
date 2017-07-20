@@ -77,12 +77,12 @@ int main(int argc, char *argv[])
 
     //int threads_left = StartServer(ctx, &policy, config);
 
-    if (threads_left <= 0)
-    {
+    //if (threads_left <= 0)
+    //{
         //PolicyDestroy(policy);
         //GenericAgentFinalize(ctx, config);
         //CleanReportBookFilterSet();
-    }
+    //}
 
     return 0;
 }
