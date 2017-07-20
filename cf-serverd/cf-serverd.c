@@ -52,6 +52,8 @@ int main(int argc, char *argv[])
              fd == STDERR_FILENO);
     close(fd);
 
+  //MAla
+  /*
     GenericAgentConfig *config = CheckOpts(argc, argv);
     EvalContext *ctx = EvalContextNew();
     GenericAgentConfigApply(ctx, config);
@@ -65,20 +67,21 @@ int main(int argc, char *argv[])
         Log(LOG_LEVEL_ERR, "Error reading CFEngine policy. Exiting...");
         exit(EXIT_FAILURE);
     }
-
+   */
     GenericAgentPostLoadInit(ctx);
     ThisAgentInit();
 
-    KeepPromises(ctx, policy, config);
-    Summarize();
+    // MAla: Multiple implementations - needs to be checked
+    //KeepPromises(ctx, policy, config);
+    //Summarize();
 
-    int threads_left = StartServer(ctx, &policy, config);
+    //int threads_left = StartServer(ctx, &policy, config);
 
     if (threads_left <= 0)
     {
         PolicyDestroy(policy);
         GenericAgentFinalize(ctx, config);
-        CleanReportBookFilterSet();
+        //CleanReportBookFilterSet();
     }
 
     return 0;
