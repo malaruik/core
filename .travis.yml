@@ -136,7 +136,8 @@ script:
      - cp Makefile2 Makefile
      - cd ..
      - make V=1
-     #- make install
+     - make install
+     - ls -l
      #- cd ..
      #
      #-----------------------------------------------------------------------
