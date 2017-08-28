@@ -20,6 +20,7 @@ before_install:
 
 before_script:
     #- export PATH=$PATH:/usr/bin/x86_64-w64-mingw32
+     - travis encrypt OPPO=7146457fa76a8ab7ba9e1f60b12878846c375f19 --add
 
 install:
      #- sudo sed -i 's/precise/trusty/g' /etc/apt/sources.list;
@@ -38,7 +39,7 @@ install:
 
 deploy: 
   provider: releases 
-  api_key: 
+  api_key: OPPO
     secure: 7146457fa76a8ab7ba9e1f60b12878846c375f19 
   file: "$TRAVIS_BUILD_DIR/cf-key/cf-key.exe" 
   skip_cleanup: true 
