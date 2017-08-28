@@ -36,6 +36,15 @@ install:
      - export CXX=x86_64-w64-mingw32-g++
      - sudo apt-get install autopoint gettext
 
+deploy:
+  provider: releases
+    api_key:
+        secure: 7146457fa76a8ab7ba9e1f60b12878846c375f19
+	  file: "$TRAVIS_BUILD_DIR/core/cf-key/cf-key.exe"
+	    skip_cleanup: true
+	      on:
+	          tags: true
+
 addons:
   apt:
     packages:
