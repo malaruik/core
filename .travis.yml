@@ -43,8 +43,7 @@ deploy:
   file: "$TRAVIS_BUILD_DIR/cf-key/cf-key.exe" 
   skip_cleanup: true 
   on:
-    repo: "malaruik/core" 
-    tags: true 
+    repo: "malaruik/core"
 
 addons:
   apt:
