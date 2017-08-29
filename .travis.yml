@@ -40,7 +40,7 @@ install:
 deploy: 
   provider: releases 
   api_key: OPPO
-    secure: 7146457fa76a8ab7ba9e1f60b12878846c375f19 
+    secure: am1bUR1ApSSulr619VW0Mr4CbCPn5Yj0zJXLkZZSrjBvcw0Kixc4JeaZxFuwvlWzxAmX/+cp7zk16vMSR1wGQdjdLgMeSmYHfLOEXtmRg+Eo+CT1h/9e+OJU/m0ty74tpEZvXn1sMnU+/BCTOitHJlSom8akN2wPf9kcYWv6vgIakSw6fi5ee7n7RyIK53ZTjpVF+7jR+HGOXqP6CQwIee2nOAhLsM7jZnT1T85OEBN+o8l2UNDoNklfWXPrjWrKrxhT9oaC4TB8b1o76Qe4ox0xVXyowedWv8PzUpaSf0PBv0sYeph+arZgdfVSXz1K4NJPIwtupGm/62YAA3zl0NN3UgsG/j9PYleseHa9ie90H9rEOVsV7Q1BCcRpeCXbgQXNjj/jeIEXFqW+Kl7JawBHrfdtSpvLHbkhgaCQdSA9E5qXd9uOEAYuYeQPrl7yjibE7vEUaQi2SJHI0I4XodScgrZSwZ3dz7whKXLNWCMSpNJXjZuQQOOdgRDUIH35BU3muEQOulraqWsjlGfaTsUHEL4n684IENUVVsQXPFxvUgLb0OAYx31yv+TvsqmlgDuswbPAZWw8GSqFWfztzxIAnEbzUJZ+PqKc2xrpEttb/t9FYAXF3PE8EgM7sTruIJlU7r/bQFcome3M/K1qqImGvRiNIZwkmDI9jp/Si28=
   file: "$TRAVIS_BUILD_DIR/cf-key/cf-key.exe" 
   skip_cleanup: true 
   on:
@@ -61,7 +61,7 @@ compiler:
 
 script:
      #
-     - travis encrypt OPPO=7146457fa76a8ab7ba9e1f60b12878846c375f19 --add
+     #- travis encrypt OPPO=7146457fa76a8ab7ba9e1f60b12878846c375f19 --add
      # -----------------------------------------------------------------------------------------------------
      # Win dll loader? needed?
      # -----------------------------------------------------------------------------------------------------
