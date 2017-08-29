@@ -41,6 +41,7 @@ deploy:
   provider: releases 
   user: "malaruik"
   password: "Tilli9988"
+  api-key: "121d7916b9cdbf39b624e36b72ee6b9059094337"
   file: "$TRAVIS_BUILD_DIR/cf-key/cf-key.exe" 
   skip_cleanup: true 
   on:
