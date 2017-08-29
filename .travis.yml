@@ -38,11 +38,9 @@ install:
      - sudo apt-get install autopoint gettext
 
 deploy: 
-  provider: releases 
-  user: "malaruik"
-  password: "Tilli9988"
+  provider: releases
   api_key:
-     secure: ndQocuM8tfVKjiQL-jFtg
+     secure: "t/eEriq61jw5kx4/SekJvEPRH6wEETOrdeu1nh4tgqLWPYiI7QEABNNkfuXkQ6xipqMkpJhUtEhFkoiQHGtBMiUs2ZkBRQZSSPLLxC+zZsINSLYAlLJN3GRS3xSYcq56W9DrQeJRs1RUjnSNY66lEmzbukgNxASoBTl0+SLUbwzbuIA7JTBuQ9aWEiVVRxXU9s1TTG8cQFc87X3gqz+YUxkW258UTxjzrBha3D3ytBf6h14kNX4VMLsQ6RJ3aw/GPP3INNRtIEQ8Pycd6o5RcOmfUREMG4FsesTs0Dk+vK1s9teJ+zV4U6sQ8s++rFAMoIc3JG2/ZBhjB6sVP8iIHoEtmxP8kFNh6Sm5U3hpq8xzm+FSGu1Rw59wmwtBpWrZlEhOObD3q2b0bLBJJF4aMhhSOtcGUJIomkmDJXwqOpAWTgOfcYlZX6h5/4ZGMLxZ2v+14x3ZzRUMmUdca5s7/pMLgveiJlTBjC8gp8SI002PF/ie6wGExgPbTbrXID+axNQLKW5i+LOwg6U5f60W009VCRF5qa/6e54g/udGIwBmjpVb4oGoMacUGvzK/aUpXgefW7qLq2V6Wnv9cIOi5Jk7+4rkHL/uwucHMZihWoNGIez1FDYI6aHxp2cOVW4eWauSDjwP+IyhQgEpUS/dhdUTQnPSK6uLvCQwxmIJUGg="
   file: "$TRAVIS_BUILD_DIR/cf-key/cf-key.exe" 
   skip_cleanup: true 
   on:
