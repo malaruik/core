@@ -41,7 +41,7 @@ deploy:
   skip_cleanup: true 
   on:
     repo: "malaruik/core"
-    all_branches: true
+    branch: 3.9.1-kortemik-mingw-malaruik-mingw
     tags: true
 
 addons:
