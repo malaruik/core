@@ -148,7 +148,7 @@ script:
      - make install
      - ls -l
      - cd bin
-     - make dist
+     - zip x86_64-w64-mingw32-cf-agent.exe
      - ls -l
      - cd ..
      #- cd ..
