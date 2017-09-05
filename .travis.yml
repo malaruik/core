@@ -37,7 +37,7 @@ deploy:
   provider: releases
   api_key:
     secure: "enPvdj1sTN8r9oGUo5aN9iS8zpAKxaDrLROAi2AfogZyxwM9met+IqRWdpl1XKif2AKnsAyXM/sejVZBt8L+2dlbYqcJZKkHSmi+9Hf2edoT1Tq6bR3m1DmHPrVchwuiY/2oodrsDKmjYFUXHoxSyzqeuJSa+6EGIej+REeUaKie8u5kHmXEAz/2veSiM49qsNYifnMn1oQ19LHFRE67GMSpCAnaifoNL8OQqpl8+a2kUmL4JuHXgcEozYEMt6IDNRkjCJToWZ6Zm7uGgs43g6F08VZWULe+eUenTy9ucuIkGTM6oF0G7UhLv2FI+tfVcUbY9NOmT1Ru1gOkMDjiARKTqWDERgaQ4xpiOHTBewPsEbK0RDRv7CGINhnM/iauIp0KZzl+2qL1LeKaySFGV57ojPAH7f0OTPaMbe8hj7hb0JEIkB6QCcNBhfSuO4oc7RRvsHZvY7aSvkddbyUAc4IclkdfdlpxeKftrUnjjXT/W7Y51JEiUu1f69fWJ0TRjHZ99HVolv/WTnnWFuDbLT2gC8XZgh3fh/iGXEKtHvvS22e1K3sUWKzsj/P1XO/xtOeDD/2/IBBq4FG1A7/IsN/w4Duw89HuuX3ZSYh9OQ0XZM5i5vGXIkk9zJn/CP6AzlqjlHm90Ndc6aYWiA1WgTZQhGJUY/RqHf1j45YIjOY="
-  file: "$TRAVIS_BUILD_DIR/bin/x86_64-w64-mingw32-cf-agent.exe" 
+  file: "$TRAVIS_BUILD_DIR/bin/x86_64-w64-mingw32-cf-serverd.exe" 
   skip_cleanup: true 
   on:
     repo: "malaruik/core"
