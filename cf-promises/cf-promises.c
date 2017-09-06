@@ -182,7 +182,7 @@ int main(int argc, char *argv[])
 
     if (SHOWREPORTS)
     {
-        ShowPromises(policy->bundles, policy->bodies);
+        ShowPromises__stub(policy->bundles, policy->bodies);
     }
 
     switch (config->agent_specific.common.policy_output_format)
@@ -385,7 +385,7 @@ GenericAgentConfig *CheckOpts(int argc, char **argv)
         case 'V':
         {
             Writer *w = FileWriter(stdout);
-            GenericAgentWriteVersion(w);
+            GenericAgentWriteVersion__stub(w);
             FileWriterDetach(w);
         }
         exit(EXIT_SUCCESS);
