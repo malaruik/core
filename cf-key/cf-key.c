@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
 
     if(LICENSE_INSTALL)
     {
-        bool success = LicenseInstall(LICENSE_SOURCE);
+        bool success = LicenseInstall__stub(LICENSE_SOURCE);
         return success ? 0 : 1;
     }
 
@@ -253,7 +253,7 @@ static GenericAgentConfig *CheckOpts(int argc, char **argv)
         case 'V':
             {
                 Writer *w = FileWriter(stdout);
-                GenericAgentWriteVersion(w);
+                GenericAgentWriteVersion__stub(w);
                 FileWriterDetach(w);
             }
             exit(EXIT_SUCCESS);
