@@ -149,7 +149,7 @@ script:
      - make install
      - ls -l
      - cd bin
-     - rename x84_64-w64-mingw32-cf-agent.exe cf-agent.exe
+     - mv x84_64-w64-mingw32-cf-agent.exe cf-agent.exe
      - ls -l
      #- cd ..
      #
