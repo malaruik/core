@@ -384,7 +384,7 @@ static Averages EvalAvQ(EvalContext *ctx, char *t)
         char desc[CF_BUFSIZE];
         double This;
         name[0] = '\0';
-        GetObservable(i, name, desc);
+        GetObservable__stub(i, name, desc);
 
         /* Overflow protection */
 
@@ -596,7 +596,7 @@ static void ArmClasses(EvalContext *ctx, Averages av)
     {
         char desc[CF_BUFSIZE];
 
-        GetObservable(i, name, desc);
+        GetObservable__stub(i, name, desc);
         sigma = SetClasses(ctx, name, CF_THIS[i], av.Q[i].expect, av.Q[i].var, LOCALAV.Q[i].expect, LOCALAV.Q[i].var, &mon_data);
         SetVariable(name, CF_THIS[i], av.Q[i].expect, sigma, &mon_data);
 

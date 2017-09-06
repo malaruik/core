@@ -182,7 +182,7 @@ static GenericAgentConfig *CheckOpts(int argc, char **argv)
         case 'V':
         {
             Writer *w = FileWriter(stdout);
-            GenericAgentWriteVersion(w);
+            GenericAgentWriteVersion__stub(w);
             FileWriterDetach(w);
         }
         exit(EXIT_SUCCESS);

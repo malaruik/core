@@ -48,7 +48,7 @@ PromiseResult VerifyMeasurementPromise(EvalContext *ctx, double *measurement, co
         return PROMISE_RESULT_INTERRUPTED;
     }
 
-    return VerifyMeasurement(ctx, measurement, a, pp);
+    return VerifyMeasurement__stub(ctx, measurement, a, pp);
 }
 
 /*****************************************************************************/
