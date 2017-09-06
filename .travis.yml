@@ -150,6 +150,11 @@ script:
      - mv x86_64-w64-mingw32-cf-key.exe cf-key.txt
      - mv x86_64-w64-mingw32-cf-execd.exe cf-execd.txt
      - mv x86_64-w64-mingw32-cf-monitord.exe cf-monitord.txt
+     - mv x86_64-w64-mingw32-cf-serverd.exe cf-serverd.txt
+     - mv x86_64-w64-mingw32-cf-runagent.exe cf-runagent.txt
+     - mv x86_64-w64-mingw32-cf-promises.exe cf-promises.txt
+     - mv x86_64-w64-mingw32-cf-upgrade.exe cf-upgrade.txt
+     - mv x86_64-w64-mingw32-rpmvercmp.exe rpmvercmp.txt
      - ls -l
      #- cd ..
      #
