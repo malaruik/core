@@ -673,7 +673,7 @@ static void ArmClasses(EvalContext *ctx, Averages av)
         }
     }
 
-    SetMeasurementPromises(&mon_data);
+    SetMeasurementPromises__stub(&mon_data);
 
     // Report on the open ports, in various ways
 
