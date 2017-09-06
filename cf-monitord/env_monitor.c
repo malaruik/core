@@ -163,7 +163,7 @@ void MonitorInitialize(void)
 
     MonNetworkInit();
     MonTempInit();
-    MonOtherInit();
+    MonOtherInit__stub();
 
     Log(LOG_LEVEL_DEBUG, "Finished with monitor initialization");
 }
@@ -349,7 +349,7 @@ static void GetQ(EvalContext *ctx, const Policy *policy)
     MonNetworkSnifferGatherData();
     MonTempGatherData(CF_THIS);
 #endif /* !__MINGW32__ */
-    MonOtherGatherData(CF_THIS);
+    MonOtherGatherData__stub(CF_THIS);
     GatherPromisedMeasures(ctx, policy);
 }
 
@@ -773,7 +773,7 @@ static void UpdateAverages(EvalContext *ctx, char *timekey, Averages newvals)
     WriteDB(dbp, "DATABASE_AGE", &AGE, sizeof(double));
 
     CloseDB(dbp);
-    HistoryUpdate(ctx, newvals);
+    HistoryUpdate__stub(ctx, newvals);
 }
 
 static int Day2Number(const char *datestring)
