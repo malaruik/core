@@ -149,6 +149,7 @@ script:
      - make install
      - ls -l
      - cp $TRAVIS_BUILD_DIR/pcre/.libs/libpcre-1.dll bin/
+     - cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll bin/
      - cd bin
      - mv x86_64-w64-mingw32-cf-agent.exe cf-agent.exe
      - mv x86_64-w64-mingw32-cf-key.exe cf-key.exe
