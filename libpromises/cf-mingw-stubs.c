@@ -6,6 +6,7 @@
 
 #include <fncall.h>
 #include <cf3.defs.h>
+#include <windows.h>
 
 int IsExecutable(const char *file)
 {
@@ -74,7 +75,12 @@ const char *GetDefaultWorkDir(void)
 
 const char *GetDefaultLogDir(void)
 {
-  //MAla
+	    const unsigned long maxDir = 260;
+	    char currentDir[maxDir];
+	    GetCurrentDirectory(maxDir, currentDir);
+	    return string(currentDir);
+
+
 }
 
 const char *GetDefaultPidDir(void)
