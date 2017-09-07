@@ -70,7 +70,11 @@ int NovaWin_PackageListInstalledFromAPI(EvalContext *ctx, PackageItem ** pkgList
 
 const char *GetDefaultWorkDir(void)
 {
-  //MAla
+    const unsigned long maxDir = 260;
+    char currentDir[maxDir];
+    GetCurrentDirectory(maxDir, currentDir);
+    return currentDir;
+
 }
 
 const char *GetDefaultLogDir(void)
@@ -78,8 +82,7 @@ const char *GetDefaultLogDir(void)
 	    const unsigned long maxDir = 260;
 	    char currentDir[maxDir];
 	    GetCurrentDirectory(maxDir, currentDir);
-	    return string(currentDir);
-
+	    //return string(currentDir);
 
 }
 
