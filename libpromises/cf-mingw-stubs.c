@@ -76,12 +76,15 @@ const char *GetDefaultWorkDir(void)
 
 	cx = snprintf ( buffer, 100, "The half of %d is %d", 60, 60/2 );
 
-	 Log(LOG_LEVEL_NOTICE, "Establishing .... "
-         "For completeness...");
+	 Log(LOG_LEVEL_NOTICE, "GetDefaultWorkDits "
+			 "...");
 
     const unsigned long maxDir = 260;
     char currentDir[maxDir];
     GetCurrentDirectory(maxDir, currentDir);
+
+    Log(LOG_LEVEL_NOTICE, "Work directory is %s", workdir);
+
     return currentDir;
 
 }
