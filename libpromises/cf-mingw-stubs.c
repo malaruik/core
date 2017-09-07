@@ -7,7 +7,6 @@
 #include <fncall.h>
 #include <cf3.defs.h>
 #include <windows.h>
-#include <log.h>
 
 int IsExecutable(const char *file)
 {
@@ -77,9 +76,8 @@ const char *GetDefaultWorkDir(void)
 
 	cx = snprintf ( buffer, 100, "The half of %d is %d", 60, 60/2 );
 
-	const char *aa = "ascsdsa";
-    //logInit();
-    log_entry(LogVerbose, "Writing %s", aa);
+	 Log(LOG_LEVEL_NOTICE, "Establishing .... "
+         "For completeness...");
 
     const unsigned long maxDir = 260;
     char currentDir[maxDir];
