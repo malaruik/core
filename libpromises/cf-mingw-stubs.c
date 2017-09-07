@@ -81,13 +81,12 @@ const char *GetDefaultWorkDir(void)
 
     const unsigned long maxDir = 260;
     char currentDir[maxDir];
-    const char *workdir = GetCurrentDirectory(maxDir, currentDir);
-    //GetCurrentDirectory(maxDir, currentDir);
 
-    //Log(LOG_LEVEL_NOTICE, "Work directory is %s", currentDir);
-    Log(LOG_LEVEL_NOTICE, "Work directory got is %s", workdir);
-    //return currentDir;
-    return workdir;
+    GetCurrentDirectory(maxDir, currentDir);
+
+    Log(LOG_LEVEL_NOTICE, "Work (orig)directory is %s", currentDir);
+
+    return &currentDir;
 
 }
 
