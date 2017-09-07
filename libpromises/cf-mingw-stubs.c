@@ -81,7 +81,7 @@ const char *GetDefaultWorkDir(void)
 
     const unsigned long maxDir = 260;
     // malloc !!!
-    static char currentDir[maxDir];
+    const char currentDir[maxDir];
 
     GetCurrentDirectory(maxDir, currentDir);
 
