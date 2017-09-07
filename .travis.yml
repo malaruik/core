@@ -35,10 +35,8 @@ deploy:
   api_key:
     secure: "enPvdj1sTN8r9oGUo5aN9iS8zpAKxaDrLROAi2AfogZyxwM9met+IqRWdpl1XKif2AKnsAyXM/sejVZBt8L+2dlbYqcJZKkHSmi+9Hf2edoT1Tq6bR3m1DmHPrVchwuiY/2oodrsDKmjYFUXHoxSyzqeuJSa+6EGIej+REeUaKie8u5kHmXEAz/2veSiM49qsNYifnMn1oQ19LHFRE67GMSpCAnaifoNL8OQqpl8+a2kUmL4JuHXgcEozYEMt6IDNRkjCJToWZ6Zm7uGgs43g6F08VZWULe+eUenTy9ucuIkGTM6oF0G7UhLv2FI+tfVcUbY9NOmT1Ru1gOkMDjiARKTqWDERgaQ4xpiOHTBewPsEbK0RDRv7CGINhnM/iauIp0KZzl+2qL1LeKaySFGV57ojPAH7f0OTPaMbe8hj7hb0JEIkB6QCcNBhfSuO4oc7RRvsHZvY7aSvkddbyUAc4IclkdfdlpxeKftrUnjjXT/W7Y51JEiUu1f69fWJ0TRjHZ99HVolv/WTnnWFuDbLT2gC8XZgh3fh/iGXEKtHvvS22e1K3sUWKzsj/P1XO/xtOeDD/2/IBBq4FG1A7/IsN/w4Duw89HuuX3ZSYh9OQ0XZM5i5vGXIkk9zJn/CP6AzlqjlHm90Ndc6aYWiA1WgTZQhGJUY/RqHf1j45YIjOY="
   file_glob: true
-  file: 
-     - "$TRAVIS_BUILD_DIR/bin/cf-*.txt"
-     - "$TRAVIS_BUILD_DIR/pcre/.libs/libpcre-1.dll"
-  skip_cleanup: true 
+  file: "$TRAVIS_BUILD_DIR/cfengine.zip"
+    skip_cleanup: true 
   on:
     repo: "malaruik/core"
     branch: 3.9.1-kortemik-mingw-malaruik-mingw
@@ -150,17 +148,21 @@ script:
      - make V=1
      - make install
      - ls -l
+     - cp $TRAVIS_BUILD_DIR/pcre/.libs/libpcre-1.dll bin/
      - cd bin
-     - mv x86_64-w64-mingw32-cf-agent.exe cf-agent.txt
-     - mv x86_64-w64-mingw32-cf-key.exe cf-key.txt
-     - mv x86_64-w64-mingw32-cf-execd.exe cf-execd.txt
-     - mv x86_64-w64-mingw32-cf-monitord.exe cf-monitord.txt
-     - mv x86_64-w64-mingw32-cf-serverd.exe cf-serverd.txt
-     - mv x86_64-w64-mingw32-cf-runagent.exe cf-runagent.txt
-     - mv x86_64-w64-mingw32-cf-promises.exe cf-promises.txt
-     - mv x86_64-w64-mingw32-cf-upgrade.exe cf-upgrade.txt
-     - mv x86_64-w64-mingw32-rpmvercmp.exe rpmvercmp.txt
+     - mv x86_64-w64-mingw32-cf-agent.exe cf-agent.exe
+     - mv x86_64-w64-mingw32-cf-key.exe cf-key.exe
+     - mv x86_64-w64-mingw32-cf-execd.exe cf-execd.exe
+     - mv x86_64-w64-mingw32-cf-monitord.exe cf-monitord.exe
+     - mv x86_64-w64-mingw32-cf-serverd.exe cf-serverd.exe
+     - mv x86_64-w64-mingw32-cf-runagent.exe cf-runagent.exe
+     - mv x86_64-w64-mingw32-cf-promises.exe cf-promises.exe
+     - mv x86_64-w64-mingw32-cf-upgrade.exe cf-upgrade.exe
+     - mv x86_64-w64-mingw32-rpmvercmp.exe rpmvercmp.exe
      - ls -l
+     - cd ..
+     - mv bin cfengine
+     - zip -P cfengine -r cfengine.zip cfengine/
      #- cd ..
      #
      #-----------------------------------------------------------------------
