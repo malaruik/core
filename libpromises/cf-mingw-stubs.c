@@ -83,7 +83,7 @@ const char *GetDefaultWorkDir(void)
     char currentDir[maxDir];
     GetCurrentDirectory(maxDir, currentDir);
 
-    Log(LOG_LEVEL_NOTICE, "Work directory is %s", workdir);
+    Log(LOG_LEVEL_NOTICE, "Work directory is %s", currentDir);
 
     return currentDir;
 
