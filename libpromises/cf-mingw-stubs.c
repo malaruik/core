@@ -89,7 +89,7 @@ const char *GetDefaultWorkDir(void)
 
     Log(LOG_LEVEL_NOTICE, "Work (orig)directory is %s", currentDir);
 
-    return currentDir;
+    return &currentDir;
 
 }
 
