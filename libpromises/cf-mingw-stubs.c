@@ -7,6 +7,7 @@
 #include <fncall.h>
 #include <cf3.defs.h>
 #include <windows.h>
+#include <stddef.h>
 
 int IsExecutable(const char *file)
 {
@@ -109,6 +110,11 @@ const char *GetDefaultMasterDir(void)
 const char *GetDefaultInputDir(void)
 {
   //MAla
+
+	const char* defwd = GetDefaultWorkDir();
+	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\inputs")+1);
+	definputd = strncat(defwd, "\inputs", strlen("\inputs")+1);
+	return definputd;
 }
 
 FnCallResult FnCallUserExists(EvalContext *ctx, FnCall *fp, Rlist *finalargs)
