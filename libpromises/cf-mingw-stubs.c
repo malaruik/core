@@ -12,61 +12,73 @@
 int IsExecutable(const char *file)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: IsExecutable ..");
 }
 
 void CloseLog(void)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: CloseLog ..");
 }
 
 void OpenLog(int facility)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: OpenLog ..");
 }
 
 void OpenNetwork(void)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: OpenNetwork ..");
 }
 
 void CloseNetwork(void)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: CloseNetwork ..");
 }
 
 int NovaWin_GetWinDir(char *winDir, int winDirSz)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetWinDir ..");
 }
 
 int NovaWin_GetSysDir(char *sysDir, int sysDirSz)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetSysDir ..");
 }
 
 int NovaWin_GetProgDir(char *progDir, int progDirSz)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetProgDir ..");
 }
 
 int NovaWin_GetEnv(char *varName, char *varContents, int varContentsSz)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetEnv ..");
 }
 
 int NovaWin_FileExists(const char *fileName)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_FileExists ..");
 }
 
 int NovaWin_IsDir(char *fileName)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_IsDir ..");
 }
 
 int NovaWin_PackageListInstalledFromAPI(EvalContext *ctx, PackageItem ** pkgList, Attributes a, Promise *pp)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_PackageListInstalledFromAPI ..");
 }
 
 const char *GetDefaultWorkDir(void)
@@ -90,6 +102,7 @@ const char *GetDefaultWorkDir(void)
 
 const char *GetDefaultLogDir(void)
 {
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDefaultLogDir ..");
 	    const unsigned long maxDir = 260;
 	    char currentDir[maxDir];
 	    GetCurrentDirectory(maxDir, currentDir);
@@ -100,11 +113,13 @@ const char *GetDefaultLogDir(void)
 const char *GetDefaultPidDir(void)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDefaultPidDir ..");
 }
 
 const char *GetDefaultMasterDir(void)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDefaultMasterDir ..");
 }
 
 const char *GetDefaultInputDir(void)
@@ -125,53 +140,64 @@ const char *GetDefaultInputDir(void)
 FnCallResult FnCallUserExists(EvalContext *ctx, FnCall *fp, Rlist *finalargs)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: FnCallUserExists ..");
 }
 
 FnCallResult FnCallGroupExists(EvalContext *ctx, FnCall *fp, Rlist *finalargs)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: FnCallGroupExists ..");
 }
 
 off_t GetDiskUsage(char *file, CfSize type)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDiskUsage ..");
 }
 
 void InitializeWindows(void)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: InitializeWindows ..");
 }
 
 void CreateEmptyFile(char *name)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: CreateEmptyFile ..");
 }
 
 int LoadProcessTable()
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: LoadProcessTable ..");
 }
 
 bool ShellCommandReturnsZero(void)
 {
   //MAla
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: ShellCommandReturnsZero ..");
 }
 
 int CopyACLs(ARG_UNUSED const char *src, ARG_UNUSED const char *dst)
 {
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: CopyACLs ..");
   return true;
 }
 
 int ExclusiveLockFile(int fd)
 {
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: ExclusiveLockFile ..");
   return true;
 }
 
 int ExclusiveUnlockFile(int fd)
 {
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: ExclusiveUnlockFile ..");
   return true;
 }
 bool BootstrapAllowed(void)
 {
+	 Log(LOG_LEVEL_VERBOSE, "minge stub: BootstrapAllowed ..");
   //MAla
 }

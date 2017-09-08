@@ -904,6 +904,9 @@ void GenericAgentInitialize(EvalContext *ctx, GenericAgentConfig *config)
     }
 
     OpenLog(LOG_USER);
+
+    Log(LOG_LEVEL_VERBOSE, "generic_agent: SetSyslogFacility next..");
+
     SetSyslogFacility(LOG_USER);
 
     Log(LOG_LEVEL_VERBOSE, "generic_agent: Work directory is %s", workdir);
