@@ -906,7 +906,7 @@ void GenericAgentInitialize(EvalContext *ctx, GenericAgentConfig *config)
     OpenLog(LOG_USER);
     SetSyslogFacility(LOG_USER);
 
-    Log(LOG_LEVEL_VERBOSE, "Work directory is %s", workdir);
+    Log(LOG_LEVEL_VERBOSE, "generic_agent: Work directory is %s", workdir);
 
     snprintf(vbuff, CF_BUFSIZE, "%s%cupdate.conf", GetInputDir(), FILE_SEPARATOR);
     MakeParentDirectory(vbuff, force);

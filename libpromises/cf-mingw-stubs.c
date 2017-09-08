@@ -111,9 +111,14 @@ const char *GetDefaultInputDir(void)
 {
   //MAla
 
+    Log(LOG_LEVEL_VERBOSE, "mingw stubs: GetDefaultInputDir");
+
 	const char* defwd = GetDefaultWorkDir();
 	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\inputs")+1);
 	definputd = strncat(defwd, "\inputs", strlen("\inputs")+1);
+
+    Log(LOG_LEVEL_VERBOSE, "mingw stubs: %s", defwd);
+
 	return definputd;
 }
 
