@@ -103,10 +103,12 @@ const char *GetDefaultWorkDir(void)
 const char *GetDefaultLogDir(void)
 {
 	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDefaultLogDir ..");
-	    const unsigned long maxDir = 260;
-	    char currentDir[maxDir];
-	    GetCurrentDirectory(maxDir, currentDir);
-	    //return string(currentDir);
+
+	 const char* defwd = GetDefaultWorkDir();
+	 const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\log")+1);
+	 definputd = strncat(defwd, "\log", strlen("\log")+1);
+
+	 return definputd;
 
 }
 
