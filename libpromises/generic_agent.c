@@ -894,6 +894,8 @@ void GenericAgentInitialize(EvalContext *ctx, GenericAgentConfig *config)
 
 /* Define trusted directories */
 
+    Log(LOG_LEVEL_VERBOSE, "Asking working directory ..");
+
     const char *workdir = GetWorkDir();
 
     if (!workdir)
