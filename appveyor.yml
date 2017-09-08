@@ -21,10 +21,10 @@ build_script:
 - bash -lc "gcc --version"
 - bash -lc "libtool --version"
 - bash -lc "git clone https://github.com/dlfcn-win32/dlfcn-win32.git"
-- bash -lc "cd dlfcn-win32"
+- cd dlfcn-win32
 - bash -lc "sh ./configure --cc=x86_64-w64-mingw32-gcc --enable-static"
 - bash -lc "make"
-- bash -lc "cd .."
+- cd ..
 # -----------------------------------------------------------------------------------------------------
 #  PCRE building
 # -----------------------------------------------------------------------------------------------------
@@ -32,22 +32,22 @@ build_script:
 # - cp /usr/x86_64-w64-mingw32/include/winver.h /home/build/travis/malaruik/openssl/include/winver.h 
 #- ls -l /usr/include/mysql
 - bash -lc "git clone https://github.com/coapp-packages/pcre.git"
-- bash -lc "cd pcre"
+- cd pcre
 - bash -lc "sh ./autogen.sh"
 - bash -lc "sh autoreconf -vif"
 - bash -lc "env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include""
 - bash -lc "make"
-- bash -lc "cd .libs"
+- cd .libs
 - bash -lc "ls -l *.dll"
-- bash -lc "cd .."
-- bash -lc "cd .."
+- cd ..
+- cd ..
 #
 # --------------------------------------------------------------------------
 #  OpenSSL building
 # --------------------------------------------------------------------------
 - bash -lc "git clone https://github.com/openssl/openssl.git --branch OpenSSL_1_0_0-stable"
 #- git clone https://github.com/openssl/openssl.git --branch master
-- bash -lc "cd openssl"
+- cd openssl
 - bash -lc "pwd"
 - bash -lc "ls -l ./ssl"
 - bash -lc "ls -l ./include"
@@ -56,13 +56,13 @@ build_script:
 - bash -lc "make &> build.log"
 #- make
 #- make prefix=/openssl install &> install.log
-- bash -lc "cd .."
+- cd ..
 #
 # -----------------------------------------------------------------------------
 # OpenLDAP -llmdb compiling only
 # -----------------------------------------------------------------------------
 - bash -lc "git clone https://github.com/openldap/openldap.git --branch master"
-- bash -lc "cd openldap/libraries/liblmdb"
+- cd openldap/libraries/liblmdb
 - bash -lc "sed 's/-shared/-shared -Wl,-Bsymbolic/g' Makefile >Makefile2"
 - bash -lc "sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3"
 - bash -lc "sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4"
@@ -71,9 +71,9 @@ build_script:
 - bash -lc "cp Makefile6 Makefile"
 - bash -lc "make"
 - bash -lc "make install prefix=/home/travis/build/malaruik/core/openldap/libraries/liblmdb"
-- bash -lc "cd .. "
-- bash -lc "cd .."
-- bash -lc "cd .."
+- cd ..
+- cd ..
+- cd ..
 - bash -lc "pwd"
 # -----------------------------------------------------------------------
 # CFENGINE building starts here:
@@ -83,7 +83,7 @@ build_script:
 - bash -lc "env CC=x86_64-w64-mingw32-gcc ./autogen.sh --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/core/openssl --with-pcre=/home/travis/build/malaruik/core/pcre --with-lmdb=/home/travis/build/malaruik/core/openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I/home/travis/build/malaruik/core/libpromises -DS_IWGRP=0 -DS_IXGRP=0 -DS_IWOTH=0 -DS_IXOTH=0 -DS_IRWXG=0 -DS_IRWXO=0 -I/usr/x86_64-w64-mingw32/include -I/home/travis/build/malaruik/core/libutils -D__MINGW32__  -std=c99 -pedantic -I/home/travis/build/malaruik/core/openssl/include -I/home/travis/build/malaruik/core/openldap/libraries/liblmdb -I/home/travis/build/malaruik/core/openldap/libraries/liblmdb/include -I/home/travis/build/malaruik/core/pcre -I/home/travis/build/malaruik/core/pcre/.libs -lmsvcrt -g -O2 -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -DNDEBUG -static-libgcc -DS_IROTH=0 -DS_IRGRP=0 -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/core/libpromises -L/home/travis/build/malaruik/core/dlfcn-win32 -L/home/travis/build/malaruik/core/openldap/libraries/liblmdb -L/home/travis/build/malaruik/core/openssl -L/home/travis/build/malaruik/core/pcre/.libs -lws2_32 -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto -lwsock32 -lgdi32""
 #
 #
-- bash -lc "cd libutils"
+- cd libutils
 - bash -lc "sed 's/!HAVE_DECL_GMTIME_R/HAVE_DECL_GMTIME_R/g' platform.h >platform2.h"
 - bash -lc "sed 's/!HAVE_DECL_LOCALTIME_R/HAVE_DECL_LOCALTIME_R/g' platform2.h >platform3.h "
 - bash -lc "cp platform3.h platform.h"
@@ -94,18 +94,18 @@ build_script:
 - bash -lc "sed 's/#define fprintf rpl_fprintf/ /g' config5.h >config6.h"
 - bash -lc "sed 's/#define printf rpl_printf/ /g' config6.h >config7.h"
 - bash -lc "cp config7.h config.h"
-- bash -lc "cd .."
-- bash -lc "cd libcompat"
+- cd ..
+- cd libcompat
 #- cd cf-upgrade
 - bash -lc "sed 's/gnu99/c99/g' Makefile >Makefile2"
 - bash -lc "cp Makefile2 Makefile"
-- bash -lc "cd .."
+- cd ..
 - bash -lc "make V=1"
 - bash -lc "make install"
 - bash -lc "ls -l"
 - bash -lc "cp $TRAVIS_BUILD_DIR/pcre/.libs/libpcre-1.dll bin/"
 - bash -lc "cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll bin/"
-- bash -lc "cd bin"
+- cd bin
 - bash -lc "mv x86_64-w64-mingw32-cf-agent.exe cf-agent.exe"
 - bash -lc "mv x86_64-w64-mingw32-cf-key.exe cf-key.exe"
 - bash -lc "mv x86_64-w64-mingw32-cf-execd.exe cf-execd.exe"
@@ -116,7 +116,7 @@ build_script:
 - bash -lc "mv x86_64-w64-mingw32-cf-upgrade.exe cf-upgrade.exe"
 - bash -lc "mv x86_64-w64-mingw32-rpmvercmp.exe rpmvercmp.exe"
 - bash -lc "ls -l"
-- bash -lc "cd .."
+- cd ..
 - bash -lc "mv bin cfengine"
 - bash -lc "zip -P cfengine -r cfengine.zip cfengine/"
 
