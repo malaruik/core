@@ -12,79 +12,79 @@
 int IsExecutable(const char *file)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: IsExecutable ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: IsExecutable ..");
 }
 
 void CloseLog(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: CloseLog ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: CloseLog ..");
 }
 
 void OpenLog(int facility)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: OpenLog ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: OpenLog ..");
 }
 
 void OpenNetwork(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: OpenNetwork ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: OpenNetwork ..");
 }
 
 void CloseNetwork(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: CloseNetwork ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: CloseNetwork ..");
 }
 
 int NovaWin_GetWinDir(char *winDir, int winDirSz)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetWinDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_GetWinDir ..");
 }
 
 int NovaWin_GetSysDir(char *sysDir, int sysDirSz)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetSysDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_GetSysDir ..");
 }
 
 int NovaWin_GetProgDir(char *progDir, int progDirSz)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetProgDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_GetProgDir ..");
 }
 
 int NovaWin_GetEnv(char *varName, char *varContents, int varContentsSz)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_GetEnv ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_GetEnv ..");
 }
 
 int NovaWin_FileExists(const char *fileName)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_FileExists ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_FileExists ..");
 }
 
 int NovaWin_IsDir(char *fileName)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_IsDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_IsDir ..");
 }
 
 int NovaWin_PackageListInstalledFromAPI(EvalContext *ctx, PackageItem ** pkgList, Attributes a, Promise *pp)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_PackageListInstalledFromAPI ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_PackageListInstalledFromAPI ..");
 }
 
 const char *GetDefaultWorkDir(void)
 {
 
-	Log(LOG_LEVEL_NOTICE, "GetDefaultWorkDir.. ");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: GetDefaultWorkDir ..");
 
     const unsigned long maxDir = 260;
     // malloc !!!
@@ -94,7 +94,7 @@ const char *GetDefaultWorkDir(void)
 
     GetCurrentDirectory(maxDir, currentDir);
 
-    Log(LOG_LEVEL_NOTICE, "Work (orig)directory is %s", currentDir);
+    Log(LOG_LEVEL_VERBOSE, "++++ mingw stubs: WorkDir: %s", currentDir)
 
     return currentDir;
 
@@ -102,7 +102,7 @@ const char *GetDefaultWorkDir(void)
 
 const char *GetDefaultLogDir(void)
 {
-	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultLogDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: GetDefaultLogDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 return defwd;
@@ -112,7 +112,7 @@ const char *GetDefaultLogDir(void)
 const char *GetDefaultPidDir(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultPidDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: GetDefaultPidDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 return defwd;
@@ -121,13 +121,13 @@ const char *GetDefaultPidDir(void)
 const char *GetDefaultMasterDir(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultMasterDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: GetDefaultMasterDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 const char* defmasterd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\masterfiles")+1);
 	 defmasterd = strncat(defwd, "\\masterfiles", strlen("\\masterfiles")+1);
 
-	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: MasterDir: %s", defmasterd);
+	  Log(LOG_LEVEL_VERBOSE, "++++ mingw stubs: MasterDir: %s", defmasterd);
 
 	 return defmasterd;
 }
@@ -136,13 +136,13 @@ const char *GetDefaultInputDir(void)
 {
   //MAla
 
-    Log(LOG_LEVEL_VERBOSE, "mingw stubs: GetDefaultInputDir");
+    Log(LOG_LEVEL_VERBOSE, "---- mingw stubs: GetDefaultInputDir");
 
 	const char* defwd = GetDefaultWorkDir();
 	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\inputs")+1);
 	definputd = strncat(defwd, "\\inputs", strlen("\\inputs")+1);
 
-    Log(LOG_LEVEL_VERBOSE, "mingw stubs: InputDir: %s", definputd);
+    Log(LOG_LEVEL_VERBOSE, "++++ mingw stubs: InputDir: %s", definputd);
 
 	return definputd;
 }
@@ -150,65 +150,65 @@ const char *GetDefaultInputDir(void)
 FnCallResult FnCallUserExists(EvalContext *ctx, FnCall *fp, Rlist *finalargs)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: FnCallUserExists ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: FnCallUserExists ..");
 }
 
 FnCallResult FnCallGroupExists(EvalContext *ctx, FnCall *fp, Rlist *finalargs)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: FnCallGroupExists ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: FnCallGroupExists ..");
 }
 
 off_t GetDiskUsage(char *file, CfSize type)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDiskUsage ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: GetDiskUsage ..");
 }
 
 void InitializeWindows(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: InitializeWindows ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: InitializeWindows ..");
 }
 
 void CreateEmptyFile(char *name)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: CreateEmptyFile ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: CreateEmptyFile ..");
 }
 
 int LoadProcessTable()
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: LoadProcessTable ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: LoadProcessTable ..");
 }
 
 bool ShellCommandReturnsZero(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: ShellCommandReturnsZero ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: ShellCommandReturnsZero ..");
 }
 
 int CopyACLs(ARG_UNUSED const char *src, ARG_UNUSED const char *dst)
 {
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: CopyACLs ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: CopyACLs ..");
   return true;
 }
 
 int ExclusiveLockFile(int fd)
 {
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: ExclusiveLockFile ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: ExclusiveLockFile ..");
   return true;
 }
 
 int ExclusiveUnlockFile(int fd)
 {
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: ExclusiveUnlockFile ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: ExclusiveUnlockFile ..");
   return true;
 }
 bool BootstrapAllowed(void)
 {
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: BootstrapAllowed ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: BootstrapAllowed ..");
   //MAla
 	 return 0;
 }
