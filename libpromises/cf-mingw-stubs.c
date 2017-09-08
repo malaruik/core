@@ -71,18 +71,13 @@ int NovaWin_PackageListInstalledFromAPI(EvalContext *ctx, PackageItem ** pkgList
 const char *GetDefaultWorkDir(void)
 {
 
-	char buffer [100];
-    int cx;
-
-	cx = snprintf ( buffer, 100, "The half of %d is %d", 60, 60/2 );
-
-	 Log(LOG_LEVEL_NOTICE, "GetDefaultWorkDir.. ");
+	Log(LOG_LEVEL_NOTICE, "GetDefaultWorkDir.. ");
 
     const unsigned long maxDir = 260;
     // malloc !!!
     //const char currentDir[maxDir];
 
-    const char *currentDir = malloc(sizeof(char) * maxDir);
+    const char *currentDir = malloc(sizeof(char) * 260);
 
     GetCurrentDirectory(maxDir, currentDir);
 
