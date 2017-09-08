@@ -94,7 +94,7 @@ const char *GetDefaultWorkDir(void)
 
     GetCurrentDirectory(maxDir, currentDir);
 
-    Log(LOG_LEVEL_VERBOSE, "++++ mingw stubs: WorkDir: %s", currentDir)
+    Log(LOG_LEVEL_VERBOSE, "++++ mingw stubs: WorkDir: %s", currentDir);
 
     return currentDir;
 
