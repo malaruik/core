@@ -18,13 +18,13 @@ build_script:
 # -----------------------------------------------------------------------------------------------------
 # Win dll loader? needed?
 # -----------------------------------------------------------------------------------------------------
-- bash -lc "gcc --version"
-- bash -lc "libtool --version"
-- bash -lc "git clone https://github.com/dlfcn-win32/dlfcn-win32.git"
-- cd dlfcn-win32
-- bash -lc "sh ./configure --cc=x86_64-w64-mingw32-gcc --enable-static"
-- bash -lc "make"
-- cd ..
+#- bash -lc "gcc --version"
+#- bash -lc "libtool --version"
+#- bash -lc "git clone https://github.com/dlfcn-win32/dlfcn-win32.git"
+#- cd dlfcn-win32
+#- bash -lc "sh ./configure --cc=x86_64-w64-mingw32-gcc --enable-static"
+#- bash -lc "make"
+#- cd ..
 # -----------------------------------------------------------------------------------------------------
 #  PCRE building
 # -----------------------------------------------------------------------------------------------------
