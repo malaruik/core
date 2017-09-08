@@ -206,6 +206,8 @@ int main(int argc, char *argv[])
 
     char *public_key_file, *private_key_file;
 
+    Log(LOG_LEVEL_NOTICE, "cf-key.c.. ");
+
     if (KEY_PATH)
     {
         xasprintf(&public_key_file, "%s.pub", KEY_PATH);
