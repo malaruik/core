@@ -60,25 +60,25 @@ int NovaWin_GetProgDir(char *progDir, int progDirSz)
 int NovaWin_GetEnv(char *varName, char *varContents, int varContentsSz)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_GetEnv ..");
+	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_GetEnv ..");
 }
 
 int NovaWin_FileExists(const char *fileName)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_FileExists ..");
+	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_FileExists ..");
 }
 
 int NovaWin_IsDir(char *fileName)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_IsDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_IsDir ..");
 }
 
 int NovaWin_PackageListInstalledFromAPI(EvalContext *ctx, PackageItem ** pkgList, Attributes a, Promise *pp)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: NovaWin_PackageListInstalledFromAPI ..");
+	 Log(LOG_LEVEL_VERBOSE, "mingw stub: NovaWin_PackageListInstalledFromAPI ..");
 }
 
 const char *GetDefaultWorkDir(void)
@@ -102,7 +102,7 @@ const char *GetDefaultWorkDir(void)
 
 const char *GetDefaultLogDir(void)
 {
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDefaultLogDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultLogDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\log")+1);
@@ -115,13 +115,29 @@ const char *GetDefaultLogDir(void)
 const char *GetDefaultPidDir(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDefaultPidDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultPidDir ..");
+
+	 const char* defwd = GetDefaultWorkDir();
+	 const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\pid")+1);
+	 definputd = strncat(defwd, "\pid", strlen("\pid")+1);
+
+	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: PidDir: %s", defwd);
+
+	 return definputd;
 }
 
 const char *GetDefaultMasterDir(void)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "minge stub: GetDefaultMasterDir ..");
+	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultMasterDir ..");
+
+	 const char* defwd = GetDefaultWorkDir();
+	 const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\master")+1);
+	 definputd = strncat(defwd, "\master", strlen("\master")+1);
+
+	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: MasterDir: %s", defwd);
+
+	 return definputd;
 }
 
 const char *GetDefaultInputDir(void)
@@ -134,7 +150,7 @@ const char *GetDefaultInputDir(void)
 	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\inputs")+1);
 	definputd = strncat(defwd, "\inputs", strlen("\inputs")+1);
 
-    Log(LOG_LEVEL_VERBOSE, "mingw stubs: %s", defwd);
+    Log(LOG_LEVEL_VERBOSE, "mingw stubs: InputDir: %s", defwd);
 
 	return definputd;
 }
