@@ -105,12 +105,7 @@ const char *GetDefaultLogDir(void)
 	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultLogDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
-	 const char* deflogd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\log")+1);
-	 deflogd = strncat(defwd, "\log", strlen("\log")+1);
-
-	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: LogDir: %s", deflogd);
-
-	 return deflogd;
+	 return defwd;
 
 }
 
@@ -120,12 +115,7 @@ const char *GetDefaultPidDir(void)
 	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultPidDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
-	 const char* defpidd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\pid")+1);
-	 defpidd = strncat(defwd, "\pid", strlen("\pid")+1);
-
-	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: PidDir: %s", defpidd);
-
-	 return defpidd;
+	 return defwd;
 }
 
 const char *GetDefaultMasterDir(void)
@@ -134,8 +124,8 @@ const char *GetDefaultMasterDir(void)
 	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultMasterDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
-	 const char* defmasterd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\master")+1);
-	 defmasterd = strncat(defwd, "\master", strlen("\master")+1);
+	 const char* defmasterd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\masterfiles")+1);
+	 defmasterd = strncat(defwd, "\\masterfiles", strlen("\\masterfiles")+1);
 
 	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: MasterDir: %s", defmasterd);
 
@@ -149,8 +139,8 @@ const char *GetDefaultInputDir(void)
     Log(LOG_LEVEL_VERBOSE, "mingw stubs: GetDefaultInputDir");
 
 	const char* defwd = GetDefaultWorkDir();
-	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\inputs")+1);
-	definputd = strncat(defwd, "\inputs", strlen("\inputs")+1);
+	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\inputs")+1);
+	definputd = strncat(defwd, "\\inputs", strlen("\\inputs")+1);
 
     Log(LOG_LEVEL_VERBOSE, "mingw stubs: InputDir: %s", definputd);
 
@@ -220,4 +210,5 @@ bool BootstrapAllowed(void)
 {
 	 Log(LOG_LEVEL_VERBOSE, "minge stub: BootstrapAllowed ..");
   //MAla
+	 return 0;
 }
