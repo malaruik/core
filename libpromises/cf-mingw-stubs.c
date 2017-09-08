@@ -76,8 +76,7 @@ const char *GetDefaultWorkDir(void)
 
 	cx = snprintf ( buffer, 100, "The half of %d is %d", 60, 60/2 );
 
-	 Log(LOG_LEVEL_NOTICE, "GetDefaultWorkDir "
-			 "...");
+	 Log(LOG_LEVEL_NOTICE, "GetDefaultWorkDir.. ");
 
     const unsigned long maxDir = 260;
     // malloc !!!
