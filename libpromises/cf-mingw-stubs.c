@@ -105,10 +105,12 @@ const char *GetDefaultLogDir(void)
 	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultLogDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
-	 const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\log")+1);
-	 definputd = strncat(defwd, "\log", strlen("\log")+1);
+	 const char* deflogd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\log")+1);
+	 deflogd = strncat(defwd, "\log", strlen("\log")+1);
 
-	 return definputd;
+	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: LogDir: %s", deflogd);
+
+	 return deflogd;
 
 }
 
@@ -118,12 +120,12 @@ const char *GetDefaultPidDir(void)
 	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultPidDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
-	 const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\pid")+1);
-	 definputd = strncat(defwd, "\pid", strlen("\pid")+1);
+	 const char* defpidd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\pid")+1);
+	 defpidd = strncat(defwd, "\pid", strlen("\pid")+1);
 
-	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: PidDir: %s", defwd);
+	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: PidDir: %s", defpidd);
 
-	 return definputd;
+	 return defpidd;
 }
 
 const char *GetDefaultMasterDir(void)
@@ -132,12 +134,12 @@ const char *GetDefaultMasterDir(void)
 	 Log(LOG_LEVEL_VERBOSE, "mingw stub: GetDefaultMasterDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
-	 const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\master")+1);
-	 definputd = strncat(defwd, "\master", strlen("\master")+1);
+	 const char* defmasterd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\master")+1);
+	 defmasterd = strncat(defwd, "\master", strlen("\master")+1);
 
-	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: MasterDir: %s", defwd);
+	  Log(LOG_LEVEL_VERBOSE, "mingw stubs: MasterDir: %s", defmasterd);
 
-	 return definputd;
+	 return defmasterd;
 }
 
 const char *GetDefaultInputDir(void)
@@ -150,7 +152,7 @@ const char *GetDefaultInputDir(void)
 	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\inputs")+1);
 	definputd = strncat(defwd, "\inputs", strlen("\inputs")+1);
 
-    Log(LOG_LEVEL_VERBOSE, "mingw stubs: InputDir: %s", defwd);
+    Log(LOG_LEVEL_VERBOSE, "mingw stubs: InputDir: %s", definputd);
 
 	return definputd;
 }
