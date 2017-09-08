@@ -4,6 +4,9 @@ configuration: Release
 platform: x64
 clone_folder: c:\projects\core
 
+
+init:
+-set PATH=C:\cygwin\bin;%PATH%
 install:
   - cinst -y nsis
   - SET PATH=%PATH%;C:\Program Files\NSIS\;C:\Program Files (x86)\NSIS\;C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\bin\
