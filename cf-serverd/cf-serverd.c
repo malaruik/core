@@ -52,8 +52,6 @@ int main(int argc, char *argv[])
              fd == STDERR_FILENO);
     close(fd);
 
-  //MAla
-  /*
     GenericAgentConfig *config = CheckOpts(argc, argv);
     EvalContext *ctx = EvalContextNew();
     GenericAgentConfigApply(ctx, config);
@@ -67,8 +65,8 @@ int main(int argc, char *argv[])
         Log(LOG_LEVEL_ERR, "Error reading CFEngine policy. Exiting...");
         exit(EXIT_FAILURE);
     }
-   */
-    //GenericAgentPostLoadInit(ctx);
+
+    GenericAgentPostLoadInit(ctx);
     ThisAgentInit();
 
     // MAla: Multiple implementations - needs to be checked
