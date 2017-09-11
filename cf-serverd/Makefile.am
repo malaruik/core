@@ -23,7 +23,7 @@
 #
 noinst_LTLIBRARIES = libcf-serverd.la
 
-sbin_PROGRAMS = cf-serverd
+#sbin_PROGRAMS = cf-serverd
 
 AM_CPPFLAGS = -I$(srcdir)/../libpromises -I$(srcdir)/../libutils \
 	-I$(srcdir)/../libcfnet \
@@ -52,12 +52,13 @@ libcf_serverd_la_SOURCES = \
 
 cf_serverd_LDADD = ../libpromises/libpromises.la
 
-if !BUILTIN_EXTENSIONS
+// MAla
+#if !BUILTIN_EXTENSIONS
  sbin_PROGRAMS = cf-serverd
  # Workaround for automake madness (try removing it if you want to know why).
  cf_serverd_CFLAGS = $(AM_CFLAGS)
  cf_serverd_LDADD = libcf-serverd.la
-endif
+#endif
 
 CLEANFILES = *.gcno *.gcda
 
