@@ -70,17 +70,17 @@ int main(int argc, char *argv[])
     ThisAgentInit();
 
     // MAla: Multiple implementations - needs to be checked
-    //KeepPromises(ctx, policy, config);
-    //Summarize();
+    KeepPromises(ctx, policy, config);
+    Summarize();
 
-    //int threads_left = StartServer(ctx, &policy, config);
+    int threads_left = StartServer(ctx, &policy, config);
 
-    //if (threads_left <= 0)
-    //{
-        //PolicyDestroy(policy);
-        //GenericAgentFinalize(ctx, config);
-        //CleanReportBookFilterSet();
-    //}
+    if (threads_left <= 0)
+    {
+        PolicyDestroy(policy);
+        GenericAgentFinalize(ctx, config);
+        CleanReportBookFilterSet();
+    }
 
     return 0;
 }

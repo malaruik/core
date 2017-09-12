@@ -870,7 +870,7 @@ int StartServer(EvalContext *ctx, Policy **policy, GenericAgentConfig *config)
 {
     InitSignals();
     ServerTLSInitialize();
-    int sd = SetServerListenState(ctx, QUEUESIZE, SERVER_LISTEN, &InitServer);
+    int sd = SetServerListenState__stub(ctx, QUEUESIZE, SERVER_LISTEN, &InitServer);
 
     /* Necessary for our use of select() to work in WaitForIncoming(): */
     assert(sd < sizeof(fd_set) * CHAR_BIT &&

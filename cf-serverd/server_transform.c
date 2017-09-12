@@ -1249,7 +1249,7 @@ void KeepLiteralAccessPromise(EvalContext *ctx, const Promise *pp, const char *t
         ap = GetOrCreateAuth(handle, &SV.varadmit, &SV.varadmittail);
         dp = GetOrCreateAuth(handle, &SV.vardeny, &SV.vardenytail);
 
-        RegisterLiteralServerData(ctx, handle, pp);
+        RegisterLiteralServerData__stub(ctx, handle, pp);
         ap->literal = true;
 
 
@@ -1311,7 +1311,7 @@ static void KeepQueryAccessPromise(EvalContext *ctx, const Promise *pp)
     Auth *dp = GetOrCreateAuth(pp->promiser, &SV.vardeny, &SV.vardenytail),
         *ap = GetOrCreateAuth(pp->promiser, &SV.varadmit, &SV.varadmittail);
 
-    RegisterLiteralServerData(ctx, pp->promiser, pp);
+    RegisterLiteralServerData__stub(ctx, pp->promiser, pp);
     ap->literal = true;
 
     size_t pos = acl_SortedInsert(&query_acl, pp->promiser);

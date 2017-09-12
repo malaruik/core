@@ -177,7 +177,7 @@ static int AccessControl(EvalContext *ctx, const char *req_path, ServerConnectio
 /*
  * /var/cfengine -> $workdir translation.
  */
-    TranslatePath(translated_req_path, req_path);
+    TranslatePath__stub(translated_req_path, req_path);
 
     if (ResolveFilename(translated_req_path, transrequest))
     {
