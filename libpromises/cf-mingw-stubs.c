@@ -81,7 +81,7 @@ int NovaWin_PackageListInstalledFromAPI(EvalContext *ctx, PackageItem ** pkgList
 	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_PackageListInstalledFromAPI ..");
 }
 
-int NovaWin_UserNameToSid(char *userName, SID *sid, DWORD sidSz, int shouldExist);
+int NovaWin_UserNameToSid(char *userName, SID *sid, DWORD sidSz, int shouldExist)
 {
   //MAla
 	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: NovaWin_UserNameToSid ..");
