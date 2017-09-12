@@ -609,7 +609,7 @@ static void KeepPromiseBundles(EvalContext *ctx, const Policy *policy)
 {
     /* Dial up the generic promise expansion with a callback */
 
-    CleanReportBookFilterSet();
+    CleanReportBookFilterSet__stub();
 
     for (size_t i = 0; i < SeqLength(policy->bundles); i++)
     {
@@ -680,7 +680,7 @@ static PromiseResult KeepServerPromise(EvalContext *ctx, const Promise *pp, ARG_
         else if (strcmp(resource_type, "query") == 0)
         {
             KeepQueryAccessPromise(ctx, pp);
-            KeepReportDataSelectAccessPromise(pp);
+            KeepReportDataSelectAccessPromise__stub(pp);
             return PROMISE_RESULT_NOOP;
         }
         else if (strcmp(resource_type, "context") == 0)

@@ -878,7 +878,7 @@ void GetServerLiteral(EvalContext *ctx, ServerConnectionState *conn, char *sendb
 
     sscanf(recvbuffer, "VAR %255[^\n]", handle);
 
-    if (ReturnLiteralData(ctx, handle, out))
+    if (ReturnLiteralData__stub(ctx, handle, out))
     {
         memset(sendbuffer, 0, CF_BUFSIZE);
         snprintf(sendbuffer, CF_BUFSIZE - 1, "%s", out);
@@ -912,7 +912,7 @@ int GetServerQuery(ServerConnectionState *conn, char *recvbuffer, int encrypt)
         return false;
     }
 
-    return ReturnQueryData(conn, query, encrypt);
+    return ReturnQueryData__stub(conn, query, encrypt);
 }
 
 void ReplyServerContext(ServerConnectionState *conn, int encrypted, Item *classes)
