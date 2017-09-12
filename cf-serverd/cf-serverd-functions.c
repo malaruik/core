@@ -218,7 +218,7 @@ GenericAgentConfig *CheckOpts(int argc, char **argv)
         case 'V':
             {
                 Writer *w = FileWriter(stdout);
-                GenericAgentWriteVersion(w);
+                GenericAgentWriteVersion__stub(w);
                 FileWriterDetach(w);
             }
             exit(EXIT_SUCCESS);
@@ -336,7 +336,7 @@ static void KeepHardClasses(EvalContext *ctx)
     }
 
     /* FIXME: why is it not in generic_agent?! */
-    GenericAgentAddEditionClasses(ctx);
+    GenericAgentAddEditionClasses__stub(ctx);
 }
 
 /* Must not be called unless ACTIVE_THREADS is zero: */
@@ -731,11 +731,11 @@ static int WaitOnThreads()
 static void CollectCallIfDue(EvalContext *ctx)
 {
     /* Check whether we have established peering with a hub */
-    if (CollectCallHasPending())
+    if (CollectCallHasPending__stub())
     {
         extern int COLLECT_WINDOW;
         int waiting_queue = 0;
-        int new_client = CollectCallGetPending(&waiting_queue);
+        int new_client = CollectCallGetPending__stub(&waiting_queue);
         assert(new_client >= 0);
         if (waiting_queue > COLLECT_WINDOW)
         {
@@ -743,7 +743,7 @@ static void CollectCallIfDue(EvalContext *ctx)
                 "Abandoning collect call attempt with queue longer than collect_window [%d > %d]",
                 waiting_queue, COLLECT_WINDOW);
             cf_closesocket(new_client);
-            CollectCallMarkProcessed();
+            CollectCallMarkProcessed__stub();
         }
         else
         {
@@ -827,7 +827,7 @@ static void PolicyUpdateIfSafe(EvalContext *ctx, Policy **policy,
         if (prior != COLLECT_INTERVAL)
         {
             /* Start, stop or change schedule, as appropriate. */
-            CollectCallStart(COLLECT_INTERVAL);
+            CollectCallStart__stub(COLLECT_INTERVAL);
         }
     }
 }
@@ -889,7 +889,7 @@ int StartServer(EvalContext *ctx, Policy **policy, GenericAgentConfig *config)
     }
 
     PrepareServer(sd);
-    CollectCallStart(COLLECT_INTERVAL);
+    CollectCallStart__stub(COLLECT_INTERVAL);
 
     while (!IsPendingTermination())
     {
@@ -918,7 +918,7 @@ int StartServer(EvalContext *ctx, Policy **policy, GenericAgentConfig *config)
     }
     Log(LOG_LEVEL_NOTICE, "Cleaning up and exiting...");
 
-    CollectCallStop();
+    CollectCallStop__stub();
     if (sd != -1)
     {
         Log(LOG_LEVEL_VERBOSE, "Closing listening socket");
