@@ -1,6 +1,7 @@
 #include <logging.h>
 #include <dir.h>
 #include <file_lib.h>
+#include <windows.h>
 
 #define ioctlsocket(a,b,c)      ioctl(a,b,c)
 #define closesocket(s)          close(s)
@@ -46,6 +47,8 @@ int rpl_mkdir(const char *pathname, mode_t mode)
 {
   //MAla
 	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_mkdir ..");
+	CreateDirectory ("C:\\C942813\\cfengine\\cfengine\\state", NULL);
+	return 0;
 }
 
 void LogToSystemLog(const char *msg, LogLevel level)
