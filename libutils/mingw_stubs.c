@@ -46,7 +46,7 @@ int lstat(const char *file_name, struct stat *buf)
 int rpl_mkdir(const char *pathname, mode_t mode)
 {
   //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_mkdir .. %s", pathname);
+	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_mkdir .. Dire: %s", pathname);
 	CreateDirectory(pathname, NULL);
 	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_mkdir done ..");
 	return 0;

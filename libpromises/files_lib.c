@@ -291,7 +291,7 @@ bool MakeParentDirectory(const char *parentandchild, bool force)
 
         else if (_stat(currentpath, &statbuf) == -1)
         {
-            Log(LOG_LEVEL_VERBOSE, "----------i---------3:");
+            Log(LOG_LEVEL_VERBOSE, "----------i---------3: Dire: %s", currentPath);
 
             if (!DONTDO)
             {
