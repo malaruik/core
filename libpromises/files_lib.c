@@ -181,7 +181,7 @@ bool MakeParentDirectory(const char *parentandchild, bool force)
 
     DeleteSlash(pathbuf);
 
-    Log(LOG_LEVEL_VERBOSE, "----------------iiiiiiiiiiiiii:");
+    Log(LOG_LEVEL_VERBOSE, "----------i---------:");
 
     if (_stat(pathbuf, &statbuf) != -1)
     {
@@ -281,13 +281,18 @@ bool MakeParentDirectory(const char *parentandchild, bool force)
 
         /* currentpath is complete path for each of the parent directories.  */
 
+        Log(LOG_LEVEL_VERBOSE, "----------i---------2:");
+
         if (currentpath[0] == '\0')
         {
             /* We are at dir "/" of an absolute path, no need to create. */
         }
         /* WARNING: on Windows stat() fails if path has a trailing slash! */
-        else if (stat(currentpath, &statbuf) == -1)
+
+        else if (_stat(currentpath, &statbuf) == -1)
         {
+            Log(LOG_LEVEL_VERBOSE, "----------i---------3:");
+
             if (!DONTDO)
             {
                 mask = umask(0);
