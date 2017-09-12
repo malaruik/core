@@ -321,7 +321,7 @@ static void KeepControlPromises(EvalContext *ctx, const Policy *policy, GenericA
                  * addition, cf-agent can access the database occasionally as
                  * well, so add a few extra for that too. */
                 DBSetMaximumConcurrentTransactions(CFD_MAXPROCESSES
-                                                   + EnterpriseGetMaxCfHubProcesses() + 10);
+                                                   + EnterpriseGetMaxCfHubProcesses__stub() + 10);
                 continue;
             }
             else if (IsControlBody(SERVER_CONTROL_CALL_COLLECT_INTERVAL))

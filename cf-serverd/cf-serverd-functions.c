@@ -462,7 +462,7 @@ static void CheckFileChanges(EvalContext *ctx, Policy **policy, GenericAgentConf
             *policy = LoadPolicy(ctx, config);
 
             /* Reload HA related configuration */
-            ReloadHAConfig();
+            ReloadHAConfig__stub();
 
             KeepPromises(ctx, *policy, config);
             Summarize();
