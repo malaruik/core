@@ -677,7 +677,8 @@ static void PrepareServer(int sd)
 
     /* Close sd on exec, needed for not passing the socket to cf-runagent
      * spawned commands. */
-    SetCloseOnExec(sd, true);
+    // MAla; needs to be checked. Unix stuff?
+    //SetCloseOnExec(sd, true);
 
     Log(LOG_LEVEL_NOTICE, "Server is starting...");
     WritePID("cf-serverd.pid"); /* Arranges for atexit() to tidy it away */
