@@ -47,7 +47,7 @@ int rpl_mkdir(const char *pathname, mode_t mode)
 {
   //MAla
 	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_mkdir ..");
-	CreateDirectory ("C:\\C942813\\cfengine\\cfengine\\state", NULL);
+	CreateDirectory ("C:\\Users\\C942813\\cfengine\\cfengine\\state", NULL);
 	return 0;
 }
 
