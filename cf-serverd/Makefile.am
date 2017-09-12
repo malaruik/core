@@ -52,7 +52,7 @@ libcf_serverd_la_SOURCES = \
 
 cf_serverd_LDADD = ../libpromises/libpromises.la
 
-// MAla
+# MAla
 #if !BUILTIN_EXTENSIONS
  sbin_PROGRAMS = cf-serverd
  # Workaround for automake madness (try removing it if you want to know why).
