@@ -181,7 +181,9 @@ bool MakeParentDirectory(const char *parentandchild, bool force)
 
     DeleteSlash(pathbuf);
 
-    if (lstat(pathbuf, &statbuf) != -1)
+    Log(LOG_LEVEL_VERBOSE, "----------------iiiiiiiiiiiiii:");
+
+    if (_stat(pathbuf, &statbuf) != -1)
     {
         if (S_ISLNK(statbuf.st_mode))
         {
