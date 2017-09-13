@@ -35,6 +35,8 @@ int rpl_stat(const char *path, struct stat *buf)
 {
   //MAla
 	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_stat ..");
+	//int a = _stat(*path, *buf);
+	return _stat(*path, *buf);
 }
 
 int lstat(const char *file_name, struct stat *buf)
