@@ -287,7 +287,7 @@ bool MakeParentDirectory(const char *parentandchild, bool force)
 
         else if (_stat(currentpath, &statbuf) == -1)
         {
-            Log(LOG_LEVEL_VERBOSE, "---------- Making directory: %s", currentPath);
+            Log(LOG_LEVEL_VERBOSE, "---------- Making directory: %s", currentpath);
 
             if (!DONTDO)
             {
