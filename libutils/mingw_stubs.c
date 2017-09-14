@@ -31,6 +31,12 @@ int rpl_rename(const char *oldpath, const char *newpath)
 	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_rename ..");
 }
 
+int rpl_tatu(const char *path, struct stat *buf)
+{
+  //MAla
+	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: TATUUUU!!! ..");
+}
+
 int rpl_stat(const char *path, struct stat *buf)
 {
   //MAla
