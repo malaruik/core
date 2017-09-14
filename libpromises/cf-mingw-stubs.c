@@ -58,23 +58,33 @@ int NovaWin_GetProgDir(char *progDir, int progDirSz)
 {
 
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetProgDir ..");
+	 // Program Directory ?
+	 return GetWindowsDirectory(progDir, progDirSz);
 }
 
 int NovaWin_GetEnv(char *varName, char *varContents, int varContentsSz)
 {
 
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetEnv ..");
+	 return true;
 }
 
 int NovaWin_FileExists(const char *fileName)
 {
-
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_FileExists ..");
+	 int aa = GetFileAttributes(fileName);
+	 Log(LOG_LEVEL_VERBOSE, "---- stubs: NovaWin_FileExists .. %s", aa);
+	 return true;
 }
 
 int NovaWin_IsDir(char *fileName)
 {
+	//BOOL DirectoryExists(LPCTSTR szPath)
+	//{
+	//  DWORD dwAttrib = GetFileAttributes(szPath);
 
+	//  return (dwAttrib != INVALID_FILE_ATTRIBUTES &&
+	 //        (dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
+	//}
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_IsDir ..");
 }
 
@@ -207,12 +217,14 @@ int CopyACLs(ARG_UNUSED const char *src, ARG_UNUSED const char *dst)
 
 int ExclusiveLockFile(int fd)
 {
+	 // LockFIle
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveLockFile ..");
      return true;
 }
 
 int ExclusiveUnlockFile(int fd)
 {
+	 // UnLockFile
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveUnlockFile ..");
      return true;
 }
