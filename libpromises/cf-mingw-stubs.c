@@ -180,7 +180,10 @@ void InitializeWindows(void)
 void CreateEmptyFile(char *name)
 {
   //MAla
-	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: CreateEmptyFile ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- mingw stub: CreateEmptyFile name: %s", name);
+
+	 CreateFile("File.txt", FILE_READ_DATA, FILE_SHARE_READ,
+	     NULL, OPEN_ALWAYS, 0, NULL);
 }
 
 int LoadProcessTable()
