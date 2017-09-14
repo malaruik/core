@@ -1526,7 +1526,7 @@ static void CheckWorkingDirectories(EvalContext *ctx)
 
     snprintf(vbuff, CF_BUFSIZE, "%s%cmodules", workdir, FILE_SEPARATOR);
 
-    if (stat(vbuff, &statbuf) == -1)
+    if (_stat64(vbuff, &statbuf) == -1)
     {
         snprintf(vbuff, CF_BUFSIZE, "%s%cmodules%c.", workdir, FILE_SEPARATOR, FILE_SEPARATOR);
         MakeParentDirectory(vbuff, false);
@@ -1553,6 +1553,8 @@ static void CheckWorkingDirectories(EvalContext *ctx)
     Log(LOG_LEVEL_VERBOSE, "Checking integrity of the PKI directory");
 
     snprintf(vbuff, CF_BUFSIZE, "%s%cppkeys", workdir, FILE_SEPARATOR);
+
+    Log(LOG_LEVEL_VERBOSE, "------------ stats..");
 
     if (_stat64(vbuff, &statbuf) == -1)
     {
