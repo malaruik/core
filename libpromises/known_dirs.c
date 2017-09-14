@@ -100,14 +100,9 @@ const char *GetDefault##FUNC##Dir(void)                             \
 
 const char *GetWorkDir(void)
 {
-    //const char *workdir = getenv("CFENGINE_TEST_OVERRIDE_WORKDIR");
+    const char *workdir = getenv("CFENGINE_TEST_OVERRIDE_WORKDIR");
 
-	const char *workdir = GetDefaultWorkDir();
-
-	Log(LOG_LEVEL_NOTICE, "known_dirs: Work directory is %s", workdir);
-
-	return workdir;
-	    //return workdir == NULL ? GetDefaultWorkDir() : workdir;
+	return workdir == NULL ? GetDefaultWorkDir() : workdir;
 }
 
 const char *GetLogDir(void)

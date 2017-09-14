@@ -6,55 +6,49 @@
 #define ioctlsocket(a,b,c)      ioctl(a,b,c)
 #define closesocket(s)          close(s)
 
+// Stubs by MAla:
 
 Dir *DirOpen(const char *dirname)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: DirOpen ..");
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirOpen ..");
 }
 
 const struct dirent *DirRead(Dir *dir)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: DirRead ..");
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead ..");
 }
 
 void DirClose(Dir *dir)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: DirClose ..");
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirClose ..");
 }
 
 int rpl_rename(const char *oldpath, const char *newpath)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_rename ..");
-}
 
-int rpl_tatu(const char *path, struct stat *buf)
-{
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: TATUUUU!!! ..");
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: rpl_rename ..");
 }
 
 int rpl_stat(const char *path, struct stat *buf)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_stat ..");
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: rpl_stat ..");
 }
 
 int lstat(const char *file_name, struct stat *buf)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: lstat ..");
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: lstat ..");
 }
 
 int rpl_mkdir(const char *pathname, mode_t mode)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_mkdir .. Directory: %s", pathname);
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: rpl_mkdir .. Directory: %s", pathname);
 	CreateDirectory(pathname, NULL);
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: rpl_mkdir done ..");
 	return 0;
 }
 
@@ -63,11 +57,11 @@ void LogToSystemLog(const char *msg, LogLevel level)
   //char logmsg[4096];
   //snprintf(logmsg, sizeof(logmsg), "CFEngine(%s) %s %s\n", AgentType, VPREFIX, msg);
   //syslog(LogLevelToSyslogPriority(level), "%s", logmsg);
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: LogToSystemLog ..");
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: LogToSystemLog ..");
 }
 
 NewLineMode FileNewLineMode(ARG_UNUSED const char *file)
 {
-  //MAla
-	Log(LOG_LEVEL_VERBOSE, "---- LIBUTILS stub: FileNewLineMode ..");
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: FileNewLineMode ..");
 }
