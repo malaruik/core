@@ -1554,7 +1554,7 @@ static void CheckWorkingDirectories(EvalContext *ctx)
 
     snprintf(vbuff, CF_BUFSIZE, "%s%cppkeys", workdir, FILE_SEPARATOR);
 
-    if (stat(vbuff, &statbuf) == -1)
+    if (_stat64(vbuff, &statbuf) == -1)
     {
         snprintf(vbuff, CF_BUFSIZE, "%s%cppkeys%c", workdir, FILE_SEPARATOR, FILE_SEPARATOR);
         MakeParentDirectory(vbuff, false);
