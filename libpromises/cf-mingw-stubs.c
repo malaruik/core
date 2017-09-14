@@ -182,7 +182,7 @@ void CreateEmptyFile(char *name)
   //MAla
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: CreateEmptyFile name: %s", name);
 
-	 CreateFile("File.txt", FILE_READ_DATA, FILE_SHARE_READ,
+	 CreateFile(name, FILE_READ_DATA, FILE_SHARE_READ,
 	     NULL, OPEN_ALWAYS, 0, NULL);
 }
 
