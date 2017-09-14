@@ -671,11 +671,13 @@ static void GetNameInfo3(EvalContext *ctx)
 #ifdef __MINGW32__
     if (NovaWin_GetWinDir(workbuf, sizeof(workbuf)))
     {
+    	 Log(LOG_LEVEL_VERBOSE, "iiiii: WinDir Got !!");
         EvalContextVariablePutSpecial(ctx, SPECIAL_SCOPE_SYS, "windir", workbuf, CF_DATA_TYPE_STRING, "source=agent");
     }
 
     if (NovaWin_GetSysDir(workbuf, sizeof(workbuf)))
     {
+    	Log(LOG_LEVEL_VERBOSE, "iiiii: SysDir Got !!");
         EvalContextVariablePutSpecial(ctx, SPECIAL_SCOPE_SYS, "winsysdir", workbuf, CF_DATA_TYPE_STRING, "source=agent");
 
         char filename[CF_BUFSIZE];

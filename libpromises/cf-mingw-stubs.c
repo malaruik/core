@@ -43,12 +43,15 @@ int NovaWin_GetWinDir(char *winDir, int winDirSz)
 {
 
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetWinDir ..");
+
+	 return GetWindowsDirectory(winDir, winDirSz);
 }
 
 int NovaWin_GetSysDir(char *sysDir, int sysDirSz)
 {
 
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetSysDir ..");
+	 return GetSystemDirectory(sysDir, sysDirSz);
 }
 
 int NovaWin_GetProgDir(char *progDir, int progDirSz)
