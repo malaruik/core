@@ -10,19 +10,19 @@
 
 Dir *DirOpen(const char *dirname)
 {
-
+	// FindFirstFile();
 	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirOpen ..");
 }
 
 const struct dirent *DirRead(Dir *dir)
 {
-
+	// FindNextFile();
 	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead ..");
 }
 
 void DirClose(Dir *dir)
 {
-
+	// FindClose();
 	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirClose ..");
 }
 
