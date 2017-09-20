@@ -11,7 +11,19 @@
 Dir *DirOpen(const char *dirname)
 {
 	// FindFirstFile();
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirOpen ..");
+	WIN32_FIND_DATA FindFileData;
+	HANDLE hFind;
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirOpen %s", dirname);
+
+	hFind = FindFirstFile(dirname, &FindFileData);
+
+	   if (hFind == INVALID_HANDLE_VALUE)
+	   {
+		   Log(LOG_LEVEL_VERBOSE, "---- FindFirstFile failed .. %s", GetLastError());
+	   }
+
+	   return hFind;
 }
 
 const struct dirent *DirRead(Dir *dir)
