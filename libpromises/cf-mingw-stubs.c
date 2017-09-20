@@ -42,22 +42,21 @@ void CloseNetwork(void)
 int NovaWin_GetWinDir(char *winDir, int winDirSz)
 {
 
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetWinDir ..");
-
+	 //Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetWinDir ..");
 	 return GetWindowsDirectory(winDir, winDirSz);
 }
 
 int NovaWin_GetSysDir(char *sysDir, int sysDirSz)
 {
 
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetSysDir ..");
+	 //Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetSysDir ..");
 	 return GetSystemDirectory(sysDir, sysDirSz);
 }
 
 int NovaWin_GetProgDir(char *progDir, int progDirSz)
 {
 
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetProgDir ..");
+	 //Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_GetProgDir ..");
 	 // Program Directory ?
 	 return GetWindowsDirectory(progDir, progDirSz);
 }
@@ -71,7 +70,6 @@ int NovaWin_GetEnv(char *varName, char *varContents, int varContentsSz)
 
 int NovaWin_FileExists(const char *fileName)
 {
-	 //int aa = GetFileAttributes(fileName);
 	 Log(LOG_LEVEL_VERBOSE, "---- stubs: NovaWin_FileExists ..");
 	 return GetFileAttributes(fileName);
 }ue;

@@ -449,7 +449,7 @@ static void GetNameInfo3(EvalContext *ctx)
     //    memset(&VSYSNAME, 0, sizeof(VSYSNAME));
     //}
 
-    Log(LOG_LEVEL_VERBOSE, "iiiiiiiiiiiiiiii %s", VSYSNAME);
+    //Log(LOG_LEVEL_VERBOSE, "iiiiiiiiiiiiiiii %s", VSYSNAME);
 
 #ifdef _AIX
     snprintf(real_version, _SYS_NMLN, "%.80s.%.80s", VSYSNAME.version, VSYSNAME.release);
@@ -673,13 +673,13 @@ static void GetNameInfo3(EvalContext *ctx)
 #ifdef __MINGW32__
     if (NovaWin_GetWinDir(workbuf, sizeof(workbuf)))
     {
-    	 Log(LOG_LEVEL_VERBOSE, "iiiii: WinDir Got !!");
+    	// Log(LOG_LEVEL_VERBOSE, "iiiii: WinDir Got !!");
         EvalContextVariablePutSpecial(ctx, SPECIAL_SCOPE_SYS, "windir", workbuf, CF_DATA_TYPE_STRING, "source=agent");
     }
 
     if (NovaWin_GetSysDir(workbuf, sizeof(workbuf)))
     {
-    	Log(LOG_LEVEL_VERBOSE, "iiiii: SysDir Got !!");
+    	// Log(LOG_LEVEL_VERBOSE, "iiiii: SysDir Got !!");
         EvalContextVariablePutSpecial(ctx, SPECIAL_SCOPE_SYS, "winsysdir", workbuf, CF_DATA_TYPE_STRING, "source=agent");
 
         char filename[CF_BUFSIZE];
