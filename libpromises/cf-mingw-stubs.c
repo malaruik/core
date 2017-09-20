@@ -207,14 +207,14 @@ int ExclusiveLockFile(int fd)
 {
 	 // LockFIle
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveLockFile ..");
-     return true;
+     return LockFile(fd, 0, 0, 0, 0);
 }
 
 int ExclusiveUnlockFile(int fd)
 {
 	 // UnLockFile
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveUnlockFile ..");
-     return true;
+     return UnLockFile(fd, 0, 0, 0, 0);
 }
 bool BootstrapAllowed(void)
 {
