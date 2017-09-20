@@ -37,7 +37,7 @@ const struct dirent *DirRead(Dir *dir)
 
 	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %s", dir);
 
-	hFind = FindNextFile(dirname, &FindFileData);
+	hFind = FindNextFile(dir, &FindFileData);
 
 	   if (hFind == INVALID_HANDLE_VALUE)
 	   {
