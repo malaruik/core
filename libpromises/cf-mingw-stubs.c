@@ -74,7 +74,7 @@ int NovaWin_FileExists(const char *fileName)
 	 //DWORD d = GetFileAttributes(fileName);
 
 	 //Log(LOG_LEVEL_VERBOSE, "---- stubs: NovaWin_FileExists ..");
-	 Log(LOG_LEVEL_VERBOSE, "---- return value: %s", GetFileAttributes(fileName));
+	 //Log(LOG_LEVEL_VERBOSE, "---- return value: %s", GetFileAttributes(fileName));
 
 	 return GetFileAttributes(fileName);
 }
