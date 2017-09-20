@@ -102,18 +102,11 @@ int NovaWin_UserNameToSid(char *userName, SID *sid, DWORD sidSz, int shouldExist
 
 const char *GetDefaultWorkDir(void)
 {
-
-	Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultWorkDir ..");
-
     const unsigned long maxDir = 260;
-    // malloc !!!
-    //const char currentDir[maxDir];
-
     const char *currentDir = malloc(sizeof(char) * 260);
 
     GetCurrentDirectory(maxDir, currentDir);
-
-    Log(LOG_LEVEL_VERBOSE, "---- stubs: WorkDir: %s", currentDir);
+    //Log(LOG_LEVEL_VERBOSE, "---- stubs: WorkDir: %s", currentDir);
 
     return currentDir;
 
@@ -121,7 +114,7 @@ const char *GetDefaultWorkDir(void)
 
 const char *GetDefaultLogDir(void)
 {
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultLogDir ..");
+	 //Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultLogDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 return defwd;
@@ -130,8 +123,7 @@ const char *GetDefaultLogDir(void)
 
 const char *GetDefaultPidDir(void)
 {
-
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultPidDir ..");
+	 //Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultPidDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 return defwd;
@@ -139,8 +131,7 @@ const char *GetDefaultPidDir(void)
 
 const char *GetDefaultMasterDir(void)
 {
-
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultMasterDir ..");
+	 //Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultMasterDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 const char* defmasterd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\masterfiles")+1);
@@ -153,8 +144,7 @@ const char *GetDefaultMasterDir(void)
 
 const char *GetDefaultInputDir(void)
 {
-
-    Log(LOG_LEVEL_VERBOSE, "---- stubs: GetDefaultInputDir");
+    //Log(LOG_LEVEL_VERBOSE, "---- stubs: GetDefaultInputDir");
 
 	const char* defwd = GetDefaultWorkDir();
 	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\inputs")+1);
