@@ -71,7 +71,12 @@ int NovaWin_GetEnv(char *varName, char *varContents, int varContentsSz)
 int NovaWin_FileExists(const char *fileName)
 {
 	 Log(LOG_LEVEL_VERBOSE, "---- stubs: NovaWin_FileExists ..");
-	 return GetFileAttributes(fileName);
+
+	 DWORD d = GetFileAttributes(fileName);
+
+	 Log(LOG_LEVEL_VERBOSE, "---- return value: %s", d);
+
+	 return d;
 }ue;
 
 int NovaWin_IsDir(char *fileName)
@@ -207,7 +212,14 @@ int ExclusiveLockFile(int fd)
 {
 	 // LockFIle
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveLockFile ..");
-     return LockFile(fd, 0, 0, 0, 0);
+
+	 BOOL a;
+
+     a = LockFile(fd, 0, 0, 0, 0);
+
+     Log(LOG_LEVEL_VERBOSE, "---- return value: %s", a);
+
+     return a;
 }
 
 int ExclusiveUnlockFile(int fd)
