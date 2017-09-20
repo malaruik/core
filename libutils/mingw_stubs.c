@@ -23,13 +23,30 @@ Dir *DirOpen(const char *dirname)
 		   Log(LOG_LEVEL_VERBOSE, "---- FindFirstFile failed .. %s", GetLastError());
 	   }
 
+	   Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
+
 	   return hFind;
 }
 
 const struct dirent *DirRead(Dir *dir)
 {
 	// FindNextFile();
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead ..");
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead ..");¨
+	WIN32_FIND_DATA FindFileData;
+	BOOL hFind;
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %s", dirname);
+
+	hFind = FindNextFile(dirname, &FindFileData);
+
+	   if (hFind == INVALID_HANDLE_VALUE)
+	   {
+		   Log(LOG_LEVEL_VERBOSE, "---- FindNextFile failed .. %s", GetLastError());
+	   }
+
+	   Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
+
+	   return hFind;
 }
 
 void DirClose(Dir *dir)
