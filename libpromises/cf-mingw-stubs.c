@@ -212,9 +212,9 @@ int ExclusiveLockFile(int fd)
 
 int ExclusiveUnlockFile(int fd)
 {
-	 // UnLockFile
+	 // UnlockFile
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveUnlockFile ..");
-     return UnLockFile(fd, 0, 0, 0, 0);
+     return UnlockFile(fd, 0, 0, 0, 0);
 }
 bool BootstrapAllowed(void)
 {
