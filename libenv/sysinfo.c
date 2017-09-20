@@ -443,11 +443,11 @@ static void GetNameInfo3(EvalContext *ctx)
     char name[CF_MAXVARSIZE], quoteName[CF_MAXVARSIZE], shortname[CF_MAXVARSIZE];
 
     // MAla uname() replaced;
-    if (GetComputerName(&VSYSNAME, sizeof(VSYSNAME)) == -1)
-    {
-        Log(LOG_LEVEL_ERR, "Couldn't get kernel name info!. (uname: %s)", GetErrorStr());
-        memset(&VSYSNAME, 0, sizeof(VSYSNAME));
-    }
+    //if (GetComputerName(&VSYSNAME, sizeof(VSYSNAME)) == -1)
+    //{
+    //    Log(LOG_LEVEL_ERR, "Couldn't get kernel name info!. (uname: %s)", GetErrorStr());
+    //    memset(&VSYSNAME, 0, sizeof(VSYSNAME));
+    //}
 
     Log(LOG_LEVEL_VERBOSE, "iiiiiiiiiiiiiiii %s)", VSYSNAME);
 
