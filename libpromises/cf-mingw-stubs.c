@@ -71,10 +71,10 @@ int NovaWin_GetEnv(char *varName, char *varContents, int varContentsSz)
 int NovaWin_FileExists(const char *fileName)
 {
 
-	 DWORD d = GetFileAttributes(fileName);
+	 DWORD dfile = GetFileAttributes(fileName);
 
-	 //Log(LOG_LEVEL_VERBOSE, "---- stubs: NovaWin_FileExists ..");
-	 //Log(LOG_LEVEL_VERBOSE, "---- return value: %s", GetFileAttributes(fileName));
+	 Log(LOG_LEVEL_VERBOSE, "---- stubs: NovaWin_FileExists ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- return value: %d", dfile);
 
 	 return GetFileAttributes(fileName);
 }
