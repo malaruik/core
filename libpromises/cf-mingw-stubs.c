@@ -77,7 +77,7 @@ int NovaWin_FileExists(const char *fileName)
 	 Log(LOG_LEVEL_VERBOSE, "---- return value: %s", d);
 
 	 return d;
-}ue;
+}
 
 int NovaWin_IsDir(char *fileName)
 {
