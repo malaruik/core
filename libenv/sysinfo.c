@@ -449,6 +449,8 @@ static void GetNameInfo3(EvalContext *ctx)
         memset(&VSYSNAME, 0, sizeof(VSYSNAME));
     }
 
+    Log(LOG_LEVEL_VERBOSE, "iiiiiiiiiiiiiiii %s)", VSYSNAME);
+
 #ifdef _AIX
     snprintf(real_version, _SYS_NMLN, "%.80s.%.80s", VSYSNAME.version, VSYSNAME.release);
     strlcpy(VSYSNAME.release, real_version, _SYS_NMLN);
