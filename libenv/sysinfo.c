@@ -517,11 +517,18 @@ static void GetNameInfo3(EvalContext *ctx)
         }
     }
 
+    Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME steps: ");
+    strcpy(VSYSNAME.sysname, "windows");
+    strcpy(VSYSNAME.machine, "x86_64");
+    strcpy(VSYSNAME.release, "v100");
+
     for (i = 0; i < PLATFORM_CONTEXT_MAX; i++)
     {
         char sysname[CF_BUFSIZE];
         strlcpy(sysname, VSYSNAME.sysname, CF_BUFSIZE);
         ToLowerStrInplace(sysname);
+
+        Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 1: ");
 
         /* FIXME: review those strcmps. Moved out from StringMatch */
         if (!strcmp(CLASSATTRIBUTES[i][0], sysname)
@@ -534,6 +541,8 @@ static void GetNameInfo3(EvalContext *ctx)
                     || StringMatchFull(CLASSATTRIBUTES[i][2], VSYSNAME.release))
                 {
                     EvalContextClassPutHard(ctx, CLASSTEXT[i], "inventory,attribute_name=none,source=agent,derived-from=sys.class");
+
+                    Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME final! ");
 
                     found = true;
 
