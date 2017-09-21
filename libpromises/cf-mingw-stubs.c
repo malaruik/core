@@ -89,6 +89,8 @@ int NovaWin_IsDir(char *fileName)
 	 //        (dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
 	//}
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: NovaWin_IsDir ..");
+
+	 return true;
 }
 
 int NovaWin_PackageListInstalledFromAPI(EvalContext *ctx, PackageItem ** pkgList, Attributes a, Promise *pp)
@@ -134,20 +136,18 @@ const char *GetDefaultPidDir(void)
 
 const char *GetDefaultMasterDir(void)
 {
-	 //Log(LOG_LEVEL_VERBOSE, "---- stub: GetDefaultMasterDir ..");
 
 	 const char* defwd = GetDefaultWorkDir();
 	 const char* defmasterd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\masterfiles")+1);
 	 defmasterd = strncat(defwd, "\\masterfiles", strlen("\\masterfiles")+1);
 
-	  Log(LOG_LEVEL_VERBOSE, "---- stubs: MasterDir: %s", defmasterd);
+	 Log(LOG_LEVEL_VERBOSE, "---- stubs: MasterDir: %s", defmasterd);
 
 	 return defmasterd;
 }
 
 const char *GetDefaultInputDir(void)
 {
-    //Log(LOG_LEVEL_VERBOSE, "---- stubs: GetDefaultInputDir");
 
 	const char* defwd = GetDefaultWorkDir();
 	const char* definputd = malloc(sizeof(char)*strlen(defwd)+sizeof(char)*strlen("\\inputs")+1);
@@ -185,9 +185,15 @@ void InitializeWindows(void)
 void CreateEmptyFile(char *name)
 {
 
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: CreateEmptyFile name: %s", name);
+     BOOL hcreate
+ 	 Log(LOG_LEVEL_VERBOSE, "---- stub: CreateEmptyFile name: %s", name);
 
-	 CreateFile(name, FILE_READ_DATA, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL);
+	 hcreate = CreateFile(name, FILE_READ_DATA, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL);
+
+	   if (hcreate == INVALID_HANDLE_VALUE)
+		   {
+			   Log(LOG_LEVEL_VERBOSE, "---- FindNextFile failed .. %s", GetLastError());
+		   }
 }
 
 int LoadProcessTable()
@@ -211,23 +217,31 @@ int CopyACLs(ARG_UNUSED const char *src, ARG_UNUSED const char *dst)
 int ExclusiveLockFile(int fd)
 {
 	 // LockFIle
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveLockFile ..");
+	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveLockFile handle: %d", fd);
 
-	 BOOL a;
+	 BOOL lockedFile;
 
-     a = LockFile(fd, 0, 0, 0, 0);
+	 lockedFile = LockFile(fd, 0, 0, 1024, 0);
 
-     Log(LOG_LEVEL_VERBOSE, "---- return value: %s", a);
+     Log(LOG_LEVEL_VERBOSE, "---- return value: %s", lockedFile);
 
-     return a;
+     return lockedFile;
 }
 
 int ExclusiveUnlockFile(int fd)
 {
 	 // UnlockFile
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveUnlockFile ..");
-     return UnlockFile(fd, 0, 0, 0, 0);
+	 Log(LOG_LEVEL_VERBOSE, "---- stub: ExclusiveUnlockFile handle: %d", fd);
+
+	 BOOL unLockedFile;
+
+	 unLockedFile = UnlockFile(fd, 0, 0, 1024, 0);
+
+	 Log(LOG_LEVEL_VERBOSE, "---- return value: %s", unLockedFile);
+
+     return unLockedFile;
 }
+
 bool BootstrapAllowed(void)
 {
 	 Log(LOG_LEVEL_VERBOSE, "---- stub: BootstrapAllowed ..");
