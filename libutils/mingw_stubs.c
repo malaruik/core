@@ -34,7 +34,7 @@ const struct dirent *DirRead(Dir *dir)
 	WIN32_FIND_DATA FindFileData;
 	BOOL hFind;
 
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %d", *dir);
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %x", dir);
 
 	hFind = FindNextFile(dir, &FindFileData);
 
