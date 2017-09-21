@@ -23,7 +23,7 @@ Dir *DirOpen(const char *dirname)
 		   Log(LOG_LEVEL_VERBOSE, "---- FindFirstFile failed .. %s", GetLastError());
 	   }
 
-	   Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
+	   //Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
 
 	   return hFind;
 }
@@ -35,7 +35,7 @@ const struct dirent *DirRead(Dir *dir)
 	WIN32_FIND_DATA FindFileData;
 	BOOL hFind;
 
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %s", dir);
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %s", &dir);
 
 	hFind = FindNextFile(dir, &FindFileData);
 
@@ -44,7 +44,7 @@ const struct dirent *DirRead(Dir *dir)
 		   Log(LOG_LEVEL_VERBOSE, "---- FindNextFile failed .. %s", GetLastError());
 	   }
 
-	   Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
+	   //Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
 
 	   return hFind;
 }
@@ -100,7 +100,10 @@ int socketpair(int domain, int type, int protocol, int sv[2])
 
 	SOCKET sock = INVALID_SOCKET;
 
-	sock = socket(domain, type, protocol);
+	Log(LOG_LEVEL_VERBOSE, "---- socket %d %d %d \n", AF_INET, type, protocol);
+
+	sock = socket(AF_INET, type, protocol);
+
 	if (sock == INVALID_SOCKET) {
 
 	Log(LOG_LEVEL_VERBOSE, "---- socket function failed with error = %d\n", WSAGetLastError());
