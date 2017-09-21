@@ -110,18 +110,16 @@ int socketpair(int domain, int type, int protocol, int sv[2])
 {
 
 	SOCKET sock = INVALID_SOCKET;
+    struct sockaddr_in server , client;
 
 	Log(LOG_LEVEL_VERBOSE, "---- socket %d %d %d \n", AF_INET, type, protocol);
 
-	sock = socket("127.0.0.1", type, protocol);
+	sock = socket(domain, type, protocol);
 
 	if (sock == INVALID_SOCKET) {
 
 	Log(LOG_LEVEL_VERBOSE, "---- socket function failed with error = %d\n", WSAGetLastError());
-	}
-
-	else {
-		wprintf(L"socket function succeeded\n");
+	} else {
 		Log(LOG_LEVEL_VERBOSE, "---- socket function succeeded\n");
 		// Close the socket to release the resources associated
 		// Normally an application calls shutdown() before closesocket
@@ -134,5 +132,17 @@ int socketpair(int domain, int type, int protocol, int sv[2])
 		//	return 1;
 		//}
 	}
+
+	    //Prepare the sockaddr_in structure
+	    server.sin_family = AF_INET;
+	    server.sin_addr.s_addr = "127.0.0.1";
+	    server.sin_port = htons( 5308 );
+
+	    //Bind
+	    if( bind(sock ,(struct sockaddr *)&server , sizeof(server)) == SOCKET_ERROR)
+	    {
+			Log(LOG_LEVEL_VERBOSE, "---- socket function succeeded 2! \n");
+	    }
+
 }
 
