@@ -10,7 +10,7 @@
 
 Dir *DirOpen(const char *dirname)
 {
-	// FindFirstFile();
+
 	WIN32_FIND_DATA FindFileData;
 	HANDLE hFind;
 
@@ -30,12 +30,11 @@ Dir *DirOpen(const char *dirname)
 
 const struct dirent *DirRead(Dir *dir)
 {
-	// FindNextFile();
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead ..");
+
 	WIN32_FIND_DATA FindFileData;
 	BOOL hFind;
 
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %s", &dir);
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirRead %s", *dir);
 
 	hFind = FindNextFile(dir, &FindFileData);
 
@@ -51,8 +50,20 @@ const struct dirent *DirRead(Dir *dir)
 
 void DirClose(Dir *dir)
 {
-	// FindClose();
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirClose ..");
+	BOOL hClose;
+
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirClose %s", dir);
+
+	hClose = FindClose(dir);
+
+	   if (hClose == INVALID_HANDLE_VALUE)
+	   {
+		   Log(LOG_LEVEL_VERBOSE, "---- FindClose failed .. %s", GetLastError());
+	   }
+
+	   //Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
+
+	   // return;
 }
 
 int rpl_rename(const char *oldpath, const char *newpath)
@@ -102,7 +113,7 @@ int socketpair(int domain, int type, int protocol, int sv[2])
 
 	Log(LOG_LEVEL_VERBOSE, "---- socket %d %d %d \n", AF_INET, type, protocol);
 
-	sock = socket(AF_INET, type, protocol);
+	sock = socket("127.0.0.1", type, protocol);
 
 	if (sock == INVALID_SOCKET) {
 
