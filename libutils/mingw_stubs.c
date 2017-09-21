@@ -144,5 +144,7 @@ int socketpair(int domain, int type, int protocol, int sv[2])
 			Log(LOG_LEVEL_VERBOSE, "---- socket function succeeded 2! \n");
 	    }
 
+	    return 0;
+
 }
 

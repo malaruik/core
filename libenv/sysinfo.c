@@ -762,6 +762,8 @@ static void GetNameInfo3(EvalContext *ctx)
     snprintf(workbuf, CF_BUFSIZE, "%s_%s_%s_%s", VSYSNAME.sysname, VSYSNAME.machine, VSYSNAME.release,
              VSYSNAME.version);
 
+    Log(LOG_LEVEL_VERBOSE, "--- VSYSNAME output: %s_%s_%s_%s", VSYSNAME.sysname, VSYSNAME.machine, VSYSNAME.release, VSYSNAME.version);
+
     if (strlen(workbuf) > CF_MAXVARSIZE - 2)
     {
         Log(LOG_LEVEL_VERBOSE, "cfengine internal: $(arch) overflows CF_MAXVARSIZE! Truncating");
