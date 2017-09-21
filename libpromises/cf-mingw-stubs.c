@@ -185,7 +185,8 @@ void InitializeWindows(void)
 void CreateEmptyFile(char *name)
 {
 
-     BOOL hcreate
+     BOOL hcreate;
+
  	 Log(LOG_LEVEL_VERBOSE, "---- stub: CreateEmptyFile name: %s", name);
 
 	 hcreate = CreateFile(name, FILE_READ_DATA, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL);
