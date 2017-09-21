@@ -94,3 +94,31 @@ NewLineMode FileNewLineMode(ARG_UNUSED const char *file)
 
 	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: FileNewLineMode ..");
 }
+
+int socketpair(int domain, int type, int protocol, int sv[2])
+{
+
+	SOCKET sock = INVALID_SOCKET;
+
+	sock = socket(domain, type, protocol);
+	if (sock == INVALID_SOCKET) {
+
+	Log(LOG_LEVEL_VERBOSE, "---- socket function failed with error = %d\n", WSAGetLastError());
+	}
+
+	else {
+		wprintf(L"socket function succeeded\n");
+		Log(LOG_LEVEL_VERBOSE, "---- socket function succeeded\n");
+		// Close the socket to release the resources associated
+		// Normally an application calls shutdown() before closesocket
+		//   to  disables sends or receives on a socket first
+		// This isn't needed in this simple sample
+		//iResult = closesocket(sock);
+		//if (iResult == SOCKET_ERROR) {
+		//	wprintf(L"closesocket failed with error = %d\n", WSAGetLastError() );
+		//	WSACleanup();
+		//	return 1;
+		//}
+	}
+}
+
