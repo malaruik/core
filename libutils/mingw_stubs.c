@@ -23,9 +23,7 @@ Dir *DirOpen(const char *dirname)
 		   Log(LOG_LEVEL_VERBOSE, "---- FindFirstFile failed .. %s", GetLastError());
 	   }
 
-	   //Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
-
-	   return hFind;
+	return hFind;
 }
 
 const struct dirent *DirRead(Dir *dir)
@@ -43,9 +41,7 @@ const struct dirent *DirRead(Dir *dir)
 		   Log(LOG_LEVEL_VERBOSE, "---- FindNextFile failed .. %s", GetLastError());
 	   }
 
-	   //Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
-
-	   return hFind;
+   return hFind;
 }
 
 void DirClose(Dir *dir)
@@ -61,9 +57,7 @@ void DirClose(Dir *dir)
 		   Log(LOG_LEVEL_VERBOSE, "---- FindClose failed .. %s", GetLastError());
 	   }
 
-	   //Log(LOG_LEVEL_VERBOSE, "---- handle: %s", hFind);
-
-	   // return;
+    //return;
 }
 
 int rpl_rename(const char *oldpath, const char *newpath)
