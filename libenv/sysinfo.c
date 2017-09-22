@@ -522,7 +522,7 @@ static void GetNameInfo3(EvalContext *ctx)
     strcpy(VSYSNAME.machine, "x86_64");
     strcpy(VSYSNAME.release, "v100");
 
-    Log(LOG_LEVEL_VERBOSE, "--PLATFORM_CONTEXT_MAX: %s", PLATFORM_CONTEXT_MAX);
+    Log(LOG_LEVEL_VERBOSE, "--PLATFORM_CONTEXT_MAX: %d", PLATFORM_CONTEXT_MAX);
 
     for (i = 0; i < PLATFORM_CONTEXT_MAX; i++)
     {
