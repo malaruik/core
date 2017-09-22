@@ -536,7 +536,7 @@ static void GetNameInfo3(EvalContext *ctx)
         if (!strcmp(CLASSATTRIBUTES[i][0], sysname)
             || StringMatchFull(CLASSATTRIBUTES[i][0], sysname))
         {
-            Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 2: %s" CLASSATTRIBUTES[i][0]);
+            Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 2: %s", CLASSATTRIBUTES[i][0]);
 
             if (!strcmp(CLASSATTRIBUTES[i][1], VSYSNAME.machine)
                 || StringMatchFull(CLASSATTRIBUTES[i][1], VSYSNAME.machine))
