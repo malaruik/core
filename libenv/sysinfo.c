@@ -518,9 +518,9 @@ static void GetNameInfo3(EvalContext *ctx)
     }
 
     Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME steps: ");
-    strcpy(VSYSNAME.sysname, "windows_nt");
-    strcpy(VSYSNAME.machine, "x86_64");
-    strcpy(VSYSNAME.release, "v100");
+    //strcpy(VSYSNAME.sysname, "windows_nt");
+    //strcpy(VSYSNAME.machine, "x86_64");
+    //strcpy(VSYSNAME.release, "v100");
 
     Log(LOG_LEVEL_VERBOSE, "--PLATFORM_CONTEXT_MAX: %d", PLATFORM_CONTEXT_MAX);
 

@@ -178,8 +178,13 @@ off_t GetDiskUsage(char *file, CfSize type)
 
 void InitializeWindows(void)
 {
+	Log(LOG_LEVEL_VERBOSE, "---- stub: InitializeWindows..");
 
-	 Log(LOG_LEVEL_VERBOSE, "---- stub: InitializeWindows ..");
+    strcpy(VSYSNAME.sysname, "windows_nt");
+    strcpy(VSYSNAME.machine, "x86_64");
+    strcpy(VSYSNAME.release, "v100");
+
+	Log(LOG_LEVEL_VERBOSE, "---- stub: Windows initialized");
 }
 
 void CreateEmptyFile(char *name)
