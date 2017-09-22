@@ -177,7 +177,7 @@ static int AccessControl(EvalContext *ctx, const char *req_path, ServerConnectio
 /*
  * /var/cfengine -> $workdir translation.
  */
-    TranslatePath(translated_req_path, req_path);
+    TranslatePath__stub(translated_req_path, req_path);
 
     if (ResolveFilename(translated_req_path, transrequest))
     {
@@ -949,7 +949,7 @@ RSA *newkey = RSA_new();
     Log(LOG_LEVEL_DEBUG, "Receiving session key from client...");
 
     char session_key[CF_BUFSIZE] = { 0 };
-    int  session_key_size = CfSessionKeySize(enterprise_field);
+    int  session_key_size = CfSessionKeySize__stub(enterprise_field);
     int keylen = ReceiveTransaction(conn->conn_info, session_key, NULL);
 
     Log(LOG_LEVEL_DEBUG,
@@ -1593,7 +1593,7 @@ int BusyWithClassicConnection(EvalContext *ctx, ServerConnectionState *conn)
             return false;
         }
 
-        ReceiveCollectCall(conn);
+        ReceiveCollectCall__stub(conn);
         /* On success that returned true; otherwise, it did all
          * relevant Log()ging.  Either way, we're no longer busy with
          * it and our caller can close the connection: */

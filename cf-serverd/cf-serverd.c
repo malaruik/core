@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     {
         PolicyDestroy(policy);
         GenericAgentFinalize(ctx, config);
-        CleanReportBookFilterSet();
+        CleanReportBookFilterSet__stub();
     }
 
     return 0;

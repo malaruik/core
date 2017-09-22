@@ -49,10 +49,11 @@ void MonProcessesGatherData(double *cf_this)
     int numRootProcs = 0;
     int numOtherProcs = 0;
 
-    if (!GatherProcessUsers(&userList, &numProcUsers, &numRootProcs, &numOtherProcs))
-    {
-        return;
-    }
+    // MAla - check this one - cf-windows-functions.h
+    //if (!GatherProcessUsers(&userList, &numProcUsers, &numRootProcs, &numOtherProcs))
+    //{
+    //    return;
+    //}
 
     cf_this[ob_users] += numProcUsers;
     cf_this[ob_rootprocs] += numRootProcs;

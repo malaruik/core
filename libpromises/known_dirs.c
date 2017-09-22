@@ -88,12 +88,13 @@ const char *GetDefault##FUNC##Dir(void)                             \
     return GetDefaultDir_helper(STATIC##dir, GLOBAL, FOLDER);       \
 }                                                                   \
 
-GET_DEFAULT_DIRECTORY_DEFINE(Work, work, WORKDIR, NULL)
-GET_DEFAULT_DIRECTORY_DEFINE(Log, log, LOGDIR, "log")
-GET_DEFAULT_DIRECTORY_DEFINE(Pid, pid, PIDDIR, NULL)
-GET_DEFAULT_DIRECTORY_DEFINE(Master, master, MASTERDIR, "masterfiles")
-GET_DEFAULT_DIRECTORY_DEFINE(Input, input, INPUTDIR, "inputs")
-GET_DEFAULT_DIRECTORY_DEFINE(State, state, STATEDIR, "state")
+// MAla; does not work
+//GET_DEFAULT_DIRECTORY_DEFINE(Work, work, WORKDIR, NULL)
+//GET_DEFAULT_DIRECTORY_DEFINE(Log, log, LOGDIR, "log")
+//GET_DEFAULT_DIRECTORY_DEFINE(Pid, pid, PIDDIR, NULL)
+//GET_DEFAULT_DIRECTORY_DEFINE(Master, master, MASTERDIR, "masterfiles")
+//GET_DEFAULT_DIRECTORY_DEFINE(Input, input, INPUTDIR, "inputs")
+//GET_DEFAULT_DIRECTORY_DEFINE(State, state, STATEDIR, "state")
 
 /*******************************************************************/
 
@@ -101,7 +102,7 @@ const char *GetWorkDir(void)
 {
     const char *workdir = getenv("CFENGINE_TEST_OVERRIDE_WORKDIR");
 
-    return workdir == NULL ? GetDefaultWorkDir() : workdir;
+	return workdir == NULL ? GetDefaultWorkDir() : workdir;
 }
 
 const char *GetLogDir(void)

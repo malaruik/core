@@ -230,11 +230,11 @@ void LocalExec(const ExecConfig *config)
 /*
  * Don't inherit this file descriptor on fork/exec
  */
-
-    if (fileno(fp) != -1)
-    {
-        SetCloseOnExec(fileno(fp), true);
-    }
+    // MAla: unix stuff?
+    //if (fileno(fp) != -1)
+    //{
+    //    SetCloseOnExec(fileno(fp), true);
+    //}
 
     Log(LOG_LEVEL_VERBOSE, "Command => %s", cmd);
 
@@ -255,6 +255,8 @@ void LocalExec(const ExecConfig *config)
 
     while (!IsPendingTermination())
     {
+  // MAla: not mingw as above
+  /*
         if (!IsReadReady(fileno(pp),
                          config->agent_expireafter * SECONDS_PER_MINUTE))
         {
@@ -263,8 +265,9 @@ void LocalExec(const ExecConfig *config)
                 " (agent_expireafter=%d) - terminating it\n";
 
             fprintf(fp, errmsg, config->agent_expireafter);
+  */
             /* Trim '\n' before Log()ing. */
-            errmsg[strlen(errmsg) - 1] = '\0';
+  /*          errmsg[strlen(errmsg) - 1] = '\0';
             Log(LOG_LEVEL_NOTICE, errmsg, config->agent_expireafter);
             count++;
 
@@ -272,7 +275,8 @@ void LocalExec(const ExecConfig *config)
 
             if (PipeToPid(&pid_agent, pp))
             {
-                ProcessSignalTerminate(pid_agent);
+                // MAla: clear unix stuff in unix.c
+                //ProcessSignalTerminate(pid_agent);
             }
             else
             {
@@ -281,7 +285,7 @@ void LocalExec(const ExecConfig *config)
 
             break;
         }
-
+  */
         ssize_t res = CfReadLine(&line, &line_size, pp);
         if (res == -1)
         {

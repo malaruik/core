@@ -218,7 +218,7 @@ GenericAgentConfig *CheckOpts(int argc, char **argv)
         case 'V':
             {
                 Writer *w = FileWriter(stdout);
-                GenericAgentWriteVersion(w);
+                GenericAgentWriteVersion__stub(w);
                 FileWriterDetach(w);
             }
             exit(EXIT_SUCCESS);
@@ -336,7 +336,7 @@ static void KeepHardClasses(EvalContext *ctx)
     }
 
     /* FIXME: why is it not in generic_agent?! */
-    GenericAgentAddEditionClasses(ctx);
+    GenericAgentAddEditionClasses__stub(ctx);
 }
 
 /* Must not be called unless ACTIVE_THREADS is zero: */
@@ -462,7 +462,7 @@ static void CheckFileChanges(EvalContext *ctx, Policy **policy, GenericAgentConf
             *policy = LoadPolicy(ctx, config);
 
             /* Reload HA related configuration */
-            ReloadHAConfig();
+            ReloadHAConfig__stub();
 
             KeepPromises(ctx, *policy, config);
             Summarize();
@@ -677,7 +677,8 @@ static void PrepareServer(int sd)
 
     /* Close sd on exec, needed for not passing the socket to cf-runagent
      * spawned commands. */
-    SetCloseOnExec(sd, true);
+    // MAla; needs to be checked. Unix stuff?
+    //SetCloseOnExec(sd, true);
 
     Log(LOG_LEVEL_NOTICE, "Server is starting...");
     WritePID("cf-serverd.pid"); /* Arranges for atexit() to tidy it away */
@@ -731,11 +732,11 @@ static int WaitOnThreads()
 static void CollectCallIfDue(EvalContext *ctx)
 {
     /* Check whether we have established peering with a hub */
-    if (CollectCallHasPending())
+    if (CollectCallHasPending__stub())
     {
         extern int COLLECT_WINDOW;
         int waiting_queue = 0;
-        int new_client = CollectCallGetPending(&waiting_queue);
+        int new_client = CollectCallGetPending__stub(&waiting_queue);
         assert(new_client >= 0);
         if (waiting_queue > COLLECT_WINDOW)
         {
@@ -743,7 +744,7 @@ static void CollectCallIfDue(EvalContext *ctx)
                 "Abandoning collect call attempt with queue longer than collect_window [%d > %d]",
                 waiting_queue, COLLECT_WINDOW);
             cf_closesocket(new_client);
-            CollectCallMarkProcessed();
+            CollectCallMarkProcessed__stub();
         }
         else
         {
@@ -827,7 +828,7 @@ static void PolicyUpdateIfSafe(EvalContext *ctx, Policy **policy,
         if (prior != COLLECT_INTERVAL)
         {
             /* Start, stop or change schedule, as appropriate. */
-            CollectCallStart(COLLECT_INTERVAL);
+            CollectCallStart__stub(COLLECT_INTERVAL);
         }
     }
 }
@@ -870,7 +871,7 @@ int StartServer(EvalContext *ctx, Policy **policy, GenericAgentConfig *config)
 {
     InitSignals();
     ServerTLSInitialize();
-    int sd = SetServerListenState(ctx, QUEUESIZE, SERVER_LISTEN, &InitServer);
+    int sd = SetServerListenState__stub(ctx, QUEUESIZE, SERVER_LISTEN, &InitServer);
 
     /* Necessary for our use of select() to work in WaitForIncoming(): */
     assert(sd < sizeof(fd_set) * CHAR_BIT &&
@@ -889,7 +890,7 @@ int StartServer(EvalContext *ctx, Policy **policy, GenericAgentConfig *config)
     }
 
     PrepareServer(sd);
-    CollectCallStart(COLLECT_INTERVAL);
+    CollectCallStart__stub(COLLECT_INTERVAL);
 
     while (!IsPendingTermination())
     {
@@ -918,7 +919,7 @@ int StartServer(EvalContext *ctx, Policy **policy, GenericAgentConfig *config)
     }
     Log(LOG_LEVEL_NOTICE, "Cleaning up and exiting...");
 
-    CollectCallStop();
+    CollectCallStop__stub();
     if (sd != -1)
     {
         Log(LOG_LEVEL_VERBOSE, "Closing listening socket");

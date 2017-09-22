@@ -344,7 +344,7 @@ static GenericAgentConfig *CheckOpts(int argc, char **argv)
         case 'V':
         {
             Writer *w = FileWriter(stdout);
-            GenericAgentWriteVersion(w);
+            GenericAgentWriteVersion__stub(w);
             FileWriterDetach(w);
         }
         exit(EXIT_SUCCESS);
@@ -462,7 +462,9 @@ static int HailServer(const EvalContext *ctx, const GenericAgentConfig *config,
     }
 
     Address2Hostkey(hostkey, sizeof(hostkey), ipaddr);
-    GetCurrentUserName(user, sizeof(user));
+    
+    // MAla - unix stuff - needs to be checked?
+    //GetCurrentUserName(user, sizeof(user));
 
     if (INTERACTIVE)
     {

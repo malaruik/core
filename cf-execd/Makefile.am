@@ -38,6 +38,8 @@ AM_CFLAGS = \
 
 libcf_execd_la_LIBADD = ../libpromises/libpromises.la
 
+LDADD = ../libpromises/libpromises.la
+
 libcf_execd_la_SOURCES = \
         cf-execd.c cf-execd.h \
         cf-execd-runner.c cf-execd-runner.h \
@@ -48,12 +50,12 @@ libcf_execd_test_la_SOURCES = $(libcf_execd_la_SOURCES)
 libcf_execd_test_la_LIBADD = $(libcf_execd_la_LIBADD)
 libcf_execd_test_la_CPPFLAGS = $(AM_CPPFLAGS) -DTEST_CF_EXECD
 
-if !BUILTIN_EXTENSIONS
+#if !BUILTIN_EXTENSIONS
  sbin_PROGRAMS = cf-execd
  # Workaround for automake madness (try removing it if you want to know why).
  cf_execd_CFLAGS = $(AM_CFLAGS)
  cf_execd_LDADD = libcf-execd.la
-endif
+#endif
 
 CLEANFILES = *.gcno *.gcda
 

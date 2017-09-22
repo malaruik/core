@@ -1008,7 +1008,7 @@ bool BusyWithNewProtocol(EvalContext *ctx, ServerConnectionState *conn)
             return false;
         }
 
-        ReceiveCollectCall(conn);
+        ReceiveCollectCall__stub(conn);
         /* On success that returned true; otherwise, it did all
          * relevant Log()ging.  Either way, we're no longer busy with
          * it and our caller can close the connection: */

@@ -442,11 +442,14 @@ static void GetNameInfo3(EvalContext *ctx)
     struct stat sb;
     char name[CF_MAXVARSIZE], quoteName[CF_MAXVARSIZE], shortname[CF_MAXVARSIZE];
 
-    if (uname(&VSYSNAME) == -1)
-    {
-        Log(LOG_LEVEL_ERR, "Couldn't get kernel name info!. (uname: %s)", GetErrorStr());
-        memset(&VSYSNAME, 0, sizeof(VSYSNAME));
-    }
+    // MAla uname() replaced;
+    //if (GetComputerName(&VSYSNAME, sizeof(VSYSNAME)) == -1)
+    //{
+    //    Log(LOG_LEVEL_ERR, "Couldn't get kernel name info!. (uname: %s)", GetErrorStr());
+    //    memset(&VSYSNAME, 0, sizeof(VSYSNAME));
+    //}
+
+    //Log(LOG_LEVEL_VERBOSE, "iiiiiiiiiiiiiiii %s", VSYSNAME);
 
 #ifdef _AIX
     snprintf(real_version, _SYS_NMLN, "%.80s.%.80s", VSYSNAME.version, VSYSNAME.release);
@@ -514,23 +517,40 @@ static void GetNameInfo3(EvalContext *ctx)
         }
     }
 
+    Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME steps: ");
+    //strcpy(VSYSNAME.sysname, "windows_nt");
+    //strcpy(VSYSNAME.machine, "x86_64");
+    //strcpy(VSYSNAME.release, "v100");
+
+    Log(LOG_LEVEL_VERBOSE, "--PLATFORM_CONTEXT_MAX: %d", PLATFORM_CONTEXT_MAX);
+
     for (i = 0; i < PLATFORM_CONTEXT_MAX; i++)
     {
         char sysname[CF_BUFSIZE];
         strlcpy(sysname, VSYSNAME.sysname, CF_BUFSIZE);
         ToLowerStrInplace(sysname);
 
+        Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 1: ");
+
+        Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 1.1: %s", CLASSATTRIBUTES[i][0]);
+
         /* FIXME: review those strcmps. Moved out from StringMatch */
         if (!strcmp(CLASSATTRIBUTES[i][0], sysname)
             || StringMatchFull(CLASSATTRIBUTES[i][0], sysname))
         {
+            Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 2: %s", CLASSATTRIBUTES[i][0]);
+
             if (!strcmp(CLASSATTRIBUTES[i][1], VSYSNAME.machine)
                 || StringMatchFull(CLASSATTRIBUTES[i][1], VSYSNAME.machine))
             {
+                Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 3: %s", CLASSATTRIBUTES[i][1]);
+
                 if (!strcmp(CLASSATTRIBUTES[i][2], VSYSNAME.release)
                     || StringMatchFull(CLASSATTRIBUTES[i][2], VSYSNAME.release))
                 {
                     EvalContextClassPutHard(ctx, CLASSTEXT[i], "inventory,attribute_name=none,source=agent,derived-from=sys.class");
+
+                    Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME final! %s", CLASSATTRIBUTES[i][2]);
 
                     found = true;
 
@@ -670,11 +690,13 @@ static void GetNameInfo3(EvalContext *ctx)
 #ifdef __MINGW32__
     if (NovaWin_GetWinDir(workbuf, sizeof(workbuf)))
     {
+    	// Log(LOG_LEVEL_VERBOSE, "iiiii: WinDir Got !!");
         EvalContextVariablePutSpecial(ctx, SPECIAL_SCOPE_SYS, "windir", workbuf, CF_DATA_TYPE_STRING, "source=agent");
     }
 
     if (NovaWin_GetSysDir(workbuf, sizeof(workbuf)))
     {
+    	// Log(LOG_LEVEL_VERBOSE, "iiiii: SysDir Got !!");
         EvalContextVariablePutSpecial(ctx, SPECIAL_SCOPE_SYS, "winsysdir", workbuf, CF_DATA_TYPE_STRING, "source=agent");
 
         char filename[CF_BUFSIZE];
@@ -707,7 +729,7 @@ static void GetNameInfo3(EvalContext *ctx)
 # endif
 #endif /* !__MINGW32__ */
 
-    EnterpriseContext(ctx);
+    EnterpriseContext__stub(ctx);
 
     snprintf(workbuf, sizeof(workbuf), "%u_bit", (unsigned) sizeof(void*) * 8);
     EvalContextClassPutHard(ctx, workbuf, "source=agent");
@@ -756,6 +778,8 @@ static void GetNameInfo3(EvalContext *ctx)
 
     snprintf(workbuf, CF_BUFSIZE, "%s_%s_%s_%s", VSYSNAME.sysname, VSYSNAME.machine, VSYSNAME.release,
              VSYSNAME.version);
+
+    Log(LOG_LEVEL_VERBOSE, "--- VSYSNAME output: %s_%s_%s_%s", VSYSNAME.sysname, VSYSNAME.machine, VSYSNAME.release, VSYSNAME.version);
 
     if (strlen(workbuf) > CF_MAXVARSIZE - 2)
     {
@@ -2891,8 +2915,8 @@ void GetDefVars(EvalContext *ctx)
 void DetectEnvironment(EvalContext *ctx)
 {
     GetNameInfo3(ctx);
-    GetInterfacesInfo(ctx);
-    GetNetworkingInfo(ctx);
+    //GetInterfacesInfo(ctx);
+    //GetNetworkingInfo(ctx);
     Get3Environment(ctx);
     BuiltinClasses(ctx);
     OSClasses(ctx);

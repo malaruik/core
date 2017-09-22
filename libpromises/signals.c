@@ -72,7 +72,8 @@ static void CloseSignalPipe(void)
  */
 void MakeSignalPipe(void)
 {
-    if (socketpair(AF_UNIX, SOCK_STREAM, 0, SIGNAL_PIPE) != 0)
+    // MAla: , unix stuff AF_UNIX -> AF_INET
+    if (socketpair(AF_INET, SOCK_STREAM, 0, SIGNAL_PIPE) != 0)
     {
         Log(LOG_LEVEL_CRIT, "Could not create internal communication pipe. Cannot continue. (socketpair: '%s')",
             GetErrorStr());

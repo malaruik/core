@@ -181,7 +181,7 @@ bool MakeParentDirectory(const char *parentandchild, bool force)
 
     DeleteSlash(pathbuf);
 
-    if (lstat(pathbuf, &statbuf) != -1)
+    if (_stat(pathbuf, &statbuf) != -1)
     {
         if (S_ISLNK(statbuf.st_mode))
         {
@@ -284,8 +284,11 @@ bool MakeParentDirectory(const char *parentandchild, bool force)
             /* We are at dir "/" of an absolute path, no need to create. */
         }
         /* WARNING: on Windows stat() fails if path has a trailing slash! */
-        else if (stat(currentpath, &statbuf) == -1)
+
+        else if (_stat(currentpath, &statbuf) == -1)
         {
+            Log(LOG_LEVEL_VERBOSE, "---------- Making directory: %s", currentpath);
+
             if (!DONTDO)
             {
                 mask = umask(0);
@@ -631,7 +634,8 @@ void RotateFiles(char *name, int number)
         {
             UnexpectedError("Failed to chown '%s'", name);
         }
-        fchmod(fd, statbuf.st_mode);
+        // MAla: unix?
+        //fchmod(fd, statbuf.st_mode);
         close(fd);
     }
 }

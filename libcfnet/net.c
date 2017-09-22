@@ -406,6 +406,8 @@ int SocketConnect(const char *host, const char *port,
                   unsigned int connect_timeout, bool force_ipv4,
                   char *txtaddr, size_t txtaddr_size)
 {
+	Log(LOG_LEVEL_VERBOSE, "---- !!!! SocketConnect...");
+
     struct addrinfo *response = NULL, *ap;
     bool connected = false;
     int sd = -1;
@@ -490,9 +492,10 @@ int SocketConnect(const char *host, const char *port,
                 assert(response2);     /* second getaddrinfo was successful */
                 freeaddrinfo(response2);
             }
+            // MAla: not mingw stuff?
+            //connected = TryConnect(sd, connect_timeout * 1000,
+            //                       ap->ai_addr, ap->ai_addrlen);
 
-            connected = TryConnect(sd, connect_timeout * 1000,
-                                   ap->ai_addr, ap->ai_addrlen);
             if (!connected)
             {
                 Log(LOG_LEVEL_VERBOSE, "Unable to connect to address %s (%s)",

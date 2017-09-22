@@ -163,7 +163,7 @@ void MonitorInitialize(void)
 
     MonNetworkInit();
     MonTempInit();
-    MonOtherInit();
+    MonOtherInit__stub();
 
     Log(LOG_LEVEL_DEBUG, "Finished with monitor initialization");
 }
@@ -349,7 +349,7 @@ static void GetQ(EvalContext *ctx, const Policy *policy)
     MonNetworkSnifferGatherData();
     MonTempGatherData(CF_THIS);
 #endif /* !__MINGW32__ */
-    MonOtherGatherData(CF_THIS);
+    MonOtherGatherData__stub(CF_THIS);
     GatherPromisedMeasures(ctx, policy);
 }
 
@@ -384,7 +384,7 @@ static Averages EvalAvQ(EvalContext *ctx, char *t)
         char desc[CF_BUFSIZE];
         double This;
         name[0] = '\0';
-        GetObservable(i, name, desc);
+        GetObservable__stub(i, name, desc);
 
         /* Overflow protection */
 
@@ -596,7 +596,7 @@ static void ArmClasses(EvalContext *ctx, Averages av)
     {
         char desc[CF_BUFSIZE];
 
-        GetObservable(i, name, desc);
+        GetObservable__stub(i, name, desc);
         sigma = SetClasses(ctx, name, CF_THIS[i], av.Q[i].expect, av.Q[i].var, LOCALAV.Q[i].expect, LOCALAV.Q[i].var, &mon_data);
         SetVariable(name, CF_THIS[i], av.Q[i].expect, sigma, &mon_data);
 
@@ -673,7 +673,7 @@ static void ArmClasses(EvalContext *ctx, Averages av)
         }
     }
 
-    SetMeasurementPromises(&mon_data);
+    SetMeasurementPromises__stub(&mon_data);
 
     // Report on the open ports, in various ways
 
@@ -773,7 +773,7 @@ static void UpdateAverages(EvalContext *ctx, char *timekey, Averages newvals)
     WriteDB(dbp, "DATABASE_AGE", &AGE, sizeof(double));
 
     CloseDB(dbp);
-    HistoryUpdate(ctx, newvals);
+    HistoryUpdate__stub(ctx, newvals);
 }
 
 static int Day2Number(const char *datestring)

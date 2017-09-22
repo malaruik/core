@@ -152,7 +152,7 @@ void ServerEntryPoint(EvalContext *ctx, const char *ipaddr, ConnectionInfo *info
 
     if (info->is_call_collect)
     {
-        CollectCallMarkProcessed();
+        CollectCallMarkProcessed__stub();
     }
     cf_closesocket(ConnectionInfoSocket(info));
     ConnectionInfoDestroy(&info);
@@ -429,7 +429,7 @@ static void *HandleConnection(void *c)
   conndone:
     if (conn->conn_info->is_call_collect)
     {
-        CollectCallMarkProcessed();
+        CollectCallMarkProcessed__stub();
     }
     DeleteConn(conn);
     return NULL;

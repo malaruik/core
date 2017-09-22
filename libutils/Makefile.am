@@ -74,7 +74,8 @@ libutils_la_SOURCES = \
 	regex.c regex.h \
 	encode.c encode.h \
 	pcre_wrap.c pcre_wrap.h \
-	printsize.h
+	printsize.h \
+       mingw_stubs.c
 
 if !NT
   libutils_la_SOURCES += unix_dir.c

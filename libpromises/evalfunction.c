@@ -3932,21 +3932,22 @@ static FnCallResult FnCallFindfiles(EvalContext *ctx, ARG_UNUSED const Policy *p
             }
 #endif
 
-            if (glob(expanded, globflags, NULL, &globbuf) == 0)
-            {
-                for (int i = 0; i < globbuf.gl_pathc; i++)
-                {
-                    char* found = globbuf.gl_pathv[i];
-                    char fname[CF_BUFSIZE];
-                    // TODO: this truncates the filename and may be removed
-                    // if Rlist and the core are OK with that possibility
-                    strlcpy(fname, found, CF_BUFSIZE);
-                    Log(LOG_LEVEL_VERBOSE, "%s pattern '%s' found match '%s'", fp->name, pattern, fname);
-                    RlistAppendScalarIdemp(&returnlist, fname);
-                }
+            //MAla: unix?
+            //if (glob(expanded, globflags, NULL, &globbuf) == 0)
+            //{
+            //    for (int i = 0; i < globbuf.gl_pathc; i++)
+            //    {
+            //        char* found = globbuf.gl_pathv[i];
+            //        char fname[CF_BUFSIZE];
+            //        // TODO: this truncates the filename and may be removed
+            //        // if Rlist and the core are OK with that possibility
+            //        strlcpy(fname, found, CF_BUFSIZE);
+            //        Log(LOG_LEVEL_VERBOSE, "%s pattern '%s' found match '%s'", fp->name, pattern, fname);
+            //        RlistAppendScalarIdemp(&returnlist, fname);
+            //    }
 
-                globfree(&globbuf);
-            }
+            //    globfree(&globbuf);
+            //}
 
             free(expanded);
         }

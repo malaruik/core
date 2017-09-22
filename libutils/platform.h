@@ -687,7 +687,7 @@ int rpl_mkdir(const char *pathname, mode_t mode);
 
 #if !defined(HAVE_STAT_PROPER)
 int rpl_stat(const char *path, struct stat *buf);
-#define _stat64(name, st) rpl_stat(name, st)
+// #define _stat64(name, st) rpl_stat(name, st)
 #endif
 
 #if !defined(HAVE_RENAME_PROPER)

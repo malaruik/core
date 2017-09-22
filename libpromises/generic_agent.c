@@ -416,7 +416,7 @@ void GenericAgentDiscoverContext(EvalContext *ctx, GenericAgentConfig *config)
     Log(LOG_LEVEL_VERBOSE, " %s", NameVersion());
     Banner("Initialization preamble");
 
-    GenericAgentSetDefaultDigest(&CF_DEFAULT_DIGEST, &CF_DEFAULT_DIGEST_LEN);
+    GenericAgentSetDefaultDigest__stub(&CF_DEFAULT_DIGEST, &CF_DEFAULT_DIGEST_LEN);
     GenericAgentInitialize(ctx, config);
 
     time_t t = SetReferenceTime();
@@ -890,9 +890,11 @@ void GenericAgentInitialize(EvalContext *ctx, GenericAgentConfig *config)
 
     EvalContextClassPutHard(ctx, "any", "source=agent");
 
-    GenericAgentAddEditionClasses(ctx);
+    GenericAgentAddEditionClasses__stub(ctx);
 
 /* Define trusted directories */
+
+    Log(LOG_LEVEL_VERBOSE, "Asking working directory ..");
 
     const char *workdir = GetWorkDir();
 
@@ -902,9 +904,12 @@ void GenericAgentInitialize(EvalContext *ctx, GenericAgentConfig *config)
     }
 
     OpenLog(LOG_USER);
+
+    Log(LOG_LEVEL_VERBOSE, "generic_agent: SetSyslogFacility next..");
+
     SetSyslogFacility(LOG_USER);
 
-    Log(LOG_LEVEL_VERBOSE, "Work directory is %s", workdir);
+    Log(LOG_LEVEL_VERBOSE, "generic_agent: Work directory is %s", workdir);
 
     snprintf(vbuff, CF_BUFSIZE, "%s%cupdate.conf", GetInputDir(), FILE_SEPARATOR);
     MakeParentDirectory(vbuff, force);
@@ -1445,11 +1450,12 @@ static void CheckWorkingDirectories(EvalContext *ctx)
     const char* const workdir = GetWorkDir();
     const char* const statedir = GetStateDir();
 
-    if (uname(&VSYSNAME) == -1)
-    {
-        Log(LOG_LEVEL_ERR, "Couldn't get kernel name info. (uname: %s)", GetErrorStr());
-        memset(&VSYSNAME, 0, sizeof(VSYSNAME));
-    }
+    //MAla GetComputerName
+    //if (uname(&VSYSNAME) == -1)
+    //{
+    //    Log(LOG_LEVEL_ERR, "Couldn't get kernel name info. (uname: %s)", GetErrorStr());
+    //    memset(&VSYSNAME, 0, sizeof(VSYSNAME));
+    //}
 
     snprintf(vbuff, CF_BUFSIZE, "%s%c.", workdir, FILE_SEPARATOR);
     MakeParentDirectory(vbuff, false);
@@ -1466,26 +1472,26 @@ static void CheckWorkingDirectories(EvalContext *ctx)
     Log(LOG_LEVEL_VERBOSE, "Checking integrity of the trusted workdir");
 
     /* fix any improper uid/gid ownership on workdir */
-    if (statbuf.st_uid != getuid() || statbuf.st_gid != getgid())
-    {
-        if (chown(workdir, getuid(), getgid()) == -1)
-        {
-            const char* error_reason = GetErrorStr();
+    //if (statbuf.st_uid != getuid() || statbuf.st_gid != getgid())
+    //{
+        //if (chown(workdir, getuid(), getgid()) == -1)
+        //{
+        //    const char* error_reason = GetErrorStr();
 
-            Log(LOG_LEVEL_ERR, "Unable to set ownership on '%s' to '%ju.%ju'. (chown: %s)",
-                workdir, (uintmax_t)getuid(), (uintmax_t)getgid(), error_reason);
-        }
-    }
+        //    Log(LOG_LEVEL_ERR, "Unable to set ownership on '%s' to '%ju.%ju'. (chown: %s)",
+        //        workdir, (uintmax_t)getuid(), (uintmax_t)getgid(), error_reason);
+        //}
+    //}
 
     /* ensure workdir permissions are go-w */
-    if ((statbuf.st_mode & 022) != 0)
-    {
-        if (chmod(workdir, (mode_t) (statbuf.st_mode & ~022)) == -1)
-        {
-            Log(LOG_LEVEL_ERR, "Unable to set permissions on '%s' to go-w. (chmod: %s)",
-                workdir, GetErrorStr());
-        }
-    }
+    //if ((statbuf.st_mode & 022) != 0)
+    //{
+    //    if (chmod(workdir, (mode_t) (statbuf.st_mode & ~022)) == -1)
+    //    {
+    //        Log(LOG_LEVEL_ERR, "Unable to set permissions on '%s' to go-w. (chmod: %s)",
+    //            workdir, GetErrorStr());
+    //    }
+    //}
 
     MakeParentDirectory(GetStateDir(), false);
     Log(LOG_LEVEL_VERBOSE, "Checking integrity of the state database");
@@ -1497,13 +1503,13 @@ static void CheckWorkingDirectories(EvalContext *ctx)
         snprintf(vbuff, CF_BUFSIZE, "%s%c", statedir, FILE_SEPARATOR);
         MakeParentDirectory(vbuff, false);
 
-        if (chown(vbuff, getuid(), getgid()) == -1)
-        {
-            Log(LOG_LEVEL_ERR, "Unable to set owner on '%s' to '%jd.%jd'. (chown: %s)", vbuff,
-                (uintmax_t)getuid(), (uintmax_t)getgid(), GetErrorStr());
-        }
+        //if (chown(vbuff, getuid(), getgid()) == -1)
+        //{
+        //    Log(LOG_LEVEL_ERR, "Unable to set owner on '%s' to '%jd.%jd'. (chown: %s)", vbuff,
+        //        (uintmax_t)getuid(), (uintmax_t)getgid(), GetErrorStr());
+        //}
 
-        chmod(vbuff, (mode_t) 0755);
+        //chmod(vbuff, (mode_t) 0755);
     }
     else
     {
@@ -1520,16 +1526,16 @@ static void CheckWorkingDirectories(EvalContext *ctx)
 
     snprintf(vbuff, CF_BUFSIZE, "%s%cmodules", workdir, FILE_SEPARATOR);
 
-    if (stat(vbuff, &statbuf) == -1)
+    if (_stat64(vbuff, &statbuf) == -1)
     {
         snprintf(vbuff, CF_BUFSIZE, "%s%cmodules%c.", workdir, FILE_SEPARATOR, FILE_SEPARATOR);
         MakeParentDirectory(vbuff, false);
 
-        if (chown(vbuff, getuid(), getgid()) == -1)
-        {
-            Log(LOG_LEVEL_ERR, "Unable to set owner on '%s' to '%ju.%ju'. (chown: %s)", vbuff,
-                (uintmax_t)getuid(), (uintmax_t)getgid(), GetErrorStr());
-        }
+        //if (chown(vbuff, getuid(), getgid()) == -1)
+        //{
+        //    Log(LOG_LEVEL_ERR, "Unable to set owner on '%s' to '%ju.%ju'. (chown: %s)", vbuff,
+        //        (uintmax_t)getuid(), (uintmax_t)getgid(), GetErrorStr());
+        //}
 
         chmod(vbuff, (mode_t) 0700);
     }
@@ -1548,7 +1554,8 @@ static void CheckWorkingDirectories(EvalContext *ctx)
 
     snprintf(vbuff, CF_BUFSIZE, "%s%cppkeys", workdir, FILE_SEPARATOR);
 
-    if (stat(vbuff, &statbuf) == -1)
+    // MAla: stat -> _stat64
+    if (_stat64(vbuff, &statbuf) == -1)
     {
         snprintf(vbuff, CF_BUFSIZE, "%s%cppkeys%c", workdir, FILE_SEPARATOR, FILE_SEPARATOR);
         MakeParentDirectory(vbuff, false);

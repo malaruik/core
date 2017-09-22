@@ -321,7 +321,7 @@ static void KeepControlPromises(EvalContext *ctx, const Policy *policy, GenericA
                  * addition, cf-agent can access the database occasionally as
                  * well, so add a few extra for that too. */
                 DBSetMaximumConcurrentTransactions(CFD_MAXPROCESSES
-                                                   + EnterpriseGetMaxCfHubProcesses() + 10);
+                                                   + EnterpriseGetMaxCfHubProcesses__stub() + 10);
                 continue;
             }
             else if (IsControlBody(SERVER_CONTROL_CALL_COLLECT_INTERVAL))
@@ -609,7 +609,7 @@ static void KeepPromiseBundles(EvalContext *ctx, const Policy *policy)
 {
     /* Dial up the generic promise expansion with a callback */
 
-    CleanReportBookFilterSet();
+    CleanReportBookFilterSet__stub();
 
     for (size_t i = 0; i < SeqLength(policy->bundles); i++)
     {
@@ -680,7 +680,7 @@ static PromiseResult KeepServerPromise(EvalContext *ctx, const Promise *pp, ARG_
         else if (strcmp(resource_type, "query") == 0)
         {
             KeepQueryAccessPromise(ctx, pp);
-            KeepReportDataSelectAccessPromise(pp);
+            KeepReportDataSelectAccessPromise__stub(pp);
             return PROMISE_RESULT_NOOP;
         }
         else if (strcmp(resource_type, "context") == 0)
@@ -1249,7 +1249,7 @@ void KeepLiteralAccessPromise(EvalContext *ctx, const Promise *pp, const char *t
         ap = GetOrCreateAuth(handle, &SV.varadmit, &SV.varadmittail);
         dp = GetOrCreateAuth(handle, &SV.vardeny, &SV.vardenytail);
 
-        RegisterLiteralServerData(ctx, handle, pp);
+        RegisterLiteralServerData__stub(ctx, handle, pp);
         ap->literal = true;
 
 
@@ -1311,7 +1311,7 @@ static void KeepQueryAccessPromise(EvalContext *ctx, const Promise *pp)
     Auth *dp = GetOrCreateAuth(pp->promiser, &SV.vardeny, &SV.vardenytail),
         *ap = GetOrCreateAuth(pp->promiser, &SV.varadmit, &SV.varadmittail);
 
-    RegisterLiteralServerData(ctx, pp->promiser, pp);
+    RegisterLiteralServerData__stub(ctx, pp->promiser, pp);
     ap->literal = true;
 
     size_t pos = acl_SortedInsert(&query_acl, pp->promiser);

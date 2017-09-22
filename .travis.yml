@@ -1,0 +1,171 @@
+language: cpp
+#matrix:
+#  include:
+#    - os: linux
+#      compiler: x86_64-w64-mingw32-gcc
+#      env: CC=x86_64-w64-mingw32-gcc
+
+#language: cpp
+
+#env:
+ #  SH: bash
+ #  global:
+      #- export CXX=x86_64-w64-mingw32-g++
+      #- export CC=x86_64-w64-mingw32-gcc
+
+sudo: required
+
+before_install:
+     - export PATH=H/usr/bin:$PATH
+
+install:
+     #- sudo sed -i 's/precise/trusty/g' /etc/apt/sources.list;
+     - bash .travis/scripts/install.ubuntu.sh
+     - sudo apt-get install build-essential
+     - sudo apt-get install libtool intltool automake
+     # sudo apt-get update -qq
+     #- sudo apt-get install -qqy binutils-mingw-w64 gcc-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64 mingw-w64
+     - sudo ln -s /usr/bin/x86_64-w64-mingw32-windres /usr/bin/windres
+     - export CC="x86_64-w64-mingw32-gcc"
+     - export CXX=x86_64-w64-mingw32-g++
+     - sudo apt-get install autopoint gettext
+
+deploy: 
+  provider: releases
+  api_key:
+    secure: "enPvdj1sTN8r9oGUo5aN9iS8zpAKxaDrLROAi2AfogZyxwM9met+IqRWdpl1XKif2AKnsAyXM/sejVZBt8L+2dlbYqcJZKkHSmi+9Hf2edoT1Tq6bR3m1DmHPrVchwuiY/2oodrsDKmjYFUXHoxSyzqeuJSa+6EGIej+REeUaKie8u5kHmXEAz/2veSiM49qsNYifnMn1oQ19LHFRE67GMSpCAnaifoNL8OQqpl8+a2kUmL4JuHXgcEozYEMt6IDNRkjCJToWZ6Zm7uGgs43g6F08VZWULe+eUenTy9ucuIkGTM6oF0G7UhLv2FI+tfVcUbY9NOmT1Ru1gOkMDjiARKTqWDERgaQ4xpiOHTBewPsEbK0RDRv7CGINhnM/iauIp0KZzl+2qL1LeKaySFGV57ojPAH7f0OTPaMbe8hj7hb0JEIkB6QCcNBhfSuO4oc7RRvsHZvY7aSvkddbyUAc4IclkdfdlpxeKftrUnjjXT/W7Y51JEiUu1f69fWJ0TRjHZ99HVolv/WTnnWFuDbLT2gC8XZgh3fh/iGXEKtHvvS22e1K3sUWKzsj/P1XO/xtOeDD/2/IBBq4FG1A7/IsN/w4Duw89HuuX3ZSYh9OQ0XZM5i5vGXIkk9zJn/CP6AzlqjlHm90Ndc6aYWiA1WgTZQhGJUY/RqHf1j45YIjOY="
+  file_glob: true
+  file: "$TRAVIS_BUILD_DIR/cfengine.zip"
+  skip_cleanup: true 
+  on:
+    repo: "malaruik/core"
+    branch: 3.9.1-kortemik-mingw-malaruik-mingw
+    tags: true
+
+addons:
+  apt:
+    packages:
+     #- cmake
+
+os: linux
+
+compiler:
+     #- x86_64-w64-mingw32-gcc
+     #- x86_64-w64-mingw32-g++
+     #- clang
+
+script:
+     #
+     #- travis encrypt OPPO=7146457fa76a8ab7ba9e1f60b12878846c375f19 --add
+     # -----------------------------------------------------------------------------------------------------
+     # Win dll loader? needed?
+     # -----------------------------------------------------------------------------------------------------
+     - x86_64-w64-mingw32-gcc --version
+     - x86_64-w64-mingw32-g++ --version
+     #- ls -l /usr/x86_64-w64-mingw32/include
+     - libtool --version
+     - git clone https://github.com/dlfcn-win32/dlfcn-win32.git
+     - cd dlfcn-win32
+     - ./configure --cc=x86_64-w64-mingw32-gcc --enable-static
+     - make
+     - cd ..
+     # -----------------------------------------------------------------------------------------------------
+     #  PCRE building
+     # -----------------------------------------------------------------------------------------------------
+     #- ls -l /usr/x86_64-w64-mingw32/include/winver.h
+     # - cp /usr/x86_64-w64-mingw32/include/winver.h /home/build/travis/malaruik/openssl/include/winver.h 
+     #- ls -l /usr/include/mysql
+     - git clone https://github.com/coapp-packages/pcre.git
+     - cd pcre
+     - chmod 777 autogen.sh
+     - ./autogen.sh
+     - autoreconf -vif
+     - env CC=x86_64-w64-mingw32-gcc CFLAGS="-O2 -Wall" ./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/home/travis/build/malaruik/pcre CFLAGS="-I/usr/x86_64-w64-mingw32/include"
+     - make
+     - cd .libs
+     - ls -l *.dll
+     - cd ..
+     - cd ..
+     #
+     # --------------------------------------------------------------------------
+     #  OpenSSL building
+     # --------------------------------------------------------------------------
+     - git clone https://github.com/openssl/openssl.git --branch OpenSSL_1_0_0-stable
+     #- git clone https://github.com/openssl/openssl.git --branch master
+     - cd openssl
+     - pwd
+     - ls -l ./ssl
+     - ls -l ./include
+     - pwd
+     - env CC=x86_64-w64-mingw32-gcc ./Configure mingw64 no-shared no-asm --prefix=/home/travis/build/malaruik/openssl/out --openssldir=/home/travis/build/malaruik/openssl -I/usr/x86_64-w64-mingw32/include -L/usr/x86_64-w64-mingw32/include
+     - make &> build.log
+     #- make
+     #- make prefix=/openssl install &> install.log
+     - cd ..
+     #
+     # -----------------------------------------------------------------------------
+     # OpenLDAP -llmdb compiling only
+     # -----------------------------------------------------------------------------
+     - git clone https://github.com/openldap/openldap.git --branch master
+     - cd openldap/libraries/liblmdb
+     - sed 's/-shared/-shared -Wl,-Bsymbolic/g' Makefile >Makefile2
+     - sed 's/= gcc/= x86_64-w64-mingw32-gcc/g' Makefile2 >Makefile3
+     - sed 's/= ar/= x86_64-w64-mingw32-ar/g' Makefile3 >Makefile4
+     - sed 's/usr\/local/.\/openldap\/libraries\/liblmdb/g' Makefile4 >Makefile5
+     - sed 's/.so/.dll/g' Makefile5 >Makefile6
+     - cp Makefile6 Makefile
+     - make
+     - make install prefix=/home/travis/build/malaruik/core/openldap/libraries/liblmdb
+     - cd .. 
+     - cd ..
+     - cd ..
+     - pwd
+     # -----------------------------------------------------------------------
+     # CFENGINE building starts here:
+     # -----------------------------------------------------------------------
+     #
+     #- autoreconf -vi
+     - env CC=x86_64-w64-mingw32-gcc ./autogen.sh --target=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --with-openssl=/home/travis/build/malaruik/core/openssl --with-pcre=/home/travis/build/malaruik/core/pcre --with-lmdb=/home/travis/build/malaruik/core/openldap/libraries/liblmdb/lib --prefix=/home/travis/build/malaruik/core CFLAGS="-I/home/travis/build/malaruik/core/libpromises -DS_IWGRP=0 -DS_IXGRP=0 -DS_IWOTH=0 -DS_IXOTH=0 -DS_IRWXG=0 -DS_IRWXO=0 -I/usr/x86_64-w64-mingw32/include -I/home/travis/build/malaruik/core/libutils -D__MINGW32__  -std=c99 -pedantic -I/home/travis/build/malaruik/core/openssl/include -I/home/travis/build/malaruik/core/openldap/libraries/liblmdb -I/home/travis/build/malaruik/core/openldap/libraries/liblmdb/include -I/home/travis/build/malaruik/core/pcre -I/home/travis/build/malaruik/core/pcre/.libs -lmsvcrt -g -O2 -Wall -Wno-pointer-sign -Wimplicit-function-declaration -Wunused-parameter -Wno-format -DNDEBUG -static-libgcc -DS_IROTH=0 -DS_IRGRP=0 -D__MSVCRT_VERSION__=0x0700 -D__USE_MINGW_ANSI_STDIO=1" LDFLAGS="-L/home/travis/build/malaruik/core/libpromises -L/home/travis/build/malaruik/core/dlfcn-win32 -L/home/travis/build/malaruik/core/openldap/libraries/liblmdb -L/home/travis/build/malaruik/core/openssl -L/home/travis/build/malaruik/core/pcre/.libs -lws2_32 -ldl -lpsapi -lpcre -llmdb -lssl -lcrypto -lwsock32 -lgdi32"
+     #
+     #
+     - cd libutils
+     - sed 's/!HAVE_DECL_GMTIME_R/HAVE_DECL_GMTIME_R/g' platform.h >platform2.h
+     - sed 's/!HAVE_DECL_LOCALTIME_R/HAVE_DECL_LOCALTIME_R/g' platform2.h >platform3.h 
+     - cp platform3.h platform.h
+     - sed 's/#define snprintf rpl_snprintf/ /g' config.h >config2.h
+     - sed 's/#define vsnprintf rpl_vsnprintf/ /g' config2.h >config3.h 
+     - sed 's/#define vfprintf rpl_vfprintf/ /g' config3.h >config4.h 
+     - sed 's/#define vprintf rpl_vprintf/ /g' config4.h >config5.h
+     - sed 's/#define fprintf rpl_fprintf/ /g' config5.h >config6.h
+     - sed 's/#define printf rpl_printf/ /g' config6.h >config7.h
+     - cp config7.h config.h
+     - cd ..
+     - cd libcompat
+     #- cd cf-upgrade
+     - sed 's/gnu99/c99/g' Makefile >Makefile2
+     - cp Makefile2 Makefile
+     - cd ..
+     - make V=1
+     - make install
+     - ls -l
+     - cp $TRAVIS_BUILD_DIR/pcre/.libs/libpcre-1.dll bin/
+     - cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll bin/
+     - cd bin
+     - mv x86_64-w64-mingw32-cf-agent.exe cf-agent.exe
+     - mv x86_64-w64-mingw32-cf-key.exe cf-key.exe
+     - mv x86_64-w64-mingw32-cf-execd.exe cf-execd.exe
+     - mv x86_64-w64-mingw32-cf-monitord.exe cf-monitord.exe
+     - mv x86_64-w64-mingw32-cf-serverd.exe cf-serverd.exe
+     - mv x86_64-w64-mingw32-cf-runagent.exe cf-runagent.exe
+     - mv x86_64-w64-mingw32-cf-promises.exe cf-promises.exe
+     - mv x86_64-w64-mingw32-cf-upgrade.exe cf-upgrade.exe
+     - mv x86_64-w64-mingw32-rpmvercmp.exe rpmvercmp.exe
+     - ls -l
+     - cd ..
+     - mv bin cfengine
+     - zip -P cfengine -r cfengine.zip cfengine/
+     #- cd ..
+     #
+     #-----------------------------------------------------------------------
+     #
+     #-----------------------------------------------------------------------
