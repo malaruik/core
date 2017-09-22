@@ -522,8 +522,6 @@ static void GetNameInfo3(EvalContext *ctx)
     strcpy(VSYSNAME.machine, "x86_64");
     strcpy(VSYSNAME.release, "v100");
 
-    Log(LOG_LEVEL_VERBOSE, "-- PLAT..: ");
-
     Log(LOG_LEVEL_VERBOSE, "--PLATFORM_CONTEXT_MAX: %d", PLATFORM_CONTEXT_MAX);
 
     for (i = 0; i < PLATFORM_CONTEXT_MAX; i++)
@@ -538,9 +536,13 @@ static void GetNameInfo3(EvalContext *ctx)
         if (!strcmp(CLASSATTRIBUTES[i][0], sysname)
             || StringMatchFull(CLASSATTRIBUTES[i][0], sysname))
         {
+            Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 2: %s" CLASSATTRIBUTES[i][0]);
+
             if (!strcmp(CLASSATTRIBUTES[i][1], VSYSNAME.machine)
                 || StringMatchFull(CLASSATTRIBUTES[i][1], VSYSNAME.machine))
             {
+                Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 3: ");
+
                 if (!strcmp(CLASSATTRIBUTES[i][2], VSYSNAME.release)
                     || StringMatchFull(CLASSATTRIBUTES[i][2], VSYSNAME.release))
                 {
