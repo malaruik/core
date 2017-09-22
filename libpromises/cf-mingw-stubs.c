@@ -182,7 +182,7 @@ void InitializeWindows(void)
 
     strcpy(VSYSNAME.sysname, "windows_nt");
     strcpy(VSYSNAME.machine, "x86_64");
-    strcpy(VSYSNAME.release, "v100");
+    strcpy(VSYSNAME.release, "3.0");
 
 	Log(LOG_LEVEL_VERBOSE, "---- stub: Windows initialized");
 }
