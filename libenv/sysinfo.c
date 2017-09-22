@@ -541,14 +541,14 @@ static void GetNameInfo3(EvalContext *ctx)
             if (!strcmp(CLASSATTRIBUTES[i][1], VSYSNAME.machine)
                 || StringMatchFull(CLASSATTRIBUTES[i][1], VSYSNAME.machine))
             {
-                Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 3: ");
+                Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 3: %s", CLASSATTRIBUTES[i][1]);
 
                 if (!strcmp(CLASSATTRIBUTES[i][2], VSYSNAME.release)
                     || StringMatchFull(CLASSATTRIBUTES[i][2], VSYSNAME.release))
                 {
                     EvalContextClassPutHard(ctx, CLASSTEXT[i], "inventory,attribute_name=none,source=agent,derived-from=sys.class");
 
-                    Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME final! ");
+                    Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME final! %s", CLASSATTRIBUTES[i][2]);
 
                     found = true;
 

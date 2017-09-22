@@ -52,7 +52,7 @@ void DirClose(Dir *dir)
 {
 	BOOL hClose;
 
-	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirClose %s", dir);
+	Log(LOG_LEVEL_VERBOSE, "---- libutils stub: DirClose %x", dir);
 
 	hClose = FindClose(dir);
 
