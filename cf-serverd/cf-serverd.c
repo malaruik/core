@@ -69,7 +69,6 @@ int main(int argc, char *argv[])
     GenericAgentPostLoadInit(ctx);
     ThisAgentInit();
 
-    // MAla: Multiple implementations - needs to be checked
     KeepPromises(ctx, policy, config);
     Summarize();
 

@@ -406,6 +406,8 @@ int SocketConnect(const char *host, const char *port,
                   unsigned int connect_timeout, bool force_ipv4,
                   char *txtaddr, size_t txtaddr_size)
 {
+	Log(LOG_LEVEL_VERBOSE, "---- !!!! SocketConnect...");
+
     struct addrinfo *response = NULL, *ap;
     bool connected = false;
     int sd = -1;
