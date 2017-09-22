@@ -518,7 +518,7 @@ static void GetNameInfo3(EvalContext *ctx)
     }
 
     Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME steps: ");
-    strcpy(VSYSNAME.sysname, "windows");
+    strcpy(VSYSNAME.sysname, "windows_nt");
     strcpy(VSYSNAME.machine, "x86_64");
     strcpy(VSYSNAME.release, "v100");
 
@@ -531,6 +531,8 @@ static void GetNameInfo3(EvalContext *ctx)
         ToLowerStrInplace(sysname);
 
         Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 1: ");
+
+        Log(LOG_LEVEL_VERBOSE, "-- starting VSYSNAME step 1.1: %s", CLASSATTRIBUTES[i][0]);
 
         /* FIXME: review those strcmps. Moved out from StringMatch */
         if (!strcmp(CLASSATTRIBUTES[i][0], sysname)
